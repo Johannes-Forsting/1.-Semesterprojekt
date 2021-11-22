@@ -6,20 +6,26 @@ public class Member {
         private int age;
         private String name;
         private boolean arrears; //restance
+        private double swimmingResults;
 
 
-        public Member(boolean isCompetitive, boolean isActive, int age, String name, boolean arrears) {
+        public Member(boolean isCompetitive, boolean isActive, int age, String name, boolean arrears, double swimmingResults) {
                 this.isCompetitive = isCompetitive;
                 this.isActive = isActive;
                 this.age = age;
                 this.name = name;
                 this.arrears = arrears;
+                this.swimmingResults = swimmingResults;
         }
 
-        public String setSwimmingResults(String personalTime){
+        public double setSwimmingResults(double personalTime){
 
 
                 return personalTime;
+        }
+
+        public double getSwimmingResults() {
+                return swimmingResults;
         }
 
         public boolean isCompetitive() {
