@@ -19,9 +19,11 @@ public class Member {
         }
 
         public double setSwimmingResults(double personalTime){
-
-
-                return personalTime;
+                if(personalTime<swimmingResults){
+                        this.swimmingResults = personalTime;
+                        //pr added - overwrited previous record
+                }
+                return this.swimmingResults;
         }
 
         public double getSwimmingResults() {
