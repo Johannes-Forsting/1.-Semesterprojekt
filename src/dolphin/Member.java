@@ -7,6 +7,6 @@ public class Member {
         private String name;
         private boolean arrears; //restance
 
-
+        //tetststiajgpd
 
 }
