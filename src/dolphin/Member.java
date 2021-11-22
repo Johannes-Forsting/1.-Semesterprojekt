@@ -10,13 +10,11 @@ public class Member extends Factory{
         private int memberId;
 
 
-        public Member(boolean isCompetitive, boolean isActive, String dateOfBirth, String name, boolean arrears, double swimmingResults, int memberId) {
+        public Member(boolean isCompetitive, boolean isActive, String dateOfBirth, String name, boolean arrears) {
                 this.isCompetitive = isCompetitive;
                 this.isActive = isActive;
                 this.name = name;
                 this.arrears = arrears;
-                this.swimmingResults = swimmingResults;
-                this.memberId = memberId;
 
                 String[] thisDate = dateOfBirth.split("-");
                 dateOfBirth = thisDate[2] + "-" + thisDate[1] + "-" + thisDate[0];
@@ -48,8 +46,6 @@ public class Member extends Factory{
         public boolean isActive() {
                 return isActive;
         }
-
-        //tetststiajgpd
 
         public String getName() {
                 return name;

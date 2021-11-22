@@ -30,7 +30,7 @@ public class Files {
                     isActive = true;
                 }
                 String date = info[4];
-                Member currentMember = new Member(name, age, isCompetative, isActive, date);
+                Member currentMember = new Member(isCompetative, isActive, date, name, true);
                 members.add(currentMember);
             }
 
