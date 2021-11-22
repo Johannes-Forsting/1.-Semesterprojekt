@@ -13,6 +13,20 @@ public class Team {
         this.contestants = contestants;
     }
 
+    //results
+    //arraylist
+    //split regx :
+    //memberId : member timeResult
+    //1234 : 184.5
+    //
+    //
+    //setResults
+    //read file:
+    //memberId : memberResult
+    //int result = split regx : get[1]
+    //while(file hasnextLine)
+    //member.setresults(result)
+
     public void setContestantsResults(ArrayList results, Member member) {
         int indexOfContestantResult = member.getMemberId();
         //some shit thats not working == member.setSwimmingResults(results.get(indexOfContestantResult));
