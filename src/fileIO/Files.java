@@ -1,11 +1,13 @@
 package fileIO;
 
+import dolphin.Competition;
 import dolphin.Member;
 
 import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Files {
@@ -42,24 +44,38 @@ public class Files {
     }
 
 
-    //virker ikke
-    public void showCompetition(){
+    //den kan ikke finde filen ;O
+    public void getCompetition(){
+        ArrayList<Competition> competitions = new ArrayList<>();
 
 
+        File competition = new File("competition.csv");
         try {
-            File competition = new File("src/resources/test.csv");
             Scanner sc = new Scanner(competition);
-            sc.nextLine();
             while (sc.hasNextLine()) {
                 System.out.println(sc.hasNextLine());
+         //  String line = sc.nextLine();
+         //  String[] stringAsArray = line.split(";");
+           //String disciplin = stringAsArray[0];
+           //String team = stringAsArray[1];
+           //String contestans = stringAsArray[2];
+           //String place = stringAsArray[3];
+          // double time = Integer.parseInt(stringAsArray[4]);
+
+
+           //Competition showCompetetition = new Competition(disciplin,team,contestans,place,time);
+         //  competitions.add(showCompetetition);
+          //Collections.sort(time);
+// lave om på constructor og lave get og set, måske med placement??
+                // og også lave write to file og ikke kun læse fil.
+
+
             }
 
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
             e.printStackTrace();
-
         }
-
         }
 
 
