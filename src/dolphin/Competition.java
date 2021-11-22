@@ -1,4 +1,4 @@
 package dolphin;
 
-public class Competition {
+public class Competition{
 }

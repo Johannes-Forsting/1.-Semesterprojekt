@@ -1,6 +1,6 @@
 package dolphin;
 
-public class Member {
+public class Member extends Factory{
         private boolean isCompetitive;
         private boolean isActive;
         private int age;
@@ -18,6 +18,8 @@ public class Member {
                 this.swimmingResults = swimmingResults;
         }
 
+
+
         public double setSwimmingResults(double personalTime){
                 if(personalTime<swimmingResults){
                         this.swimmingResults = personalTime;
@@ -30,7 +32,7 @@ public class Member {
                 return swimmingResults;
         }
 
-        public boolean isCompetitive() {
+        public boolean isCompetitive()  {
                 return isCompetitive;
         }
 
@@ -49,4 +51,5 @@ public class Member {
         public boolean isArrears() {
                 return arrears;
         }
+
 }
