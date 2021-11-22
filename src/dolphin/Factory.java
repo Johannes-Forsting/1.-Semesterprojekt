@@ -1,23 +1,25 @@
 package dolphin;
 
+import java.sql.Time;
+import java.util.ArrayList;
+
 public abstract class Factory{
 
     public Factory() {
     }
 
-    public Member makeNewMember(int whatMember) {
+    public Member makeNewMember(int whatMember, boolean isCompetetive,boolean isActive, String dateOfBirth, String name, boolean arrears) {
 
-            return new Member(true,true,18,"j",true,12);
-
+            return new Member(isCompetetive,isActive,dateOfBirth,name,arrears);
         }
 
 
-    public Team makeNewTeam(int whatTeam){
+    public Team makeNewTeam(int whatTeam, String name, ArrayList<Member> contestants){
 
-        return new Team();
+        return new Team(name,contestants);
     }
 
-    public Competition makeNewCompetition(int whatCompetition){
-        return new Competition();
+    public Competition makeNewCompetition(int whatCompetition,Diciplin diciplin, Team team, ArrayList<Member> contestants, String place, Time time){
+        return new Competition(diciplin,team,contestants,place,time);
     }
 }

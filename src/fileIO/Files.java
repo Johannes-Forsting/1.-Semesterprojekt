@@ -3,8 +3,7 @@ package fileIO;
 import dolphin.Member;
 
 import java.awt.image.AreaAveragingScaleFilter;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -41,4 +40,29 @@ public class Files {
 
         return members;
     }
-}
+
+
+    //virker ikke
+    public void showCompetition(){
+
+
+        try {
+            File competition = new File("src/resources/test.csv");
+            Scanner sc = new Scanner(competition);
+            sc.nextLine();
+            while (sc.hasNextLine()) {
+                System.out.println(sc.hasNextLine());
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("file not found");
+            e.printStackTrace();
+
+        }
+
+        }
+
+
+    }
+
+
