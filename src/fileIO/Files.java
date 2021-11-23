@@ -1,6 +1,7 @@
 package fileIO;
 
 import dolphin.Competition;
+import dolphin.Diciplin;
 import dolphin.Member;
 
 import java.awt.image.AreaAveragingScaleFilter;
@@ -22,15 +23,20 @@ public class Files {
                 String[] info = line.split(";");
                 String name =  info[0];
                 String date = info[1];
-                boolean isCompetative = false;
-                if (info[2].toLowerCase().equals("yes")){
-                    isCompetative = true;
-                }
                 boolean isActive = false;
-                if (info[3].toLowerCase().equals("yes")){
+                if (info[2].toLowerCase().equals("yes")){
                     isActive = true;
                 }
-                Member currentMember = new Member(isCompetative, isActive, date, name, true);
+                boolean isCompetative = false;
+                if (info[3].toLowerCase().equals("yes")){
+                    isCompetative = true;
+                }
+                Diciplin diciplin = new Diciplin(info[4]);
+                boolean hasArrears = false;
+                if (info[4].toLowerCase().equals("yes")){
+                    hasArrears = true;
+                }
+                Member currentMember = new Member(isCompetative, isActive, date, name, diciplin, hasArrears);
                 members.add(currentMember);
             }
 

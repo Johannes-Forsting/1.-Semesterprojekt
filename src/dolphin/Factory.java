@@ -8,9 +8,9 @@ public abstract class Factory{
     public Factory() {
     }
 
-    public Member makeNewMember(int whatMember, boolean isCompetetive,boolean isActive, String dateOfBirth, String name, boolean arrears) {
+    public Member makeNewMember(int whatMember, boolean isCompetetive,boolean isActive, String dateOfBirth, String name, Diciplin diciplin, boolean hasArrears) {
 
-            return new Member(isCompetetive,isActive,dateOfBirth,name,arrears);
+            return new Member(isCompetetive,isActive,dateOfBirth,name, diciplin, hasArrears);
         }
 
 

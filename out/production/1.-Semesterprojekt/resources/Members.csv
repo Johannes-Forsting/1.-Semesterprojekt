@@ -1,5 +1,5 @@
-Name;dateOfBirth;isCompetetive;isActive
-Simon ;19-03-1999;yes;no
-Asger;01-11-1998;no;No
-Johannes;21-03-1998;Yes;YES
-Mikkrl;21-01-1758;no;yes
+Name;dateOfBirth;isActive;isCompetetive;Diciplin;Restance
+Simon ;19-03-1999;no;yes;Crawl;no
+Asger;01-11-1998;No;no;Bryst;no
+Johannes;21-03-1998;YES;Yes;Rygcrawl;no
+Mikkrl;21-01-1758;yes;no;Butterfly;no
