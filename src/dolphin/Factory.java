@@ -19,7 +19,7 @@ public abstract class Factory{
         return new Team(name,contestants);
     }
 
-    public Competition makeNewCompetition(int whatCompetition,Diciplin diciplin, Team team, ArrayList<Member> contestants, String place, int time){
-        return new Competition(diciplin,team,contestants,place,time);
+    public Competition makeNewCompetition(int whatCompetition,Diciplin diciplin, Team team, String place, int time){
+        return new Competition(diciplin,team,place,time);
     }
 }
