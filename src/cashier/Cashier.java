@@ -17,8 +17,11 @@ public class Cashier {
     public static void main(String[] args) {
         int action = 0;
         System.out.println("Welcome Cashier");
-        System.out.println("Pick an action: \n 1 : Show prices \n 2 : Print members in arrear \n 3 : Print estimated income");
+        while(action != 0){
+        System.out.println("Pick an action: \n 1 : Show prices \n 2 : Print members in arrear \n 3 : Print estimated income \n 0 : Exit");
         switch (action){
+            case 0:
+                System.out.println("BAIIEEEE");
             case 1:
                 printPrices();
             case 2:
@@ -27,6 +30,7 @@ public class Cashier {
                 System.out.println("Estimated income is: " + checkIncomeEstimate());
             default:
                 System.out.println("Invalid action");
+        }
         }
 
 
