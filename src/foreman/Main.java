@@ -15,6 +15,7 @@ public class Main {
 
 
     private static void choices(){
+        //hej
         boolean whileCondition = true;
         while (whileCondition){
             int choice = newChoice();
