@@ -84,4 +84,11 @@ public class Member{
                 return arrears;
         }
 
+        public LocalDate getDateOfBirth() {
+                return dateOfBirth;
+        }
+
+        public int getSubscribtionRate() {
+                return subscribtionRate;
+        }
 }
