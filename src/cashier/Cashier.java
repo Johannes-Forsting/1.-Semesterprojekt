@@ -16,6 +16,7 @@ public class Cashier {
     //Vi giver cashier klassen en main metode, så cashier kun er autoriseret til hvad der står i tilhørende main.
     public static void main(String[] args) {
         int action = 0;
+        System.out.println("Welcome Cashier");
         System.out.println("Pick an action: \n 1 : Show prices \n 2 : Print members in arrear \n 3 : Print estimated income");
         switch (action){
             case 1:
