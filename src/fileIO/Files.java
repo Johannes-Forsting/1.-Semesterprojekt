@@ -49,11 +49,14 @@ public class Files {
         ArrayList<Competition> competitions = new ArrayList<>();
 
 
-        File competition = new File("competition.csv");
+        File competition = new File("src/resources/tournament.csv");
         try {
             Scanner sc = new Scanner(competition);
             while (sc.hasNextLine()) {
-                System.out.println(sc.hasNextLine());
+                String nextLine = sc.nextLine();
+                //System.out.println(sc.hasNextLine());
+                System.out.println(nextLine);
+
          //  String line = sc.nextLine();
          //  String[] stringAsArray = line.split(";");
            //String disciplin = stringAsArray[0];
