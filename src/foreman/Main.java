@@ -1,5 +1,8 @@
 package foreman;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
@@ -13,9 +16,6 @@ public class Main {
 
     private static Files file = new Files();
     public static void main(String[] args) {
-        //choices();
-        Files.getMembersFromFile();
-
 
     }
 
@@ -29,6 +29,7 @@ public class Main {
             int choice = newChoice();
             switch (choice){
                 case 1:
+                    Files.getMembersFromFile();
                     break;
                 case 2:
                     break;
@@ -77,7 +78,7 @@ public class Main {
 
     private static void callOptions(){
         System.out.println("============CHOOSE AN OPTION============");
-        System.out.println("Press 1 for: ");
+        System.out.println("Press 1 for: Upload all members from CSV-file");
         System.out.println("Press 2 for: ");
         System.out.println("Press 3 for: ");
         System.out.println("Press 4 for: ");

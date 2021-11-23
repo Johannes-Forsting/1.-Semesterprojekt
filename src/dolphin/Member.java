@@ -33,7 +33,6 @@ public class Member{
 
 
 
-
                 //DateOfBirth kommer ind i String DD-MM-YYYY og bliver lavet om til en LocalDate variable.
                 String[] thisDate = dateOfBirth.split("-");
                 int year = Integer.parseInt(thisDate[2]);
