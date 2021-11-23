@@ -30,15 +30,9 @@ public class Member{
                 this.dateOfBirth = LocalDate.of(year, month, day);
 
                 //subscribtionFee bliver tildelt her baseret på isActive og alder
-
-                if (isActive == false){
-                        this.subscribtionRate = 500;
-                }
                 int age = getAge(LocalDate.now());
-                System.out.println(age);
-
-
-
+                this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600;
+                System.out.println(this.name + " " + this.subscribtionRate);
         }
 
         private int getAge(LocalDate currentDate) {

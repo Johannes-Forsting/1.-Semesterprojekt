@@ -21,7 +21,7 @@ public class Files {
                 String line = scanner.nextLine();
                 String[] info = line.split(";");
                 String name =  info[0];
-                int age = Integer.parseInt(info[1]);
+                String date = info[1];
                 boolean isCompetative = false;
                 if (info[2].toLowerCase().equals("yes")){
                     isCompetative = true;
@@ -30,7 +30,6 @@ public class Files {
                 if (info[3].toLowerCase().equals("yes")){
                     isActive = true;
                 }
-                String date = info[4];
                 Member currentMember = new Member(isCompetative, isActive, date, name, true);
                 members.add(currentMember);
             }

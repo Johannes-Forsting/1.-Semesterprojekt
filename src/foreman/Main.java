@@ -14,6 +14,7 @@ public class Main {
     private static Files file = new Files();
     public static void main(String[] args) {
         //choices();
+        Files.getMembersFromFile();
 
     }
 
