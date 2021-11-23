@@ -1,12 +1,18 @@
 package dolphin;
 
-public class Member extends Factory{
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Member{
         private boolean isCompetitive;
         private boolean isActive;
-        private String dateOfBirth;
+        private LocalDate dateOfBirth;
         private String name;
         private boolean arrears; //restance
         private double swimmingResults;
+        private int subscribtionRate;
         private int memberId;
 
 
@@ -16,9 +22,27 @@ public class Member extends Factory{
                 this.name = name;
                 this.arrears = arrears;
 
+                //DateOfBirth kommer ind i String DD-MM-YYYY og bliver lavet om til en LocalDate variable.
                 String[] thisDate = dateOfBirth.split("-");
-                dateOfBirth = thisDate[2] + "-" + thisDate[1] + "-" + thisDate[0];
-                this.dateOfBirth = dateOfBirth;
+                int year = Integer.parseInt(thisDate[2]);
+                int month = Integer.parseInt(thisDate[1]);
+                int day = Integer.parseInt(thisDate[0]);
+                this.dateOfBirth = LocalDate.of(year, month, day);
+
+                //subscribtionFee bliver tildelt her baseret på isActive og alder
+
+                if (isActive == false){
+                        this.subscribtionRate = 500;
+                }
+                int age = getAge(LocalDate.now());
+                System.out.println(age);
+
+
+
+        }
+
+        private int getAge(LocalDate currentDate) {
+                return Period.between(this.dateOfBirth, currentDate).getYears();
         }
 
 
