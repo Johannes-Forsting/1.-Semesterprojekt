@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Foreman {
-    public static ArrayList<Member> members = Files.getMembersFromFile();
+    public static ArrayList<Member> members = new ArrayList<Member>();
     private static Scanner scanner = new Scanner(System.in);
 
 
@@ -23,6 +23,10 @@ public class Foreman {
         for (int i = 0; i < members.size(); i++) {
             System.out.println(members.get(i));
         }
+    }
+
+    public static void getMembers(){
+        members = Files.getMembersFromFile();
     }
 
     public static void makeNewMember(){
@@ -38,17 +42,30 @@ public class Foreman {
         System.out.println("Is this person gonna be competetive? \"yes/no\"");
         boolean isCompetetive = validateBooleanInput();
 
-        System.out.println("What diciplin is this person gonna be?");
-        String diciplin = getDiciplin();
 
-        Member newMember = factory.makeNewMember(isCompetetive, isActive, dateOfBirth, name, new Diciplin(diciplin), false);
+        Diciplin diciplin = isCompetetive ? getDiciplin() : null;
+
+        Member newMember = factory.makeNewMember(isCompetetive, isActive, dateOfBirth, name, diciplin, false);
         members.add(newMember);
         Files.addMemberToDatabase(newMember);
     }
 
-    private static String getDiciplin(){
-        String diciplin = scanner.nextLine();
-        return diciplin;
+    private static Diciplin getDiciplin(){
+        int diciplin;
+        System.out.println("What diciplin is this person gonna be?");
+        System.out.println("Press 1 for: Crawl \nPress 2 for: Backcrawl\nPress 3 for: Butterfly\nPress 4 for: Breaststroke");
+        diciplin = Main.validateUserIntInput(1, 4);
+        switch (diciplin){
+            case 1:
+                return Main.crawl;
+            case 2:
+                return Main.backCrawl;
+            case 3:
+                return Main.butterFly;
+            case 4:
+                return Main.breastStroke;
+        }
+        return null;
     }
 
 

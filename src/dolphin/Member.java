@@ -65,7 +65,12 @@ public class Member{
         }
 
         public String getDiciplin(){
-                return diciplin.getDiciplinName();
+                if (diciplin == null){
+                        return "None";
+                }
+                else{
+                        return diciplin.getDiciplinName();
+                }
         }
 
         public double getSwimmingResults() {

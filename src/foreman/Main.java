@@ -1,19 +1,24 @@
 package foreman;
 
-import java.io.*;
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import dolphin.Diciplin;
 import fileIO.Files;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
 
-    private static Files file = new Files();
+
+
+    public static Diciplin backCrawl = new Diciplin("Backcrawl");
+    public static Diciplin crawl = new Diciplin("Crawl");
+    public static Diciplin butterFly = new Diciplin("Butterfly");
+    public static Diciplin breastStroke = new Diciplin("Breaststroke");
+
     public static void main(String[] args) {
+        Foreman.getMembers();
         choices();
     }
 
@@ -21,13 +26,14 @@ public class Main {
     private static void choices(){
         boolean whileCondition = true;
         while (whileCondition){
-            int choice = newChoice();
+            callOptions();
+            int choice = validateUserIntInput(1, 10);
             switch (choice){
                 case 1:
-                    Files.getMembersFromFile();
+                    Foreman.makeNewMember();
                     break;
                 case 2:
-                    Foreman.makeNewMember();
+                    Foreman.callAllMembers();
                     break;
                 case 3:
                     break;
@@ -52,13 +58,12 @@ public class Main {
     }
 
 
-    private static int newChoice(){
+    public static int validateUserIntInput(int min, int max){
         int choice;
         while(true){
-            callOptions();
             try{
                 choice = scanner.nextInt();
-                if (choice > 10 || choice < 1){
+                if (choice > max || choice < min){
                     throw new InputMismatchException();
                 }
                 else{
@@ -67,7 +72,7 @@ public class Main {
             }
             catch (InputMismatchException e){
                 scanner.nextLine();
-                System.out.println("Please only write anything between 1 and 10");
+                System.out.println("Please only write anything between " + min +" and " + max);
             }
         }
         return choice;
@@ -75,8 +80,8 @@ public class Main {
 
     private static void callOptions(){
         System.out.println("============CHOOSE AN OPTION============");
-        System.out.println("Press 1 for: Upload all members from CSV-file");
-        System.out.println("Press 2 for: Make new member.");
+        System.out.println("Press 1 for: Make new member.");
+        System.out.println("Press 2 for: ");
         System.out.println("Press 3 for: ");
         System.out.println("Press 4 for: ");
         System.out.println("Press 5 for: ");

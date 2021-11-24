@@ -8,6 +8,7 @@ import javax.swing.plaf.metal.MetalMenuBarUI;
 import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -145,7 +146,7 @@ public class Files {
 
     private static String getMemberString(Member member) {
         String stringToReturn = member.getName();
-        stringToReturn += ";" + member.getDateOfBirth();
+        stringToReturn += ";" + getRightDateFormat(member.getDateOfBirth());
         stringToReturn += member.isActive() ? ";" + "yes" : ";" + "no";
         stringToReturn += member.isCompetitive() ? ";" + "yes" : ";" + "no";
         stringToReturn += ";" + member.getDiciplin();
@@ -154,12 +155,18 @@ public class Files {
         return stringToReturn;
     }
 
+    private static String getRightDateFormat(LocalDate date){
+        String[] array = date.toString().split("-");
+        String stringToReturn = array[2] + "-" + array[1] + "-" + array[0];
+        return stringToReturn;
+    }
+
 
     public static ArrayList<Member> getMembersFromFile() {
         ArrayList<Member> members = new ArrayList<>();
         try {
             File f = new File("src/resources/Members.csv");
-            Scanner scanner = new Scanner(f);
+            Scanner scanner = new Scanner(new File("src/resources/Members.csv"));
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
