@@ -1,8 +1,10 @@
 package fileIO;
 
 import dolphin.Competition;
+import dolphin.Diciplin;
 import dolphin.Member;
 
+import javax.swing.plaf.metal.MetalMenuBarUI;
 import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
 import java.lang.reflect.Array;
@@ -11,6 +13,30 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Files {
+    public static ArrayList<String> getMembersResults(){
+        ArrayList<String> timeResults = new ArrayList<>();
+        //Arraylist<ArrayList<String>> memberResults = new ArrayList<ArrayList<String>>();
+        try {
+            File r = new File("src/resources/results.csv");
+            Scanner scanner = new Scanner(r);
+            scanner.nextLine();
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] info = line.split(";");
+                String name = info[0];
+                timeResults.add(name);
+                for (int i = 1; i < info.length; i++) {
+                    timeResults.add(info[i]);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("File not found");
+        }
+        return timeResults;
+    }
+
     public static ArrayList<Member> getMembersFromFile() {
         ArrayList<Member> members = new ArrayList<>();
         try {
@@ -21,17 +47,21 @@ public class Files {
                 String line = scanner.nextLine();
                 String[] info = line.split(";");
                 String name =  info[0];
-                int age = Integer.parseInt(info[1]);
-                boolean isCompetative = false;
-                if (info[2].toLowerCase().equals("yes")){
-                    isCompetative = true;
-                }
+                String date = info[1];
                 boolean isActive = false;
-                if (info[3].toLowerCase().equals("yes")){
+                if (info[2].toLowerCase().equals("yes")){
                     isActive = true;
                 }
-                String date = info[4];
-                Member currentMember = new Member(isCompetative, isActive, date, name, true);
+                boolean isCompetative = false;
+                if (info[3].toLowerCase().equals("yes")){
+                    isCompetative = true;
+                }
+                Diciplin diciplin = new Diciplin(info[4]);
+                boolean hasArrears = false;
+                if (info[4].toLowerCase().equals("yes")){
+                    hasArrears = true;
+                }
+                Member currentMember = new Member(isCompetative, isActive, date, name, diciplin, hasArrears);
                 members.add(currentMember);
             }
 
@@ -39,7 +69,6 @@ public class Files {
             e.printStackTrace();
             System.out.println("File not found");
         }
-
         return members;
     }
 

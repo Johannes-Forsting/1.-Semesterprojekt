@@ -39,6 +39,10 @@ public class Team {
 
     }
 
+    //Team topFive = new Team("Top 5", );
+
+    //public ArrayList<Member> getBestTimes();
+
     public ArrayList<Double> updateBestTimes() {
         return bestTimes;
     }
