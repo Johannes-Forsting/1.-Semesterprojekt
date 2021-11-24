@@ -73,44 +73,49 @@ public class Files {
     }
 
 
-    //den kan ikke finde filen ;O
-    public void getCompetition(){
-        ArrayList<Competition> competitions = new ArrayList<>();
-
-
-        File competition = new File("src/resources/tournament.csv");
-        try {
-            Scanner sc = new Scanner(competition);
-            while (sc.hasNextLine()) {
-                String nextLine = sc.nextLine();
-                //System.out.println(sc.hasNextLine());
-                System.out.println(nextLine);
-
-         //  String line = sc.nextLine();
-         //  String[] stringAsArray = line.split(";");
-           //String disciplin = stringAsArray[0];
-           //String team = stringAsArray[1];
-           //String contestans = stringAsArray[2];
-           //String place = stringAsArray[3];
-          // double time = Integer.parseInt(stringAsArray[4]);
-
-
-           //Competition showCompetetition = new Competition(disciplin,team,contestans,place,time);
-         //  competitions.add(showCompetetition);
-          //Collections.sort(time);
-// lave om på constructor og lave get og set, måske med placement??
-                // og også lave write to file og ikke kun læse fil.
-
-
+    //virker, men der skal ændres lidt i toString
+    public  void generateNewCompetitionFile(String fileName) {
+        System.out.println("give your file a name");
+        System.out.println("enter done when your file is finished");
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            String name = "src/resources/";
+            name += scanner.nextLine();
+            name += ".csv";
+            if (name.equals("src/resources/done.csv")) {
+                break;
             }
 
-        } catch (FileNotFoundException e) {
-            System.out.println("file not found");
-            e.printStackTrace();
-        }
-        }
+            try {
+                PrintWriter newFile = new PrintWriter(name);
+                StringBuilder sb = new StringBuilder();
+                sb.append("Diciplin");
+                sb.append(",");
+                sb.append("Place");
+                sb.append(",");
+                sb.append("Time");
+                sb.append("\n");
+                System.out.println("Enter a diciplin ");
+                sb.append(scanner.nextLine());
+                sb.append(",");
+                System.out.println("Enter a place");
+                sb.append(scanner.nextLine());
+                sb.append(",");
+                System.out.println("Now enter a start time for the competition");
+                sb.append(scanner.nextLine());
 
+                newFile.write(sb.toString());
+                newFile.close();
+                System.out.println("your competition is created!");
 
+            } catch (FileNotFoundException e) {
+                System.out.println("file not found");
+                e.printStackTrace();
+            }
+        }
     }
+}
+
+
 
 
