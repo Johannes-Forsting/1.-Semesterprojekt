@@ -74,7 +74,7 @@ public class Files {
 
 
     //virker, men der skal ændres lidt i toString
-    public  void generateNewCompetitionFile(String fileName) {
+    public static void generateNewCompetitionFile() {
         System.out.println("give your file a name");
         System.out.println("enter done when your file is finished");
         Scanner scanner = new Scanner(System.in);
@@ -95,6 +95,7 @@ public class Files {
                 sb.append(",");
                 sb.append("Time");
                 sb.append("\n");
+
                 System.out.println("Enter a diciplin ");
                 sb.append(scanner.nextLine());
                 sb.append(",");
