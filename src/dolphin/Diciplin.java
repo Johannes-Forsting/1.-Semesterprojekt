@@ -1,6 +1,10 @@
 package dolphin;
 
+import fileIO.Files;
+import foreman.Main;
+
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Diciplin {
     private String diciplinName;
@@ -31,6 +35,26 @@ public class Diciplin {
 
     public String getDiciplinName(){
         return this.diciplinName;
+    }
+
+    public void getDiciplinResults(Diciplin diciplin){
+        switch (diciplin.getDiciplinName().toLowerCase()){
+            case "crawl":
+                while(Files.crawlScanner.hasNext()){
+                    for (int i = 0; i < Files.getCrawlResults().size(); i++) {
+
+                    }
+                }
+            case "backcrawl":
+            case "breaststroke":
+            case "butterfly":
+            default:
+
+        }
+
+
+
+
     }
 
     public boolean isBackCrawl() {

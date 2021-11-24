@@ -13,14 +13,109 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Files {
-    public static ArrayList<String> getMembersResults(){
+    static File crawlFile = new File("src/resources/crawlResults.csv");
+    static File backCrawlFile = new File("src/resources/backCrawlResults.csv");
+    static File breastStrokeFile = new File("src/resources/breastStrokeResults.csv");
+    static File butterflyFile = new File("src/resources/butterflyResults.csv");
+    static File competitionFile = new File("src/resources/competitionResults.csv");
+    public static Scanner crawlScanner;
+    public static Scanner backCrawlScanner;
+    public static Scanner breastStrokeScanner;
+    public static Scanner butterflyScanner;
+    public static Scanner competitionScanner;
+
+    static {
+        try {
+            crawlScanner = new Scanner(crawlFile);
+            backCrawlScanner = new Scanner(backCrawlFile);
+            breastStrokeScanner = new Scanner(breastStrokeFile);
+            butterflyScanner = new Scanner(butterflyFile);
+            competitionScanner = new Scanner(competitionFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static ArrayList<String> getCrawlResults() {
+        ArrayList<String> crawlResults = new ArrayList<>();
+        while (crawlScanner.hasNext()) {
+            String line = crawlScanner.nextLine();
+            String[] info = line.split(";");
+            String name = info[0];
+            crawlResults.add(name);
+            for (int i = 1; i < info.length; i++) {
+                crawlResults.add(info[i]);
+            }
+        }
+        return crawlResults;
+    }
+
+    public static ArrayList<String> getBackCrawlResults() {
+        ArrayList<String> backCrawlResults = new ArrayList<>();
+        while (backCrawlScanner.hasNext()) {
+            String line = backCrawlScanner.nextLine();
+            String[] info = line.split(";");
+            String name = info[0];
+            backCrawlResults.add(name);
+            for (int i = 1; i < info.length; i++) {
+                backCrawlResults.add(info[i]);
+            }
+        }
+        return backCrawlResults;
+    }
+
+    public static ArrayList<String> getBreastStrokeResults() {
+        ArrayList<String> breastStrokeResults = new ArrayList<>();
+        while (breastStrokeScanner.hasNext()) {
+            String line = breastStrokeScanner.nextLine();
+            String[] info = line.split(";");
+            String name = info[0];
+            breastStrokeResults.add(name);
+            for (int i = 1; i < info.length; i++) {
+                breastStrokeResults.add(info[i]);
+            }
+        }
+        return breastStrokeResults;
+    }
+
+    public static ArrayList<String> getButterflyResults() {
+        ArrayList<String> butterflyResults = new ArrayList<>();
+        while (butterflyScanner.hasNext()) {
+            String line = butterflyScanner.nextLine();
+            String[] info = line.split(";");
+            String name = info[0];
+            butterflyResults.add(name);
+            for (int i = 1; i < info.length; i++) {
+                butterflyResults.add(info[i]);
+            }
+        }
+        return butterflyResults;
+    }
+        //needs fixing maybe too early to implement this method
+    public static ArrayList<String> getCompetitionResults() {
+        ArrayList<String> competitionResults = new ArrayList<>();
+        while (competitionScanner.hasNext()) {
+            String line = competitionScanner.nextLine();
+            String[] info = line.split(";");
+            String name = info[0];
+            competitionResults.add(name);
+            for (int i = 1; i < info.length; i++) {
+                competitionResults.add(info[i]);
+            }
+        }
+        return competitionResults;
+    }
+
+
+    public static ArrayList<String> getMembersResults() {
         ArrayList<String> timeResults = new ArrayList<>();
         //Arraylist<ArrayList<String>> memberResults = new ArrayList<ArrayList<String>>();
         try {
             File r = new File("src/resources/results.csv");
             Scanner scanner = new Scanner(r);
             scanner.nextLine();
-            while(scanner.hasNextLine()){
+            while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] info = line.split(";");
                 String name = info[0];
@@ -38,18 +133,17 @@ public class Files {
     }
 
 
-    public static void addMemberToDatabase(Member newMember){
+    public static void addMemberToDatabase(Member newMember) {
         String memberToString = getMemberString(newMember);
-        try(FileWriter fw = new FileWriter("src/resources/Members.csv", true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw))
-        {
+        try (FileWriter fw = new FileWriter("src/resources/Members.csv", true);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter out = new PrintWriter(bw)) {
             out.println(memberToString);
         } catch (IOException e) {
         }
     }
 
-    private static String getMemberString(Member member){
+    private static String getMemberString(Member member) {
         String stringToReturn = member.getName();
         stringToReturn += ";" + member.getDateOfBirth();
         stringToReturn += member.isActive() ? ";" + "yes" : ";" + "no";
@@ -70,19 +164,19 @@ public class Files {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] info = line.split(";");
-                String name =  info[0];
+                String name = info[0];
                 String date = info[1];
                 boolean isActive = false;
-                if (info[2].toLowerCase().equals("yes")){
+                if (info[2].toLowerCase().equals("yes")) {
                     isActive = true;
                 }
                 boolean isCompetative = false;
-                if (info[3].toLowerCase().equals("yes")){
+                if (info[3].toLowerCase().equals("yes")) {
                     isCompetative = true;
                 }
                 Diciplin diciplin = new Diciplin(info[4]);
                 boolean hasArrears = false;
-                if (info[4].toLowerCase().equals("yes")){
+                if (info[4].toLowerCase().equals("yes")) {
                     hasArrears = true;
                 }
                 Member currentMember = new Member(isCompetative, isActive, date, name, diciplin, hasArrears);
