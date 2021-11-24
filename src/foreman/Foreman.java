@@ -41,8 +41,9 @@ public class Foreman {
         System.out.println("What diciplin is this person gonna be?");
         String diciplin = getDiciplin();
 
-        factory.makeNewMember(isCompetetive, isActive, dateOfBirth, name, new Diciplin(diciplin), false);
-
+        Member newMember = factory.makeNewMember(isCompetetive, isActive, dateOfBirth, name, new Diciplin(diciplin), false);
+        members.add(newMember);
+        Files.addMemberToDatabase(newMember);
     }
 
     private static String getDiciplin(){

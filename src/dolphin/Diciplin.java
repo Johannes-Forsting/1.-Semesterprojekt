@@ -4,17 +4,48 @@ import java.util.ArrayList;
 
 public class Diciplin {
     private String diciplinName;
-    private  String backcrawl;
-    private  String butterfly;
-    private  String  crawl;
-    private  String breaststrok;
+    private boolean isBackCrawl = false;
+    private boolean isCrawl = false;
+    private boolean isButterfly = false;
+    private boolean isBreastStroke = false;
 
 
-    public Diciplin(String diciplinName, String backcrawl, String butterfly, String crawl, String breaststrok) {
+
+    public Diciplin(String diciplinName) {
         this.diciplinName = diciplinName;
-        this.backcrawl = backcrawl;
-        this.butterfly = butterfly;
-        this.crawl = crawl;
-        this.breaststrok = breaststrok;
+
+        if (diciplinName.equals("Backcrawl")){
+            this.isBackCrawl = true;
+        }
+        if (diciplinName.equals("Crawl")){
+            this.isCrawl = true;
+        }
+        if (diciplinName.equals("Butterfly")){
+            this.isButterfly = true;
+        }
+        if (diciplinName.equals("BreastStroke")){
+            this.isBreastStroke = true;
+        }
+
+    }
+
+    public String getDiciplinName(){
+        return this.diciplinName;
+    }
+
+    public boolean isBackCrawl() {
+        return isBackCrawl;
+    }
+
+    public boolean isCrawl() {
+        return isCrawl;
+    }
+
+    public boolean isButterfly() {
+        return isButterfly;
+    }
+
+    public boolean isBreastStroke() {
+        return isBreastStroke;
     }
 }

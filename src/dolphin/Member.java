@@ -64,6 +64,10 @@ public class Member{
                 return memberId;
         }
 
+        public String getDiciplin(){
+                return diciplin.getDiciplinName();
+        }
+
         public double getSwimmingResults() {
                 return swimmingResults;
         }

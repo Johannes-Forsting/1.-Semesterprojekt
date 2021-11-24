@@ -37,6 +37,30 @@ public class Files {
         return timeResults;
     }
 
+
+    public static void addMemberToDatabase(Member newMember){
+        String memberToString = getMemberString(newMember);
+        try(FileWriter fw = new FileWriter("src/resources/Members.csv", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(memberToString);
+        } catch (IOException e) {
+        }
+    }
+
+    private static String getMemberString(Member member){
+        String stringToReturn = member.getName();
+        stringToReturn += ";" + member.getDateOfBirth();
+        stringToReturn += member.isActive() ? ";" + "yes" : ";" + "no";
+        stringToReturn += member.isCompetitive() ? ";" + "yes" : ";" + "no";
+        stringToReturn += ";" + member.getDiciplin();
+        stringToReturn += ";" + "no";
+
+        return stringToReturn;
+    }
+
+
     public static ArrayList<Member> getMembersFromFile() {
         ArrayList<Member> members = new ArrayList<>();
         try {
