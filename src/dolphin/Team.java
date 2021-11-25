@@ -3,14 +3,21 @@ package dolphin;
 import java.util.ArrayList;
 
 public class Team {
-        private String name;
-        private ArrayList<Double> results;
-        private ArrayList<Member> contestants;
+        private String diciplinName;
+
+
         private ArrayList<Double> bestTimes;
 
-    public Team(String name, ArrayList<Member> contestants) {
-        this.name = name;
-        this.contestants = contestants;
+    public Team(String diciplinName) {
+        this.diciplinName = diciplinName;
+
+    }
+
+    public String getDiciplinName(Diciplin name){
+      //  if (diciplinName == )
+
+
+        return diciplinName;
     }
 
     //results
@@ -30,7 +37,7 @@ public class Team {
     public void setContestantsResults(ArrayList results, Member member) {
         //some shit thats not working == member.setSwimmingResults(results.get(indexOfContestantResult));
         //then members will have setPR, and method call from here.
-        this.results = results;
+        //this.results = results;
     }
 
     public void setResults(/*resultsfrom file, */){
@@ -46,15 +53,4 @@ public class Team {
         return bestTimes;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public ArrayList<Double> getResults() {
-        return results;
-    }
-
-    public ArrayList<Member> getContestants() {
-        return contestants;
-    }
 }

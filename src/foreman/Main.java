@@ -38,7 +38,7 @@ public class Main {
                 case 3:
                     break;
                 case 4:
-                    Files.generateNewCompetitionFile();
+                    Foreman.makeNewCompetition();
                     break;
                 case 5:
                     break;
@@ -83,7 +83,7 @@ public class Main {
         System.out.println("Press 1 for: Make new member.");
         System.out.println("Press 2 for: See all members");
         System.out.println("Press 3 for: ");
-        System.out.println("Press 4 for: ");
+        System.out.println("Press 4 for: Make new competition.");
         System.out.println("Press 5 for: ");
         System.out.println("Press 6 for: ");
         System.out.println("Press 7 for: ");

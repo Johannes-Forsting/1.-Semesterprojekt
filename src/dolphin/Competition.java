@@ -37,6 +37,8 @@ public class Competition {
         }
     }
 
+
+
     public String getPlace() {
         return place;
     }

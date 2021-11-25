@@ -108,6 +108,13 @@ public class Foreman {
         return date;
     }
 
+    public static void makeNewCompetition(){
+        Factory factory = new Factory();
+
+
+        Files.generateNewCompetitionFile();
+    }
+
 
 
 

@@ -14,12 +14,14 @@ public class Factory{
         }
 
 
-    public Team makeNewTeam(int whatTeam, String name, ArrayList<Member> contestants){
+    public Team makeNewTeam(String diciplinName){
 
-        return new Team(name,contestants);
+        return new Team(diciplinName);
     }
 
     public Competition makeNewCompetition(int whatCompetition,Diciplin diciplin, Team team, String place, int time){
         return new Competition(diciplin,team,place,time);
     }
+
+
 }

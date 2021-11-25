@@ -4,6 +4,7 @@ import dolphin.Competition;
 import dolphin.Diciplin;
 import dolphin.Factory;
 import dolphin.Member;
+import foreman.Main;
 
 import javax.swing.plaf.metal.MetalMenuBarUI;
 import java.awt.image.AreaAveragingScaleFilter;
@@ -15,6 +16,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Files {
+    static Scanner scanner = new Scanner(System.in);
     static File crawlFile = new File("src/resources/crawlResults.csv");
     static File backCrawlFile = new File("src/resources/backCrawlResults.csv");
     static File breastStrokeFile = new File("src/resources/breastStrokeResults.csv");
@@ -221,11 +223,30 @@ public class Files {
     }
 
 
-    //virker, men der skal ændres lidt i toString
+
+private static void getDiciplinFromUser(){
+    StringBuilder sb = new StringBuilder();
+
+    System.out.println("Enter a diciplin");
+    System.out.println("1 for back crawl\n 2 for crawl \n 3 for butterfly \n 4 for breaststroke");
+    int choice = scanner.nextInt();
+
+  if (choice == 1){
+      sb.append("Back crawl");
+  } else if (choice == 2){
+      sb.append("Crawl");
+      } else if (choice == 3){
+      sb.append("Butter fly");
+  }else if (choice == 4){
+      sb.append("Breast stroke");
+  }
+}
+
+
     public static void generateNewCompetitionFile() {
         System.out.println("give your file a name");
         System.out.println("enter done when your file is finished");
-        Scanner scanner = new Scanner(System.in);
+
         while (true) {
             String name = "src/resources/";
             name += scanner.nextLine();
@@ -238,18 +259,19 @@ public class Files {
                 PrintWriter newFile = new PrintWriter(name);
                 StringBuilder sb = new StringBuilder();
                 sb.append("Diciplin");
-                sb.append(",");
+                sb.append(" \t ");
                 sb.append("Place");
-                sb.append(",");
+                sb.append(" \t ");
                 sb.append("Time");
                 sb.append("\n");
 
-                System.out.println("Enter a diciplin ");
+
+                getDiciplinFromUser();
+                sb.append(" \t ");
                 sb.append(scanner.nextLine());
-                sb.append(",");
                 System.out.println("Enter a place");
                 sb.append(scanner.nextLine());
-                sb.append(",");
+                sb.append(" \t ");
                 System.out.println("Now enter a start time for the competition");
                 sb.append(scanner.nextLine());
 
@@ -263,6 +285,12 @@ public class Files {
             }
         }
     }
+    //public static void competition() {
+//
+      //  File file = new File("src/resources/tournament.csv");
+       //Scanner scanner = new Scanner(file);
+        //scanner.nextLine();
+    //}
 }
 
 
