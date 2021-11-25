@@ -28,7 +28,6 @@ public class Team {
     //member.setresults(result)
 
     public void setContestantsResults(ArrayList results, Member member) {
-        int indexOfContestantResult = member.getMemberId();
         //some shit thats not working == member.setSwimmingResults(results.get(indexOfContestantResult));
         //then members will have setPR, and method call from here.
         this.results = results;

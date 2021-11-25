@@ -2,6 +2,7 @@ package fileIO;
 
 import dolphin.Competition;
 import dolphin.Diciplin;
+import dolphin.Factory;
 import dolphin.Member;
 
 import javax.swing.plaf.metal.MetalMenuBarUI;
@@ -145,7 +146,8 @@ public class Files {
     }
 
     private static String getMemberString(Member member) {
-        String stringToReturn = member.getName();
+        String stringToReturn = member.getMemberID() + ";";
+        stringToReturn += member.getName();
         stringToReturn += ";" + getRightDateFormat(member.getDateOfBirth());
         stringToReturn += member.isActive() ? ";" + "yes" : ";" + "no";
         stringToReturn += member.isCompetitive() ? ";" + "yes" : ";" + "no";
@@ -171,22 +173,23 @@ public class Files {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] info = line.split(";");
-                String name = info[0];
-                String date = info[1];
+                int id = Integer.parseInt(info[0]);
+                String name = info[1];
+                String date = info[2];
                 boolean isActive = false;
-                if (info[2].toLowerCase().equals("yes")) {
+                if (info[3].toLowerCase().equals("yes")) {
                     isActive = true;
                 }
                 boolean isCompetative = false;
-                if (info[3].toLowerCase().equals("yes")) {
+                if (info[4].toLowerCase().equals("yes")) {
                     isCompetative = true;
                 }
-                Diciplin diciplin = new Diciplin(info[4]);
+                Diciplin diciplin = new Diciplin(info[5]);
                 boolean hasArrears = false;
-                if (info[4].toLowerCase().equals("yes")) {
+                if (info[5].toLowerCase().equals("yes")) {
                     hasArrears = true;
                 }
-                Member currentMember = new Member(isCompetative, isActive, date, name, diciplin, hasArrears);
+                Member currentMember = new Member(id, isCompetative, isActive, date, name, diciplin, hasArrears);
                 members.add(currentMember);
             }
 
@@ -195,6 +198,26 @@ public class Files {
             System.out.println("File not found");
         }
         return members;
+    }
+
+    public static int getNextID(){
+        int idToReturn = 0;
+        try {
+            File f = new File("src/resources/Members.csv");
+            Scanner scanner = new Scanner(new File("src/resources/Members.csv"));
+            scanner.nextLine();
+            String line = "";
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
+            }
+            String[] info = line.split(";");
+            idToReturn = Integer.parseInt(info[0]) + 1;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("File not found");
+        }
+        return idToReturn;
     }
 
 

@@ -81,7 +81,7 @@ public class Main {
     private static void callOptions(){
         System.out.println("============CHOOSE AN OPTION============");
         System.out.println("Press 1 for: Make new member.");
-        System.out.println("Press 2 for: ");
+        System.out.println("Press 2 for: See all members");
         System.out.println("Press 3 for: ");
         System.out.println("Press 4 for: ");
         System.out.println("Press 5 for: ");

@@ -45,7 +45,8 @@ public class Foreman {
 
         Diciplin diciplin = isCompetetive ? getDiciplin() : null;
 
-        Member newMember = factory.makeNewMember(isCompetetive, isActive, dateOfBirth, name, diciplin, false);
+        int nextID = Files.getNextID();
+        Member newMember = factory.makeNewMember(nextID, isCompetetive, isActive, dateOfBirth, name, diciplin, false);
         members.add(newMember);
         Files.addMemberToDatabase(newMember);
     }

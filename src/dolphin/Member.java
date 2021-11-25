@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Member{
+        private int memberID;
         private String name;
         private LocalDate dateOfBirth;
         private boolean isActive;
@@ -20,11 +21,11 @@ public class Member{
         private int subscribtionRate;
 
         //Skal måske bruges senere
-        private int memberId;
         private double swimmingResults;
 
 
-        public Member(boolean isCompetitive, boolean isActive, String dateOfBirth, String name, Diciplin diciplin, boolean arrears) {
+        public Member(int memberID, boolean isCompetitive, boolean isActive, String dateOfBirth, String name, Diciplin diciplin, boolean arrears) {
+                this.memberID = memberID;
                 this.name = name;
                 this.isActive = isActive;
                 this.isCompetitive = isCompetitive;
@@ -52,6 +53,8 @@ public class Member{
 
 
 
+
+
         public double setSwimmingResults(double personalTime){
                 if(personalTime<swimmingResults){
                         this.swimmingResults = personalTime;
@@ -60,9 +63,10 @@ public class Member{
                 return this.swimmingResults;
         }
 
-        public int getMemberId() {
-                return memberId;
+        public int getMemberID(){
+                return memberID;
         }
+
 
         public String getDiciplin(){
                 if (diciplin == null){
@@ -99,5 +103,23 @@ public class Member{
 
         public int getSubscribtionRate() {
                 return subscribtionRate;
+        }
+
+        @Override
+        public String toString() {
+                String spaceForID = (memberID < 10) ? "\t\t" : "\t";
+
+                String spaceForName = (name.length() < 6) ? "\t\t\t\t" : (name.length() < 10) ? "\t\t\t" : "\t\t";
+
+                String spaceForComp = isCompetitive ? "\t\t" : "\t";
+
+
+
+                return "MemberID: " + memberID + spaceForID +
+                        "Name: " + name + spaceForName +
+                        "Birthdate: " + dateOfBirth + "\t" +
+                        "isActive: " + isActive + "\t" +
+                        "isCompetitive: " + isCompetitive + spaceForComp +
+                        "Diciplin: " + diciplin.getDiciplinName() ;
         }
 }
