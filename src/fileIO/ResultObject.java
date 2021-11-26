@@ -28,8 +28,8 @@ public class ResultObject {
 
     public ArrayList<ResultObject> backCrawlResultObjectCreater(){
         ArrayList<ResultObject> results = new ArrayList<>();
-        for (int i = 0; i < Files.getBackCrawlResults().size(); i++) {
-            String[] info = Files.getBackCrawlResults().get(i).split(";");
+        for (int i = 0; i < FilesCoach.getBackCrawlResults().size(); i++) {
+            String[] info = FilesCoach.getBackCrawlResults().get(i).split(";");
             results.add( new ResultObject(info[0], info[1], info[2]));
         }
         return results;
@@ -37,8 +37,8 @@ public class ResultObject {
 
     public ArrayList<ResultObject> breastStrokeResultObjectCreater(){
         ArrayList<ResultObject> results = new ArrayList<>();
-        for (int i = 0; i < Files.getBreastStrokeResults().size(); i++) {
-            String[] info = Files.getBreastStrokeResults().get(i).split(";");
+        for (int i = 0; i < FilesCoach.getBreastStrokeResults().size(); i++) {
+            String[] info = FilesCoach.getBreastStrokeResults().get(i).split(";");
             results.add( new ResultObject(info[0], info[1], info[2]));
         }
         return results;
@@ -46,8 +46,8 @@ public class ResultObject {
 
     public ArrayList<ResultObject> butterflyResultObjectCreater(){
         ArrayList<ResultObject> results = new ArrayList<>();
-        for (int i = 0; i < Files.getButterflyResults().size(); i++) {
-            String[] info = Files.getButterflyResults().get(i).split(";");
+        for (int i = 0; i < FilesCoach.getButterflyResults().size(); i++) {
+            String[] info = FilesCoach.getButterflyResults().get(i).split(";");
             results.add( new ResultObject(info[0], info[1], info[2]));
         }
         return results;

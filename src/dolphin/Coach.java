@@ -1,6 +1,7 @@
 package dolphin;
 
 import fileIO.FilesCoach;
+import foreman.Main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,6 +9,10 @@ import java.util.Scanner;
 public class Coach {
 public static ArrayList<String> bestResults = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.println(Main.crawl.getDiciplinBestTimes(Main.crawl));
+    }
 
 
     public void showResults() {

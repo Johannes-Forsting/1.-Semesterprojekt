@@ -16,24 +16,22 @@ public class Diciplin {
 
     public Diciplin(String diciplinName) {
         this.diciplinName = diciplinName;
-
-        if (diciplinName.equals("Backcrawl")) {
-            this.isBackCrawl = true;
-        }
-        if (diciplinName.equals("Crawl")) {
-            this.isCrawl = true;
-        }
-        if (diciplinName.equals("Butterfly")) {
-            this.isButterfly = true;
-        }
-        if (diciplinName.equals("BreastStroke")) {
-            this.isBreastStroke = true;
-        }
-
     }
+
 
     public String getDiciplinName() {
         return this.diciplinName;
+    }
+
+    private ArrayList<String> collectInfoFromScanner(ArrayList<String> resultsToPrint, String line){
+        String[] info = line.split(";");
+        String name = info[0];
+        String date = info[1];
+        String result = info[2];
+        resultsToPrint.add(name);
+        resultsToPrint.add(date);
+        resultsToPrint.add(result);
+        return resultsToPrint;
     }
 
     public ArrayList<String> getDiciplinResults(Diciplin diciplin) {
@@ -42,49 +40,25 @@ public class Diciplin {
             case "crawl":
                 for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
                     String line = FilesCoach.crawlScanner.nextLine();
-                    String[] info = line.split(";");
-                    String name = info[0];
-                    String date = info[1];
-                    String result = info[2];
-                    resultsToPrint.add(name);
-                    resultsToPrint.add(date);
-                    resultsToPrint.add(result);
+                    collectInfoFromScanner(resultsToPrint, line);
                 }
                 break;
             case "backcrawl":
                 for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
                     String line = FilesCoach.backCrawlScanner.nextLine();
-                    String[] info = line.split(";");
-                    String name = info[0];
-                    String date = info[1];
-                    String result = info[2];
-                    resultsToPrint.add(name);
-                    resultsToPrint.add(date);
-                    resultsToPrint.add(result);
+                    collectInfoFromScanner(resultsToPrint, line);
                 }
                 break;
             case "breaststroke":
                 for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
                     String line = FilesCoach.breastStrokeScanner.nextLine();
-                    String[] info = line.split(";");
-                    String name = info[0];
-                    String date = info[1];
-                    String result = info[2];
-                    resultsToPrint.add(name);
-                    resultsToPrint.add(date);
-                    resultsToPrint.add(result);
+                    collectInfoFromScanner(resultsToPrint, line);
                 }
                 break;
             case "butterfly":
                 for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
                     String line = FilesCoach.butterflyScanner.nextLine();
-                    String[] info = line.split(";");
-                    String name = info[0];
-                    String date = info[1];
-                    String result = info[2];
-                    resultsToPrint.add(name);
-                    resultsToPrint.add(date);
-                    resultsToPrint.add(result);
+                    collectInfoFromScanner(resultsToPrint, line);
                 }
                 break;
             default:
@@ -95,47 +69,32 @@ public class Diciplin {
     }
 
     public ArrayList<ResultObject> getDiciplinBestTimes(Diciplin diciplin) {
-        //ArrayList<ResultObject> diciplinBestTimes = new ArrayList<ResultObject>(crawl.getBestTimes(crawl.crawlResultObjectCreater()););
         ArrayList<ResultObject> diciplinBestTimes = new ArrayList<ResultObject>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
                 ResultObject crawl = new ResultObject();
                 crawl.getBestTimes(crawl.crawlResultObjectCreater());
-//virker ikke men skal cirka være sådan her-----------------------------------------------------------------------------------
                 diciplinBestTimes = new ArrayList<ResultObject>(crawl.getBestTimes(crawl.crawlResultObjectCreater()));
                 break;
             case "backcrawl":
                 ResultObject backCrawl = new ResultObject();
                 backCrawl.getBestTimes(backCrawl.backCrawlResultObjectCreater());
+                diciplinBestTimes = new ArrayList<ResultObject>(backCrawl.getBestTimes(backCrawl.backCrawlResultObjectCreater()));
                 break;
             case "breaststroke":
                 ResultObject breastStroke = new ResultObject();
                 breastStroke.getBestTimes(breastStroke.breastStrokeResultObjectCreater());
+                diciplinBestTimes = new ArrayList<ResultObject>(breastStroke.getBestTimes(breastStroke.breastStrokeResultObjectCreater()));
                 break;
             case "butterfly":
                 ResultObject butterfly = new ResultObject();
                 butterfly.getBestTimes(butterfly.butterflyResultObjectCreater());
+                diciplinBestTimes = new ArrayList<ResultObject>(butterfly.getBestTimes(butterfly.butterflyResultObjectCreater()));
                 break;
             default:
                 System.out.println("No results found");
                 break;
         }
         return diciplinBestTimes;
-    }
-
-    public boolean isBackCrawl() {
-        return isBackCrawl;
-    }
-
-    public boolean isCrawl() {
-        return isCrawl;
-    }
-
-    public boolean isButterfly() {
-        return isButterfly;
-    }
-
-    public boolean isBreastStroke() {
-        return isBreastStroke;
     }
 }
