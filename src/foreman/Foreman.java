@@ -3,12 +3,9 @@ package foreman;
 import dolphin.Diciplin;
 import dolphin.Factory;
 import dolphin.Member;
-import fileIO.Files;
+import fileIO.FilesCoach;
+import fileIO.FilesForeman;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.security.PublicKey;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -26,7 +23,7 @@ public class Foreman {
     }
 
     public static void getMembers(){
-        members = Files.getMembersFromFile();
+        members = FilesForeman.getMembersFromFile();
     }
 
     public static void makeNewMember(){
@@ -45,10 +42,10 @@ public class Foreman {
 
         Diciplin diciplin = isCompetetive ? getDiciplin() : null;
 
-        int nextID = Files.getNextID();
+        int nextID = FilesForeman.getNextID();
         Member newMember = factory.makeNewMember(nextID, isCompetetive, isActive, dateOfBirth, name, diciplin, false);
         members.add(newMember);
-        Files.addMemberToDatabase(newMember);
+        FilesForeman.addMemberToDatabase(newMember);
     }
 
     private static Diciplin getDiciplin(){
@@ -112,7 +109,7 @@ public class Foreman {
         Factory factory = new Factory();
 
 
-        Files.generateNewCompetitionFile();
+        FilesForeman.generateNewCompetitionFile();
     }
 
 

@@ -1,8 +1,7 @@
 package dolphin;
 
-import fileIO.Files;
+import fileIO.FilesCoach;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,8 +16,8 @@ public static ArrayList<String> bestResults = new ArrayList<>();
         }
     }
         public void getResults(){
-            bestResults = Files.getButterflyResults();
-            bestResults = Files.getCrawlResults();
+            bestResults = FilesCoach.getButterflyResults();
+            bestResults = FilesCoach.getCrawlResults();
         }
 
 
@@ -30,7 +29,7 @@ Factory factoryPattern = new Factory();
 
         Team newTeam = factoryPattern.makeNewTeam(teamName);
        // bestResults.add(newTeam);
-        Files.getBreastStrokeResults();
+        FilesCoach.getBreastStrokeResults();
 
     }
 }

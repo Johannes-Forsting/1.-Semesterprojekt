@@ -19,8 +19,8 @@ public class ResultObject {
 
     public ArrayList<ResultObject> crawlResultObjectCreater(){
         ArrayList<ResultObject> results = new ArrayList<>();
-        for (int i = 0; i < Files.getCrawlResults().size(); i++) {
-            String[] info = Files.getCrawlResults().get(i).split(";");
+        for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
+            String[] info = FilesCoach.getCrawlResults().get(i).split(";");
             results.add( new ResultObject(info[0], info[1], info[2]));
         }
         return results;

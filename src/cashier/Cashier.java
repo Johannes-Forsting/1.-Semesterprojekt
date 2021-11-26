@@ -1,29 +1,38 @@
 package cashier;
 
 import dolphin.Member;
-import fileIO.Files;
+import fileIO.FilesCoach;
+import fileIO.FilesForeman;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Cashier {
 
-    private static ArrayList<Member> members = Files.getMembersFromFile();
+    private static ArrayList<Member> members = FilesForeman.getMembersFromFile();
+    private static Scanner scanner = new Scanner(System.in);
 
     //Vi giver cashier klassen en main metode, så cashier kun er autoriseret til hvad der står i tilhørende main.
     public static void main(String[] args) {
-        int action = 0;
+
         System.out.println("Welcome Cashier");
+        int action = 1;
         while (action != 0) {
-            System.out.println("Pick an action: \n 1 : Show prices \n 2 : Print members in arrear \n 3 : Print estimated income \n 0 : Exit");
+            System.out.println("Pick an action: \n0 : Exit \n1 : Show prices \n2 : Print members in arrear \n3 : Print estimated income");
+            action = scanner.nextInt();
             switch (action) {
                 case 0:
                     System.out.println("BAIIEEEE");
+                    break;
                 case 1:
                     printPrices();
+                    break;
                 case 2:
-                    System.out.println(checkWhichMembersArrears());
+                    checkWhichMembersArrears();
+                    break;
                 case 3:
                     System.out.println("Estimated income is: " + checkIncomeEstimate());
+                    break;
                 default:
                     System.out.println("Invalid action");
             }
@@ -31,17 +40,16 @@ public class Cashier {
     }
 
     private static void printPrices() {
-        System.out.println("Prices: \n 0-17 years : 1000,- DKK \n 18-60 : 1600,- DKK \n 60+ : 1200,- DKK \n Passivt medlemsskab : 500,- DKK");
+        System.out.println("Prices: \n 0-17 years old: \t\t1000,- DKK \n 18-60 years old: \t\t1600,- DKK \n 60+ years old: \t\t1200,- DKK \n Passive membership : \t500,- DKK");
+        System.out.println("\n\n");
     }
 
-    private static ArrayList<Member> checkWhichMembersArrears() {
-        ArrayList<Member> arrearList = new ArrayList<>();
+    private static void checkWhichMembersArrears() {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).isArrears()) {
-                arrearList.add(members.get(i));
+                System.out.println(members.get(i).toString());
             }
         }
-        return arrearList;
     }
 
     public static double checkIncomeEstimate() {
@@ -51,5 +59,10 @@ public class Cashier {
         }
         return incomeEstimate;
     }
+
+
+
+
+
 
 }

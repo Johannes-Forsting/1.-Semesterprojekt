@@ -1,13 +1,10 @@
 package dolphin;
 
-import fileIO.Files;
+import fileIO.FilesCoach;
 import fileIO.ResultObject;
-import foreman.Main;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
-import java.util.function.UnaryOperator;
 
 public class Diciplin {
     private String diciplinName;
@@ -43,8 +40,8 @@ public class Diciplin {
         ArrayList<String> resultsToPrint = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
-                for (int i = 0; i < Files.getCrawlResults().size(); i++) {
-                    String line = Files.crawlScanner.nextLine();
+                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
+                    String line = FilesCoach.crawlScanner.nextLine();
                     String[] info = line.split(";");
                     String name = info[0];
                     String date = info[1];
@@ -55,8 +52,8 @@ public class Diciplin {
                 }
                 break;
             case "backcrawl":
-                for (int i = 0; i < Files.getCrawlResults().size(); i++) {
-                    String line = Files.backCrawlScanner.nextLine();
+                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
+                    String line = FilesCoach.backCrawlScanner.nextLine();
                     String[] info = line.split(";");
                     String name = info[0];
                     String date = info[1];
@@ -67,8 +64,8 @@ public class Diciplin {
                 }
                 break;
             case "breaststroke":
-                for (int i = 0; i < Files.getCrawlResults().size(); i++) {
-                    String line = Files.breastStrokeScanner.nextLine();
+                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
+                    String line = FilesCoach.breastStrokeScanner.nextLine();
                     String[] info = line.split(";");
                     String name = info[0];
                     String date = info[1];
@@ -79,8 +76,8 @@ public class Diciplin {
                 }
                 break;
             case "butterfly":
-                for (int i = 0; i < Files.getCrawlResults().size(); i++) {
-                    String line = Files.butterflyScanner.nextLine();
+                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
+                    String line = FilesCoach.butterflyScanner.nextLine();
                     String[] info = line.split(";");
                     String name = info[0];
                     String date = info[1];
