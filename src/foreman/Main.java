@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import dolphin.Diciplin;
+import fileIO.ResultObject;
 import fileIO.FilesForeman;
 
 public class Main {

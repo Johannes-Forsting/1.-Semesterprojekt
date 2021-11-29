@@ -57,26 +57,11 @@ FilesForeman.saveCompetitionInFile(newCompetition);
     }
 
     public static void makeNewMember(){
-        Factory factory = new Factory();
-        System.out.println("What is the name of the new member?");
-        String name = scanner.nextLine();
-
-        System.out.println("What is the date of birth of the new member? (DD-MM-YYY");
-        String dateOfBirth = getDateOfBirth();
-
-        boolean isActive = true;
-
-        System.out.println("Is this person gonna be competetive? \"yes/no\"");
-        boolean isCompetetive = validateBooleanInput();
-
-
-        Diciplin diciplin = isCompetetive ? getDiciplin() : null;
-
-        int nextID = FilesForeman.getNextID();
-        Member newMember = factory.makeNewMember(nextID, isCompetetive, isActive, dateOfBirth, name, diciplin, false);
-        members.add(newMember);
-        FilesForeman.addMemberToDatabase(newMember);
+        GUI gui = new GUI();
     }
+
+
+
 
 
     private static Diciplin getDiciplin(){
@@ -135,4 +120,15 @@ FilesForeman.saveCompetitionInFile(newCompetition);
         }
         return date;
     }
+
+    public static void makeNewCompetition(){
+        Factory factory = new Factory();
+
+
+        FilesForeman.generateNewCompetitionFile();
+    }
+
+
+
+
 }

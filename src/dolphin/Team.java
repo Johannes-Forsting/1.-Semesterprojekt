@@ -1,9 +1,13 @@
 package dolphin;
 
+import fileIO.ResultObject;
+
 import java.util.ArrayList;
 
 public class Team {
         private String diciplinName;
+        private ArrayList<ResultObject> contestants;
+        private int teamsize;
 
 
         private ArrayList<Double> bestTimes;
@@ -19,6 +23,8 @@ public class Team {
 
         return diciplinName;
     }
+
+
 
     //results
     //arraylist
