@@ -4,17 +4,20 @@ import fileIO.ResultObject;
 
 import java.util.ArrayList;
 
+import static foreman.Main.*;
+
 public class Team {
+    private String teamName;
         private String diciplinName;
         private ArrayList<ResultObject> contestants;
-        private int teamsize;
+        private boolean isTop5;
 
 
         private ArrayList<Double> bestTimes;
 
-    public Team(String diciplinName) {
+    public Team(String diciplinName, ArrayList<ResultObject> contestants) {
         this.diciplinName = diciplinName;
-
+        this.contestants = contestants;
     }
 
     public String getDiciplinName(Diciplin name){
@@ -24,7 +27,33 @@ public class Team {
         return diciplinName;
     }
 
+    public Team(Diciplin diciplin, ArrayList<ResultObject> contestants, boolean isTop5){
+        this.diciplinName = diciplin.getDiciplinName() + " Top 5";
+        this.contestants = getDiciplinTop5Team();
+        this.isTop5 = true;
+    }
 
+
+    private ArrayList<ResultObject> getDiciplinTop5Team(){
+        switch (this.diciplinName.toLowerCase()){
+            case "crawl":
+                this.contestants = Diciplin.getDiciplinBestTimes(crawl);
+                break;
+            case "backcrawl":
+                this.contestants = Diciplin.getDiciplinBestTimes(backCrawl);
+                break;
+            case "breaststroke":
+                this.contestants = Diciplin.getDiciplinBestTimes(breastStroke);
+                break;
+            case "butterfly":
+                this.contestants = Diciplin.getDiciplinBestTimes(butterFly);
+                break;
+            default:
+                System.out.println("Diciplin not found");
+                break;
+        }
+                return this.contestants;
+    }
 
     //results
     //arraylist

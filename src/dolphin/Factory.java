@@ -3,6 +3,7 @@ package dolphin;
 import java.sql.Time;
 import java.util.ArrayList;
 
+
 public class Factory{
 
     public Factory() {
@@ -16,7 +17,11 @@ public class Factory{
 
     public Team makeNewTeam(String diciplinName){
 
-        return new Team(diciplinName);
+        return new Team(diciplinName, /*contestants*/);
+    }
+
+    public Team makeTop5Team(Diciplin diciplin, ){
+
     }
 
     public Competition makeNewCompetition(String diciplin, String place, String time){
