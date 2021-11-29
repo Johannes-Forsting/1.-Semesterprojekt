@@ -1,24 +1,33 @@
 package dolphin;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Competition {
-    private Diciplin diciplin;
-    private Team team;
-    private ArrayList<Member> contestants;
+    private String diciplin;
     private String place;
-    private double time;
+    private String time;
+    private ArrayList<Member> contestants;
+
     private ArrayList<String> competitionResults;
 
-    public Competition(Diciplin diciplin, Team team, String place, double time) {
+    public Competition(String diciplin, String place, String time) {
         this.diciplin = diciplin;
-        this.team = team;
         this.place = place;
         this.time = time;
     }
 
+    public String getDiciplin() {
+        return diciplin;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public String getTime() {
+        return time;
+    }
 
     public void addCompetitionResults(){
         Scanner sc = new Scanner(System.in);
@@ -39,11 +48,17 @@ public class Competition {
 
 
 
-    public String getPlace() {
-        return place;
-    }
 
-    public double getTime() {
-        return time;
+
+    @Override
+    public String toString() {
+        return "" +
+                "Disciplin " + diciplin + "\n" +
+                "Place "  +  place +  "\n" +
+                "Time " + time+ "\n";
+
+
+
+
     }
 }

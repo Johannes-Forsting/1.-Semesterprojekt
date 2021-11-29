@@ -19,9 +19,8 @@ public class Factory{
         return new Team(diciplinName);
     }
 
-    public Competition makeNewCompetition(int whatCompetition,Diciplin diciplin, Team team, String place, int time){
-        return new Competition(diciplin,team,place,time);
+    public Competition makeNewCompetition(String diciplin, String place, String time){
+        return new Competition(diciplin,place,time);
     }
-
 
 }
