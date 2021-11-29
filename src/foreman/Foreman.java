@@ -61,6 +61,9 @@ FilesForeman.saveCompetitionInFile(newCompetition);
     }
 
 
+
+
+
     private static Diciplin getDiciplin(){
         int diciplin;
         System.out.println("What diciplin is this person gonna be?");
@@ -117,4 +120,15 @@ FilesForeman.saveCompetitionInFile(newCompetition);
         }
         return date;
     }
+
+    public static void makeNewCompetition(){
+        Factory factory = new Factory();
+
+
+        FilesForeman.generateNewCompetitionFile();
+    }
+
+
+
+
 }
