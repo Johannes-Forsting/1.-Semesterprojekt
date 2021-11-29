@@ -27,7 +27,7 @@ public class GUI extends JFrame implements ActionListener {
     JTextField isActive;
     JComboBox diciplin;
     JComboBox isCompetetive;
-    Factory factory = new Factory();
+    Factory factory = new Factory(); //facotry
 
     GUI() {
         this.setTitle("Test");
