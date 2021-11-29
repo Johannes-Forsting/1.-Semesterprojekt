@@ -4,7 +4,11 @@ import fileIO.FilesCoach;
 import fileIO.ResultObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+
+import static fileIO.FilesCoach.collectInfoFromScanner;
+import static fileIO.FilesCoach.crawlScanner;
 
 public class Diciplin {
     private String diciplinName;
@@ -16,76 +20,29 @@ public class Diciplin {
 
     public Diciplin(String diciplinName) {
         this.diciplinName = diciplinName;
-
-        if (diciplinName.equals("Backcrawl")) {
-            this.isBackCrawl = true;
-        }
-        if (diciplinName.equals("Crawl")) {
-            this.isCrawl = true;
-        }
-        if (diciplinName.equals("Butterfly")) {
-            this.isButterfly = true;
-        }
-        if (diciplinName.equals("BreastStroke")) {
-            this.isBreastStroke = true;
-        }
-
     }
+
 
     public String getDiciplinName() {
         return this.diciplinName;
     }
 
-    public ArrayList<String> getDiciplinResults(Diciplin diciplin) {
-        ArrayList<String> resultsToPrint = new ArrayList<>();
+
+
+    public ArrayList<ResultObject> getDiciplinResults(Diciplin diciplin) {
+        ArrayList<ResultObject> resultsToPrint = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
-                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
-                    String line = FilesCoach.crawlScanner.nextLine();
-                    String[] info = line.split(";");
-                    String name = info[0];
-                    String date = info[1];
-                    String result = info[2];
-                    resultsToPrint.add(name);
-                    resultsToPrint.add(date);
-                    resultsToPrint.add(result);
-                }
+                resultsToPrint = new ArrayList<ResultObject>(ResultObject.crawlResultObjectCreater());
                 break;
             case "backcrawl":
-                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
-                    String line = FilesCoach.backCrawlScanner.nextLine();
-                    String[] info = line.split(";");
-                    String name = info[0];
-                    String date = info[1];
-                    String result = info[2];
-                    resultsToPrint.add(name);
-                    resultsToPrint.add(date);
-                    resultsToPrint.add(result);
-                }
+                resultsToPrint = new ArrayList<ResultObject>(ResultObject.backCrawlResultObjectCreater());
                 break;
             case "breaststroke":
-                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
-                    String line = FilesCoach.breastStrokeScanner.nextLine();
-                    String[] info = line.split(";");
-                    String name = info[0];
-                    String date = info[1];
-                    String result = info[2];
-                    resultsToPrint.add(name);
-                    resultsToPrint.add(date);
-                    resultsToPrint.add(result);
-                }
+                resultsToPrint = new ArrayList<ResultObject>(ResultObject.breastStrokeResultObjectCreater());
                 break;
             case "butterfly":
-                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
-                    String line = FilesCoach.butterflyScanner.nextLine();
-                    String[] info = line.split(";");
-                    String name = info[0];
-                    String date = info[1];
-                    String result = info[2];
-                    resultsToPrint.add(name);
-                    resultsToPrint.add(date);
-                    resultsToPrint.add(result);
-                }
+                resultsToPrint = new ArrayList<ResultObject>(ResultObject.butterflyResultObjectCreater());
                 break;
             default:
                 System.out.println("No results found");
@@ -94,48 +51,25 @@ public class Diciplin {
         return resultsToPrint;
     }
 
-    public ArrayList<ResultObject> getDiciplinBestTimes(Diciplin diciplin) {
-        //ArrayList<ResultObject> diciplinBestTimes = new ArrayList<ResultObject>(crawl.getBestTimes(crawl.crawlResultObjectCreater()););
-        ArrayList<ResultObject> diciplinBestTimes = new ArrayList<ResultObject>();
+    public static ArrayList<ResultObject> getDiciplinBestTimes(Diciplin diciplin) {
+        ArrayList<ResultObject> diciplinBestTimes = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
-                ResultObject crawl = new ResultObject();
-                crawl.getBestTimes(crawl.crawlResultObjectCreater());
-//virker ikke men skal cirka være sådan her-----------------------------------------------------------------------------------
-                diciplinBestTimes = new ArrayList<ResultObject>(crawl.getBestTimes(crawl.crawlResultObjectCreater()));
+                diciplinBestTimes = ResultObject.getBestTimes(ResultObject.crawlResultObjectCreater());
                 break;
             case "backcrawl":
-                ResultObject backCrawl = new ResultObject();
-                backCrawl.getBestTimes(backCrawl.backCrawlResultObjectCreater());
+                diciplinBestTimes = ResultObject.getBestTimes(ResultObject.backCrawlResultObjectCreater());
                 break;
             case "breaststroke":
-                ResultObject breastStroke = new ResultObject();
-                breastStroke.getBestTimes(breastStroke.breastStrokeResultObjectCreater());
+                diciplinBestTimes = ResultObject.getBestTimes(ResultObject.breastStrokeResultObjectCreater());
                 break;
             case "butterfly":
-                ResultObject butterfly = new ResultObject();
-                butterfly.getBestTimes(butterfly.butterflyResultObjectCreater());
+                diciplinBestTimes = ResultObject.getBestTimes(ResultObject.butterflyResultObjectCreater());
                 break;
             default:
                 System.out.println("No results found");
                 break;
         }
         return diciplinBestTimes;
-    }
-
-    public boolean isBackCrawl() {
-        return isBackCrawl;
-    }
-
-    public boolean isCrawl() {
-        return isCrawl;
-    }
-
-    public boolean isButterfly() {
-        return isButterfly;
-    }
-
-    public boolean isBreastStroke() {
-        return isBreastStroke;
     }
 }

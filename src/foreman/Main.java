@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import dolphin.Diciplin;
+import fileIO.ResultObject;
+import fileIO.FilesForeman;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
@@ -15,7 +17,9 @@ public class Main {
     public static Diciplin butterFly = new Diciplin("Butterfly");
     public static Diciplin breastStroke = new Diciplin("Breaststroke");
 
+
     public static void main(String[] args) {
+
         Foreman.getMembers();
         choices();
     }
@@ -36,9 +40,10 @@ public class Main {
                 case 3:
                     break;
                 case 4:
-                    Foreman.makeNewCompetition();
+                 Foreman.showCompetition();
                     break;
                 case 5:
+                    Foreman.makeNewCompetition();
                     break;
                 case 6:
                     break;
@@ -81,8 +86,8 @@ public class Main {
         System.out.println("Press 1 for: Make new member.");
         System.out.println("Press 2 for: See all members");
         System.out.println("Press 3 for: ");
-        System.out.println("Press 4 for: Make new competition.");
-        System.out.println("Press 5 for: ");
+        System.out.println("Press 4 for: See all competitions");
+        System.out.println("Press 5 for: Make new competition");
         System.out.println("Press 6 for: ");
         System.out.println("Press 7 for: ");
         System.out.println("Press 8 for: ");

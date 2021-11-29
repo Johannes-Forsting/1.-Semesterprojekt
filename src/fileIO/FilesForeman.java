@@ -1,5 +1,6 @@
 package fileIO;
 
+import dolphin.Competition;
 import dolphin.Diciplin;
 import dolphin.Member;
 
@@ -9,50 +10,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FilesForeman {
-    static Scanner scanner = new Scanner(System.in);
-
-    public static void generateNewCompetitionFile() {
-        System.out.println("give your file a name");
-        System.out.println("enter done when your file is finished");
-
-        while (true) {
-            String name = "src/resources/";
-            name += scanner.nextLine();
-            name += ".csv";
-            if (name.equals("src/resources/done.csv")) {
-                break;
-            }
-
-            try {
-                PrintWriter newFile = new PrintWriter(name);
-                StringBuilder sb = new StringBuilder();
-                sb.append("Diciplin");
-                sb.append(" \t ");
-                sb.append("Place");
-                sb.append(" \t ");
-                sb.append("Time");
-                sb.append("\n");
 
 
-                FilesCoach.getDiciplinFromUser();
-                sb.append(" \t ");
-                sb.append(scanner.nextLine());
-                System.out.println("Enter a place");
-                sb.append(scanner.nextLine());
-                sb.append(" \t ");
-                System.out.println("Now enter a start time for the competition");
-                sb.append(scanner.nextLine());
-
-                newFile.write(sb.toString());
-                newFile.close();
-                System.out.println("your competition is created!");
-
-            } catch (FileNotFoundException e) {
-                System.out.println("file not found");
-                e.printStackTrace();
-            }
-        }
-    }
 
     public static void addMemberToDatabase(Member newMember) {
         String memberToString = getMemberString(newMember);
@@ -64,6 +23,25 @@ public class FilesForeman {
         }
     }
 
+
+    public static void saveCompetitionInFile(Competition saveCompetition){
+String convertStringToFile = convertCompetitionToString(saveCompetition);
+        try(FileWriter fw = new FileWriter("src/resources/competition.csv", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(convertStringToFile);
+        } catch (IOException e) {
+        }
+    }
+
+    private static String convertCompetitionToString(Competition competition){
+String string = competition.getDiciplin() + ";";
+string += competition.getPlace() + ";";
+string += competition.getTime();
+return string;
+
+    }
 
     private static String getMemberString(Member member) {
         String stringToReturn = member.getMemberID() + ";";
@@ -81,6 +59,31 @@ public class FilesForeman {
         String[] array = date.toString().split("-");
         String stringToReturn = array[2] + "-" + array[1] + "-" + array[0];
         return stringToReturn;
+    }
+
+    public static ArrayList<Competition> readCompetitionFile() {
+        ArrayList<Competition> competitions = new ArrayList<>();
+        try {
+            File f = new File("src/resources/competition.csv");
+            Scanner scanner = new Scanner(new File("src/resources/competition.csv"));
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+
+                String line = scanner.nextLine();
+              String[] stringAsArray = line.split(";");
+                String diciplin = stringAsArray[0];
+               String place = stringAsArray[1];
+             String time = stringAsArray[2];
+
+               Competition competition = new Competition(diciplin,place,time);
+               competitions.add(competition);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("not found");
+        }
+
+        return competitions;
     }
 
     public static ArrayList<Member> getMembersFromFile() {
