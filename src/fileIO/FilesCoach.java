@@ -40,59 +40,44 @@ public class FilesCoach {
         }
     }
 
+    public static String[] collectInfoFromScanner(String line){
+        String[] info = line.split(";");
+        return info;
+    }
 
-    public static ArrayList<String> getCrawlResults() {
+
+    /*public static ArrayList<String> getCrawlResults() {
         ArrayList<String> crawlResults = new ArrayList<>();
         while (crawlScanner.hasNext()) {
             String line = crawlScanner.nextLine();
-            String[] info = line.split(";");
-            String name = info[0];
-            crawlResults.add(name);
-            for (int i = 1; i < info.length; i++) {
-                crawlResults.add(info[i]);
-            }
+            collectInfoFromScanner(crawlResults, line);
         }
         return crawlResults;
-    }
+    }*/
 
-    public static ArrayList<String> getBackCrawlResults() {
-        ArrayList<String> backCrawlResults = new ArrayList<>();
+    public static ArrayList<ResultObject> getBackCrawlResults() {
+        ArrayList<ResultObject> backCrawlResults = new ArrayList<>();
         while (backCrawlScanner.hasNext()) {
             String line = backCrawlScanner.nextLine();
-            String[] info = line.split(";");
-            String name = info[0];
-            backCrawlResults.add(name);
-            for (int i = 1; i < info.length; i++) {
-                backCrawlResults.add(info[i]);
-            }
+            collectInfoFromScanner(backCrawlResults, line);
         }
         return backCrawlResults;
     }
 
-    public static ArrayList<String> getBreastStrokeResults() {
-        ArrayList<String> breastStrokeResults = new ArrayList<>();
+    public static ArrayList<ResultObject> getBreastStrokeResults() {
+        ArrayList<ResultObject> breastStrokeResults = new ArrayList<>();
         while (breastStrokeScanner.hasNext()) {
             String line = breastStrokeScanner.nextLine();
-            String[] info = line.split(";");
-            String name = info[0];
-            breastStrokeResults.add(name);
-            for (int i = 1; i < info.length; i++) {
-                breastStrokeResults.add(info[i]);
-            }
+            collectInfoFromScanner(breastStrokeResults, line);
         }
         return breastStrokeResults;
     }
 
-    public static ArrayList<String> getButterflyResults() {
-        ArrayList<String> butterflyResults = new ArrayList<>();
+    public static ArrayList<ResultObject> getButterflyResults() {
+        ArrayList<ResultObject> butterflyResults = new ArrayList<>();
         while (butterflyScanner.hasNext()) {
             String line = butterflyScanner.nextLine();
-            String[] info = line.split(";");
-            String name = info[0];
-            butterflyResults.add(name);
-            for (int i = 1; i < info.length; i++) {
-                butterflyResults.add(info[i]);
-            }
+            collectInfoFromScanner(butterflyResults, line);
         }
         return butterflyResults;
     }

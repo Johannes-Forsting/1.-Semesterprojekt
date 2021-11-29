@@ -6,6 +6,9 @@ import fileIO.ResultObject;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static fileIO.FilesCoach.collectInfoFromScanner;
+import static fileIO.FilesCoach.crawlScanner;
+
 public class Diciplin {
     private String diciplinName;
     private boolean isBackCrawl = false;
@@ -23,43 +26,22 @@ public class Diciplin {
         return this.diciplinName;
     }
 
-    private ArrayList<String> collectInfoFromScanner(ArrayList<String> resultsToPrint, String line){
-        String[] info = line.split(";");
-        String name = info[0];
-        String date = info[1];
-        String result = info[2];
-        resultsToPrint.add(name);
-        resultsToPrint.add(date);
-        resultsToPrint.add(result);
-        return resultsToPrint;
-    }
 
-    public ArrayList<String> getDiciplinResults(Diciplin diciplin) {
-        ArrayList<String> resultsToPrint = new ArrayList<>();
+
+    public ArrayList<ResultObject> getDiciplinResults(Diciplin diciplin) {
+        ArrayList<ResultObject> resultsToPrint = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
-                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
-                    String line = FilesCoach.crawlScanner.nextLine();
-                    collectInfoFromScanner(resultsToPrint, line);
-                }
+                resultsToPrint = new ArrayList<ResultObject>(ResultObject.crawlResultObjectCreater());
                 break;
             case "backcrawl":
-                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
-                    String line = FilesCoach.backCrawlScanner.nextLine();
-                    collectInfoFromScanner(resultsToPrint, line);
-                }
+                resultsToPrint = new ArrayList<ResultObject>(ResultObject.backCrawlResultObjectCreater());
                 break;
             case "breaststroke":
-                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
-                    String line = FilesCoach.breastStrokeScanner.nextLine();
-                    collectInfoFromScanner(resultsToPrint, line);
-                }
+                resultsToPrint = new ArrayList<ResultObject>(ResultObject.breastStrokeResultObjectCreater());
                 break;
             case "butterfly":
-                for (int i = 0; i < FilesCoach.getCrawlResults().size(); i++) {
-                    String line = FilesCoach.butterflyScanner.nextLine();
-                    collectInfoFromScanner(resultsToPrint, line);
-                }
+                resultsToPrint = new ArrayList<ResultObject>(ResultObject.butterflyResultObjectCreater());
                 break;
             default:
                 System.out.println("No results found");

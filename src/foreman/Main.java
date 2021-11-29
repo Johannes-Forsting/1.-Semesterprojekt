@@ -16,8 +16,15 @@ public class Main {
     public static Diciplin breastStroke = new Diciplin("Breaststroke");
 
     public static void main(String[] args) {
+
+        System.out.println(Main.crawl.getDiciplinBestTimes(Main.crawl));
+        /*
+
+
         Foreman.getMembers();
         choices();
+
+         */
     }
 
 

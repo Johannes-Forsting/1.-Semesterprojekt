@@ -1,13 +1,14 @@
 package dolphin;
 
 import fileIO.FilesCoach;
+import fileIO.ResultObject;
 import foreman.Main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Coach {
-public static ArrayList<String> bestResults = new ArrayList<>();
+public static ArrayList<ResultObject> bestResults = new ArrayList<fileIO.ResultObject>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
