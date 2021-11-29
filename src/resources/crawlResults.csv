@@ -1,3 +1,8 @@
-name;date;result
-Asger;20-10-2000;15:10
-Johannes;22-11-2021;10:21
+name;result;date
+Asger;15:10;20-10-2000
+Johannes;11:21;22-11-2021
+Sigurd;54:20;14-06-1975
+Peter;16:24;11-10-2003
+Jasper;20:19;31-01-2009
+Conrad;19:32;17-05-2004
+Kalle;14:01;14-09-1995

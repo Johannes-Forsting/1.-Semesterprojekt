@@ -7,13 +7,17 @@ import foreman.Main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static foreman.Main.*;
+
 public class Coach {
 public static ArrayList<ResultObject> bestResults = new ArrayList<fileIO.ResultObject>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println(Main.crawl.getDiciplinBestTimes(Main.crawl));
+        System.out.println(Diciplin.getDiciplinBestTimes(crawl));
     }
+
+
 
 
     public void showResults() {
@@ -23,7 +27,6 @@ public static ArrayList<ResultObject> bestResults = new ArrayList<fileIO.ResultO
     }
         public void getResults(){
             bestResults = FilesCoach.getButterflyResults();
-            bestResults = FilesCoach.getCrawlResults();
         }
 
 

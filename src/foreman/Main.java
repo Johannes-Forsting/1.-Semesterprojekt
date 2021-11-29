@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import dolphin.Diciplin;
+import fileIO.ResultObject;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
@@ -17,14 +18,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(Main.crawl.getDiciplinBestTimes(Main.crawl));
-        /*
+        //System.out.println(Main.crawl.getDiciplinBestTimes(Main.crawl));
+        //System.out.println(ResultObject.crawlResultObjectCreater());
 
 
+
+/*
         Foreman.getMembers();
         choices();
 
-         */
+ */
+
+
     }
 
 

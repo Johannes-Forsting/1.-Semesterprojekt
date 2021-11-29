@@ -4,6 +4,7 @@ import fileIO.FilesCoach;
 import fileIO.ResultObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 import static fileIO.FilesCoach.collectInfoFromScanner;
@@ -50,28 +51,20 @@ public class Diciplin {
         return resultsToPrint;
     }
 
-    public ArrayList<ResultObject> getDiciplinBestTimes(Diciplin diciplin) {
-        ArrayList<ResultObject> diciplinBestTimes = new ArrayList<ResultObject>();
+    public static ArrayList<ResultObject> getDiciplinBestTimes(Diciplin diciplin) {
+        ArrayList<ResultObject> diciplinBestTimes = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
-                ResultObject crawl = new ResultObject();
-                crawl.getBestTimes(crawl.crawlResultObjectCreater());
-                diciplinBestTimes = new ArrayList<ResultObject>(crawl.getBestTimes(crawl.crawlResultObjectCreater()));
+                diciplinBestTimes = ResultObject.getBestTimes(ResultObject.crawlResultObjectCreater());
                 break;
             case "backcrawl":
-                ResultObject backCrawl = new ResultObject();
-                backCrawl.getBestTimes(backCrawl.backCrawlResultObjectCreater());
-                diciplinBestTimes = new ArrayList<ResultObject>(backCrawl.getBestTimes(backCrawl.backCrawlResultObjectCreater()));
+                diciplinBestTimes = ResultObject.getBestTimes(ResultObject.backCrawlResultObjectCreater());
                 break;
             case "breaststroke":
-                ResultObject breastStroke = new ResultObject();
-                breastStroke.getBestTimes(breastStroke.breastStrokeResultObjectCreater());
-                diciplinBestTimes = new ArrayList<ResultObject>(breastStroke.getBestTimes(breastStroke.breastStrokeResultObjectCreater()));
+                diciplinBestTimes = ResultObject.getBestTimes(ResultObject.breastStrokeResultObjectCreater());
                 break;
             case "butterfly":
-                ResultObject butterfly = new ResultObject();
-                butterfly.getBestTimes(butterfly.butterflyResultObjectCreater());
-                diciplinBestTimes = new ArrayList<ResultObject>(butterfly.getBestTimes(butterfly.butterflyResultObjectCreater()));
+                diciplinBestTimes = ResultObject.getBestTimes(ResultObject.butterflyResultObjectCreater());
                 break;
             default:
                 System.out.println("No results found");

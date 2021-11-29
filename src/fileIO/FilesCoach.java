@@ -46,20 +46,20 @@ public class FilesCoach {
     }
 
 
-    /*public static ArrayList<String> getCrawlResults() {
+    public static ArrayList<String> getCrawlResults() {
         ArrayList<String> crawlResults = new ArrayList<>();
         while (crawlScanner.hasNext()) {
             String line = crawlScanner.nextLine();
-            collectInfoFromScanner(crawlResults, line);
+            collectInfoFromScanner(line);
         }
         return crawlResults;
-    }*/
+    }
 
     public static ArrayList<ResultObject> getBackCrawlResults() {
         ArrayList<ResultObject> backCrawlResults = new ArrayList<>();
         while (backCrawlScanner.hasNext()) {
             String line = backCrawlScanner.nextLine();
-            collectInfoFromScanner(backCrawlResults, line);
+            collectInfoFromScanner(line);
         }
         return backCrawlResults;
     }
@@ -68,7 +68,7 @@ public class FilesCoach {
         ArrayList<ResultObject> breastStrokeResults = new ArrayList<>();
         while (breastStrokeScanner.hasNext()) {
             String line = breastStrokeScanner.nextLine();
-            collectInfoFromScanner(breastStrokeResults, line);
+            collectInfoFromScanner(line);
         }
         return breastStrokeResults;
     }
@@ -77,7 +77,7 @@ public class FilesCoach {
         ArrayList<ResultObject> butterflyResults = new ArrayList<>();
         while (butterflyScanner.hasNext()) {
             String line = butterflyScanner.nextLine();
-            collectInfoFromScanner(butterflyResults, line);
+            collectInfoFromScanner(line);
         }
         return butterflyResults;
     }

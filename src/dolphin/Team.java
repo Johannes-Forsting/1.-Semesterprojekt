@@ -1,9 +1,13 @@
 package dolphin;
 
+import fileIO.ResultObject;
+
 import java.util.ArrayList;
 
 public class Team {
         private String diciplinName;
+        private ArrayList<ResultObject> contestants;
+        private int teamsize;
 
 
         private ArrayList<Double> bestTimes;
@@ -18,6 +22,18 @@ public class Team {
 
 
         return diciplinName;
+    }
+
+    public Top5Team(String diciplinName, ArrayList<ResultObject> contestants, int teamsize){
+        this.diciplinName = diciplinName;
+
+
+    }
+
+
+    public ArrayList<ResultObject> getDiciplinTop5Team(Diciplin diciplin){
+        switch (diciplin)
+        ResultObject.getBestTimes()
     }
 
     //results
