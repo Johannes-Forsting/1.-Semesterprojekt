@@ -1,8 +1,24 @@
-name;result;date
-Asger;15:10;20-10-2000
-Johannes;11:21;22-11-2021
-Sigurd;54:20;14-06-1975
-Peter;16:24;11-10-2003
-Jasper;20:19;31-01-2009
-Conrad;19:32;17-05-2004
-Kalle;14:01;14-09-1995
+name;       result;date;memberId
+Simon; 10:24; 22-10-2014;1
+Nicklas; 09:14; 22-10-2014; 5
+Mads; 18:19; 22-10-2014; 9
+Kasper; 15:19; 10-10-2001; 14
+Victor 20
+Hans 30
+Sarah 32
+Theis 38
+Zando 39
+Jim 44
+Klaus 45
+Schmeicel 51
+Dani 53
+Lucas 58
+Gunnar 64
+Ingrid 66
+Lise 75
+Jacob 77
+Tanja 78
+Lisbet 82
+Henrik 87
+Bastian 96
+Gertrud 98
