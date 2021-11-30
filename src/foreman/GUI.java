@@ -8,6 +8,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.DateTimeException;
+import java.util.NoSuchElementException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -29,30 +31,41 @@ public class GUI extends JFrame implements ActionListener {
     JComboBox isCompetetive;
     Factory factory = new Factory(); //facotry
 
+    static String[] dicplinNames = {"None", "Crawl", "Backcrawl", "Butterfly", "Breaststroke"};
+
     GUI() {
         this.setTitle("Test");
         this.setDefaultCloseOperation(1);
         this.setLayout(new FlowLayout());
+
         this.nameLabel = new JLabel("Name");
         this.dateLabel = new JLabel("Date (DD-MM-YYYY)");
         this.isCompLabel = new JLabel("Competetive? (\"yes\" / \"no\")");
         this.diciplinLabel = new JLabel("Diciplin? (If not competetive, leave blank.)");
+
         this.name = new JTextField();
         this.name.setPreferredSize(new Dimension(250, 40));
+
         this.dateOfBirth = new JTextField();
         this.dateOfBirth.setPreferredSize(new Dimension(250, 40));
+
         this.isCompetetive = new JComboBox(new String[]{"Yes", "No"});
         this.isCompetetive.setPreferredSize(new Dimension(250, 40));
-        String[] dicplinNames = new String[]{"None", "Crawl", "Backcrawl", "Butterfly", "Breaststroke"};
+
+
         this.diciplin = new JComboBox(dicplinNames);
         this.diciplin.setPreferredSize(new Dimension(250, 40));
+
         this.button = new JButton("Click to add member");
         this.button.addActionListener(this);
+
         this.pic = new JLabel();
         ImageIcon image = new ImageIcon("src/resources/Dolphin2.jpg");
         this.pic.setIcon(image);
+
         this.setSize(300, 520);
         this.setVisible(true);
+
         this.add(this.nameLabel);
         this.add(this.name);
         this.add(this.dateLabel);
@@ -63,6 +76,7 @@ public class GUI extends JFrame implements ActionListener {
         this.add(this.diciplin);
         this.add(this.button);
         this.add(this.pic);
+
         ImageIcon icon = new ImageIcon("src/resources/dolphin.jpg");
         this.setIconImage(icon.getImage());
     }
@@ -80,42 +94,19 @@ public class GUI extends JFrame implements ActionListener {
             }
 
             Diciplin currentDiciplin = null;
-            if (currentIsComptetetive) {
-                String var7 = this.diciplin.getSelectedItem().toString();
-                byte var8 = -1;
-                switch(var7.hashCode()) {
-                    case -952207488:
-                        if (var7.equals("Backcrawl")) {
-                            var8 = 1;
-                        }
-                        break;
-                    case 65369095:
-                        if (var7.equals("Crawl")) {
-                            var8 = 0;
-                        }
-                        break;
-                    case 1172006117:
-                        if (var7.equals("Breaststroke")) {
-                            var8 = 3;
-                        }
-                        break;
-                    case 2006435411:
-                        if (var7.equals("Butterfly")) {
-                            var8 = 2;
-                        }
-                }
-
-                switch(var8) {
-                    case 0:
+            if (currentIsComptetetive == true) {
+                String thisDiciplin = this.diciplin.getSelectedItem().toString();
+                switch(thisDiciplin) {
+                    case "crawl":
                         currentDiciplin = Main.crawl;
                         break;
-                    case 1:
+                    case "Backcrawl":
                         currentDiciplin = Main.backCrawl;
                         break;
-                    case 2:
+                    case "Butterfly":
                         currentDiciplin = Main.butterFly;
                         break;
-                    case 3:
+                    case "Breaststroke":
                         currentDiciplin = Main.breastStroke;
                 }
             } else {
@@ -125,16 +116,20 @@ public class GUI extends JFrame implements ActionListener {
             int nextID = FilesForeman.getNextID();
 
             try {
+                if (currentIsComptetetive == true && currentDiciplin == null){
+                    throw new NoSuchElementException();
+                }
                 Member newMember = this.factory.makeNewMember(nextID, currentIsComptetetive, isActive, currentDate, currentName, currentDiciplin, false);
                 Foreman.members.add(newMember);
                 FilesForeman.addMemberToDatabase(newMember);
                 System.out.println("Member added.");
-            } catch (Exception var9) {
-                System.out.println("Something went wrong. Maybe you put in the wrong date format.");
+            } catch (DateTimeException exception1) {
+                System.out.println("Something went wrong. Maybe you put in the wrong date format. (DD-MM-YYYY).");
             }
-
+            catch (NoSuchElementException exception2){
+                System.out.println("You have to have a diciplin to be a competetive svimmer.");
+            }
             this.setVisible(false);
         }
-
     }
 }
