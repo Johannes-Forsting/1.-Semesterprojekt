@@ -49,7 +49,7 @@ public class ResultObject {
 
     public static ArrayList<ResultObject> backCrawlResultObjectCreater() {
         ArrayList<ResultObject> results = new ArrayList<>();
-        String bufferline = crawlScanner.nextLine();
+        String bufferline = backCrawlScanner.nextLine();
         while (backCrawlScanner.hasNext()) {
             String line = backCrawlScanner.nextLine();
             String[] info = collectInfoFromScanner(line);
@@ -60,7 +60,7 @@ public class ResultObject {
 
     public static ArrayList<ResultObject> breastStrokeResultObjectCreater() {
         ArrayList<ResultObject> results = new ArrayList<>();
-        String bufferline = crawlScanner.nextLine();
+        String bufferline = breastStrokeScanner.nextLine();
         while (breastStrokeScanner.hasNext()) {
             String line = breastStrokeScanner.nextLine();
             String[] info = collectInfoFromScanner(line);
@@ -71,7 +71,7 @@ public class ResultObject {
 
     public static ArrayList<ResultObject> butterflyResultObjectCreater() {
         ArrayList<ResultObject> results = new ArrayList<>();
-        String bufferline = crawlScanner.nextLine();
+        String bufferline = butterflyScanner.nextLine();
         while (butterflyScanner.hasNext()) {
             String line = butterflyScanner.nextLine();
             String[] info = collectInfoFromScanner(line);

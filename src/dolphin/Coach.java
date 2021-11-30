@@ -10,18 +10,18 @@ import java.util.Scanner;
 import static foreman.Main.*;
 
 public class Coach {
-public static ArrayList<ResultObject> bestResults = new ArrayList<fileIO.ResultObject>();
+    public static ArrayList<ResultObject> bestResults = new ArrayList<fileIO.ResultObject>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         Foreman.getMembers();
-        ArrayList<Member> seniortest = getTop5Members(crawl,true);
+        ArrayList<Member> seniortest = getTop5Members(breastStroke, true);
         for (int i = 0; i < seniortest.size(); i++) {
             System.out.println(seniortest.get(i));
         }
     }
 
-    static Member getMemberwithId(int id){
+    static Member getMemberwithId(int id) {
         ArrayList<Member> members = Foreman.members;
         for (int j = 0; j < members.size(); j++) {
             if (id == members.get(j).getMemberID()) {
@@ -31,21 +31,21 @@ public static ArrayList<ResultObject> bestResults = new ArrayList<fileIO.ResultO
         return null;
     }
 
-    static ArrayList<Member> getTop5Members(Diciplin diciplin, Boolean isSenior){
-            ArrayList<Member> membersForTop5Team = new ArrayList<>();
-            ArrayList<ResultObject> currentresults = Diciplin.getSortedDiciplinResults(diciplin);
+    static ArrayList<Member> getTop5Members(Diciplin diciplin, Boolean isSenior) {
+        ArrayList<Member> membersForTop5Team = new ArrayList<>();
+        ArrayList<ResultObject> currentresults = Diciplin.getSortedDiciplinResults(diciplin);
         for (int i = 0; i < currentresults.size(); i++) {
             int resultId = currentresults.get(i).getMemberId();
             for (int j = 0; j < Foreman.members.size(); j++) {
-                if (Foreman.members.get(j).getMemberID() == resultId){
-                    if (isSenior){
-                    if (Foreman.members.get(j).getMemberAge() > 17){
-                        membersForTop5Team.add(Foreman.members.get(j));
+                if (Foreman.members.get(j).getMemberID() == resultId) {
+                    if (isSenior) {
+                        if (Foreman.members.get(j).getMemberAge() > 17) {
+                            membersForTop5Team.add(Foreman.members.get(j));
+                        } else {
+                            break;
+                        }
                     } else {
-                        break;
-                    }
-                    }else {
-                        if (Foreman.members.get(j).getMemberAge() < 18){
+                        if (Foreman.members.get(j).getMemberAge() < 18) {
                             membersForTop5Team.add(Foreman.members.get(j));
                         } else {
                             break;
@@ -53,47 +53,31 @@ public static ArrayList<ResultObject> bestResults = new ArrayList<fileIO.ResultO
                     }
                 }
             }
-            if (membersForTop5Team.size() == 5){
+            if (membersForTop5Team.size() == 5) {
                 break;
-            }
-        }
-            return membersForTop5Team;
-        }
-
-    static ArrayList<Member> getTop5MembersJunior(Diciplin diciplin){
-        ArrayList<Member> membersForTop5Team = new ArrayList<>();
-        //System.out.println(Diciplin.getDiciplinBestTimes(crawl).get(0).getMemberId());
-        ArrayList<ResultObject> currentresults = Diciplin.getSortedDiciplinResults(diciplin);
-        for (int i = 0; i < 5; i++) {
-            int resultId = currentresults.get(i).getMemberId();
-            Member currentMember = getMemberwithId(resultId);
-            if (currentMember.getMemberAge() < 18){
-                membersForTop5Team.add(currentMember);
             }
         }
         return membersForTop5Team;
     }
-
-
 
     public void showResults() {
         for (int i = 0; i < bestResults.size(); i++) {
             System.out.println(bestResults.get(i));
         }
     }
-        public void getResults(){
-            bestResults = FilesCoach.getButterflyResults();
-        }
+
+    public void getResults() {
+        bestResults = FilesCoach.getButterflyResults();
+    }
 
 
-
-    public void makeNewTeam(){
-Factory factoryPattern = new Factory();
+    public void makeNewTeam() {
+        Factory factoryPattern = new Factory();
         System.out.println("Enter the name of the team");
         String teamName = scanner.nextLine();
 
         //Team newTeam = factoryPattern.makeNewTeam(teamName);
-       // bestResults.add(newTeam);
+        // bestResults.add(newTeam);
         FilesCoach.getBreastStrokeResults();
 
     }

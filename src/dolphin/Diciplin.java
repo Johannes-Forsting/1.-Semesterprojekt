@@ -24,16 +24,16 @@ public class Diciplin {
         ArrayList<ResultObject> resultsToPrint = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
-                resultsToPrint = new ArrayList<ResultObject>(ResultObject.crawlResultObjectCreater());
+                resultsToPrint = new ArrayList<>(ResultObject.crawlResultObjectCreater());
                 break;
             case "backcrawl":
-                resultsToPrint = new ArrayList<ResultObject>(ResultObject.backCrawlResultObjectCreater());
+                resultsToPrint = new ArrayList<>(ResultObject.backCrawlResultObjectCreater());
                 break;
             case "breaststroke":
-                resultsToPrint = new ArrayList<ResultObject>(ResultObject.breastStrokeResultObjectCreater());
+                resultsToPrint = new ArrayList<>(ResultObject.breastStrokeResultObjectCreater());
                 break;
             case "butterfly":
-                resultsToPrint = new ArrayList<ResultObject>(ResultObject.butterflyResultObjectCreater());
+                resultsToPrint = new ArrayList<>(ResultObject.butterflyResultObjectCreater());
                 break;
             default:
                 System.out.println("No results found");

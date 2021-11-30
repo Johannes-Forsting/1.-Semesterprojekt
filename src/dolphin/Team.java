@@ -8,26 +8,30 @@ public class Team {
     private String teamName;
         private Diciplin diciplin;
         private ArrayList<Member> contestants;
-        private boolean isTop5;
+        private boolean isSenior;
+
 
 
         private ArrayList<Double> bestTimes;
 
         //TODO hvis en person har 2 tider på top5
 
-    public Team(String teamName, Diciplin diciplin) {
+    public Team(String teamName, Diciplin diciplin, boolean isSenior) {
         this.diciplin = diciplin;
         this.teamName = teamName;
 
         switch (diciplin.getDiciplinName().toLowerCase()){
             case "crawl":
-                this.contestants = Coach.getTop5Members(crawl);
+                this.contestants = Coach.getTop5Members(crawl, this.isSenior);
                 break;
             case "backcrawl":
-                this.contestants = Coach.getTop5Members(backCrawl);
+                this.contestants = Coach.getTop5Members(backCrawl, this.isSenior);
                 break;
             case "breaststroke":
-                this.contestants = Coach.getTop5Members(breastStroke);
+                this.contestants = Coach.getTop5Members(breastStroke, this.isSenior);
+                break;
+            case "butterfly":
+                this.contestants = Coach.getTop5Members(butterFly, this.isSenior);
                 break;
             default:
                 break;
