@@ -1,24 +1,24 @@
-name;       result;date;memberId
-Simon; 10:24; 22-10-2014;1
-Nicklas; 09:14; 22-10-2014; 5
-Mads; 18:19; 22-10-2014; 9
-Kasper; 15:19; 10-10-2001; 14
-Victor 20
-Hans 30
-Sarah 32
-Theis 38
-Zando 39
-Jim 44
-Klaus 45
-Schmeicel 51
-Dani 53
-Lucas 58
-Gunnar 64
-Ingrid 66
-Lise 75
-Jacob 77
-Tanja 78
-Lisbet 82
-Henrik 87
-Bastian 96
-Gertrud 98
+name;       result;     date;memberId
+Simon;      10:24;      22-10-2014; 1
+Nicklas;    09:14;      22-10-2014; 5
+Mads;       18:19;      22-10-2014; 9
+Kasper;     15:19;      10-10-2001; 14
+Victor;     24:40;      10-10-2004; 20
+Hans;       28:20;      14-03-2006; 30
+Sarah;      18:00;      14-03-2006; 32
+Theis;      14:16;      25-07-2003; 38
+Zando,      12:10;      12-07-2007; 39
+Jim;        15:09;      12-07-2007; 44
+Klaus;      11:44;      25-07-2003; 45
+Schmeicel;  15:58;      12-07-2007; 51
+Dani;       19:24;      25-02-2002; 53
+Lucas;      12:10;      25-02-2002; 58
+Gunnar;     42:50;      01-01-2012; 64
+Ingrid;     29:10;      01-01-2012; 66
+Lise;       14:18;      13-02-2006; 75
+Jacob;      19:26;      20-09-2020; 77
+Tanja;      16:52;      20-09-2020; 78
+Lisbet;     16:30;      20-09-2020; 82
+Henrik;     12:47;      12-07-2007; 87
+Bastian;    11:11;      11-11-2011; 96
+Gertrud;    04:20;      20-04-2004; 98

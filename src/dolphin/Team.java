@@ -1,60 +1,85 @@
 package dolphin;
 
-import fileIO.ResultObject;
-
 import java.util.ArrayList;
 
 import static foreman.Main.*;
 
 public class Team {
     private String teamName;
-        private String diciplinName;
-        private ArrayList<ResultObject> contestants;
+        private Diciplin diciplin;
+        private ArrayList<Member> contestants;
         private boolean isTop5;
 
 
         private ArrayList<Double> bestTimes;
 
-    public Team(String diciplinName, ArrayList<ResultObject> contestants) {
-        this.diciplinName = diciplinName;
-        this.contestants = contestants;
-    }
+        //TODO hvis en person har 2 tider på top5
 
-    public String getDiciplinName(Diciplin name){
-      //  if (diciplinName == )
+    public Team(String teamName, Diciplin diciplin) {
+        this.diciplin = diciplin;
+        this.teamName = teamName;
 
-
-        return diciplinName;
-    }
-
-    public Team(Diciplin diciplin, ArrayList<ResultObject> contestants, boolean isTop5){
-        this.diciplinName = diciplin.getDiciplinName() + " Top 5";
-        this.contestants = getDiciplinTop5Team();
-        this.isTop5 = true;
-    }
-
-
-    private ArrayList<ResultObject> getDiciplinTop5Team(){
-        switch (this.diciplinName.toLowerCase()){
+        switch (diciplin.getDiciplinName().toLowerCase()){
             case "crawl":
-                this.contestants = Diciplin.getDiciplinBestTimes(crawl);
+                this.contestants = Coach.getTop5Members(crawl);
                 break;
             case "backcrawl":
-                this.contestants = Diciplin.getDiciplinBestTimes(backCrawl);
+                this.contestants = Coach.getTop5Members(backCrawl);
                 break;
             case "breaststroke":
-                this.contestants = Diciplin.getDiciplinBestTimes(breastStroke);
+                this.contestants = Coach.getTop5Members(breastStroke);
+                break;
+            default:
+                break;
+        }
+
+
+
+
+    }
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "teamName='" + teamName + '\'' +
+                ", diciplin=" + diciplin +
+                ", contestants=\n" + contestants.get(0) + "\n" + contestants.get(1) + "\n" + contestants.get(2) + "\n" + contestants.get(3) + "\n" + contestants.get(4)
+                + '}';
+    }
+/*
+
+    public ArrayList<Member> getMembersForTop5Team(Diciplin diciplin){
+        ArrayList<Member> membersForTop5Team = new ArrayList<>();
+        switch (diciplin.getDiciplinName().toLowerCase()){
+            case "crawl":
+                for (int i = 0; i < 5; i++) {
+                    int resultId = Diciplin.getDiciplinBestTimes(crawl).get(i).getMemberId();
+                    for (int j = 0; j < FilesForeman.getMembersFromFile().size(); j++) {
+                        if (resultId == FilesForeman.getMembersFromFile().get(j).getMemberID()){
+                            membersForTop5Team.add(FilesForeman.getMembersFromFile().get(j));
+                        }
+                    }
+                }
+                break;
+            case "backcrawl":
+                Top5Results = Diciplin.getDiciplinBestTimes(backCrawl);
+                break;
+            case "breaststroke":
+                Top5Results = Diciplin.getDiciplinBestTimes(breastStroke);
                 break;
             case "butterfly":
-                this.contestants = Diciplin.getDiciplinBestTimes(butterFly);
+                Top5Results = Diciplin.getDiciplinBestTimes(butterFly);
                 break;
             default:
                 System.out.println("Diciplin not found");
                 break;
         }
-                return this.contestants;
+
+
+        return membersForTop5Team;
     }
 
+*/
     //results
     //arraylist
     //split regx :
