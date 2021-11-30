@@ -121,12 +121,7 @@ FilesForeman.saveCompetitionInFile(newCompetition);
         return date;
     }
 
-    public static void makeNewCompetition(){
-        Factory factory = new Factory();
 
-
-        FilesForeman.generateNewCompetitionFile();
-    }
 
 
 
