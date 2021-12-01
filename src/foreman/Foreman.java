@@ -1,9 +1,6 @@
 package foreman;
 
-import dolphin.Competition;
-import dolphin.Diciplin;
-import dolphin.Factory;
-import dolphin.Member;
+import dolphin.*;
 import fileIO.FilesCoach;
 import fileIO.FilesForeman;
 
@@ -16,7 +13,7 @@ public class Foreman {
     public static ArrayList<Member> members = new ArrayList<Member>();
     public static ArrayList<Competition> competitions = new ArrayList<Competition>();
     private static Scanner scanner = new Scanner(System.in);
-
+    private static Coach coach = new Coach();
 
 
     public static void callAllMembers(){
@@ -50,9 +47,14 @@ public class Foreman {
         System.out.println("Enter a start point for the competition");
         String time = scanner.nextLine();
 
+
+
+
+
 Competition newCompetition = factory.makeNewCompetition(diciplin,place,time);
 competitions.add(newCompetition);
 FilesForeman.saveCompetitionInFile(newCompetition);
+
 
     }
 

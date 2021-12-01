@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import static foreman.Main.*;
 
-public class Team {
+public class Team{
     private String teamName;
         private Diciplin diciplin;
         private ArrayList<Member> contestants;
@@ -17,6 +17,7 @@ public class Team {
         //TODO hvis en person har 2 tider på top5
 
     public Team(String teamName, Diciplin diciplin, boolean isSenior) {
+
         this.diciplin = diciplin;
         this.teamName = teamName;
 

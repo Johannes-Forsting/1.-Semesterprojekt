@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+import static foreman.Main.breastStroke;
+
 public class FilesCoach {
     static Scanner scanner = new Scanner(System.in);
     static File crawlFile = new File("src/resources/crawlResults.csv");
@@ -51,6 +53,7 @@ public class FilesCoach {
         while (crawlScanner.hasNext()) {
             String line = crawlScanner.nextLine();
             collectInfoFromScanner(line);
+
         }
         return crawlResults;
     }

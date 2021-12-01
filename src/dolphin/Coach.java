@@ -13,6 +13,7 @@ public class Coach {
     public static ArrayList<ResultObject> bestResults = new ArrayList<fileIO.ResultObject>();
     private static Scanner scanner = new Scanner(System.in);
 
+
     public static void main(String[] args) {
         Foreman.getMembers();
         ArrayList<Member> seniortest = getTop5Members(breastStroke, true);
@@ -31,7 +32,7 @@ public class Coach {
         return null;
     }
 
-    static ArrayList<Member> getTop5Members(Diciplin diciplin, Boolean isSenior) {
+   public static ArrayList<Member> getTop5Members(Diciplin diciplin, Boolean isSenior) {
         ArrayList<Member> membersForTop5Team = new ArrayList<>();
         ArrayList<ResultObject> currentresults = Diciplin.getSortedDiciplinResults(diciplin);
         for (int i = 0; i < currentresults.size(); i++) {
@@ -75,10 +76,18 @@ public class Coach {
         Factory factoryPattern = new Factory();
         System.out.println("Enter the name of the team");
         String teamName = scanner.nextLine();
+        System.out.println("Enter a diciplin");
+        Diciplin diciplin = new Diciplin("John");
 
-        //Team newTeam = factoryPattern.makeNewTeam(teamName);
-        // bestResults.add(newTeam);
+
+
+        Team newTeam = factoryPattern.makeNewTeam(teamName,diciplin,true);
+        getTop5Members(crawl,true).add(newTeam);
         FilesCoach.getBreastStrokeResults();
 
+
+
+ */
+
     }
-}
+
