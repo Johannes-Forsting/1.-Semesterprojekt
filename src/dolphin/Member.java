@@ -13,15 +13,9 @@ public class Member{
         private boolean isCompetitive;
         private Diciplin diciplin;
         private boolean arrears; //restance
-
-
-
-
-
         private int subscribtionRate;
 
-        //Skal måske bruges senere
-        private double swimmingResults;
+
 
 
         public Member(int memberID, boolean isCompetitive, boolean isActive, String dateOfBirth, String name, Diciplin diciplin, boolean arrears) {
@@ -42,8 +36,7 @@ public class Member{
                 this.dateOfBirth = LocalDate.of(year, month, day);
 
                 //subscribtionFee bliver tildelt her baseret på isActive og alder
-                int age = getAge(LocalDate.now());
-                this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600;
+                setSubscribtionRate();
 
         }
 
@@ -57,18 +50,7 @@ public class Member{
 
 
 
-        public double setSwimmingResults(double personalTime){
-                if(personalTime<swimmingResults){
-                        this.swimmingResults = personalTime;
-                        //pr added - overwrited previous record
-                }
-                return this.swimmingResults;
-        }
-
-        public int getMemberID(){
-                return memberID;
-        }
-
+        //=============GETTERS==================
 
         public String getDiciplin(){
                 if (diciplin == null){
@@ -79,8 +61,8 @@ public class Member{
                 }
         }
 
-        public double getSwimmingResults() {
-                return swimmingResults;
+        public int getMemberID(){
+                return memberID;
         }
 
         public boolean isCompetitive()  {
@@ -107,6 +89,30 @@ public class Member{
                 return subscribtionRate;
         }
 
+        //=============GETTERS==================
+
+        //=============SETTERS==================
+
+        public void setArrears(boolean arrears) {
+                this.arrears = arrears;
+        }
+
+        public void setCompetitive(boolean competitive) {
+                isCompetitive = competitive;
+        }
+
+        public void setActive(boolean isActive){
+                this.isActive = isActive;
+                setSubscribtionRate();
+        }
+
+        public void setSubscribtionRate(){
+                int age = getAge(LocalDate.now());
+                this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600;
+        }
+
+        //=============SETTERS==================
+
         @Override
         public String toString() {
                 String spaceForID = (memberID < 10) ? "\t\t" : "\t";
@@ -115,6 +121,8 @@ public class Member{
 
                 String spaceForComp = isCompetitive ? "\t\t" : "\t";
 
+                String spaceForDici = diciplin.getDiciplinName().length() < 8 ? "\t\t\t" : diciplin.getDiciplinName().length() < 12 ? "\t\t" : "\t";
+
 
 
                 return "MemberID: " + memberID + spaceForID +
@@ -122,6 +130,10 @@ public class Member{
                         "Birthdate: " + dateOfBirth + "\t" +
                         "isActive: " + isActive + "\t" +
                         "isCompetitive: " + isCompetitive + spaceForComp +
-                        "Diciplin: " + diciplin.getDiciplinName() ;
+                        "Diciplin: " + diciplin.getDiciplinName() + spaceForDici +
+                        "Subscribtion rate: " + this.subscribtionRate + "\t\t" +
+                        "Has arrears: " + this.isArrears();
+
+
         }
 }

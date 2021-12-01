@@ -1,6 +1,9 @@
 package foreman;
 
-import dolphin.*;
+import dolphin.Competition;
+import dolphin.Diciplin;
+import dolphin.Factory;
+import dolphin.Member;
 import fileIO.FilesCoach;
 import fileIO.FilesForeman;
 
@@ -9,15 +12,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static dolphin.Coach.chooseDiciplin;
-import static dolphin.Coach.getTop5Members;
-import static dolphin.Team.teams;
-
 public class Foreman {
     public static ArrayList<Member> members = new ArrayList<Member>();
     public static ArrayList<Competition> competitions = new ArrayList<Competition>();
     private static Scanner scanner = new Scanner(System.in);
-    private static ArrayList<Team>
 
 
 
@@ -30,7 +28,7 @@ public class Foreman {
 
 
    public static void showCompetition(){
-        competitions = FilesForeman.readCompetitionFile();
+       competitions = FilesForeman.readCompetitionFile();
        for (int i = 0; i < competitions.size(); i++) {
            System.out.println(competitions.get(i));
        }
@@ -46,7 +44,7 @@ public class Foreman {
     public static void makeNewCompetition(){
         Factory factory = new Factory();
         System.out.println("Enter a diciplin for the competition");
-       String diciplin = scanner.nextLine();
+        String diciplin = scanner.nextLine();
         System.out.println("enter a place");
         String place = scanner.nextLine();
         System.out.println("Enter a start point for the competition");
@@ -54,9 +52,9 @@ public class Foreman {
         System.out.println("select a team to add");
 
 
-Competition newCompetition = factory.makeNewCompetition(diciplin,place,time,competingTeams);
-competitions.add(newCompetition);
-FilesForeman.saveCompetitionInFile(newCompetition);
+        Competition newCompetition = factory.makeNewCompetition(diciplin,place,time,competingTeams);
+        competitions.add(newCompetition);
+        FilesForeman.saveCompetitionInFile(newCompetition);
 
     }
 

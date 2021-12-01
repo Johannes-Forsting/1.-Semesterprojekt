@@ -19,15 +19,10 @@ public class Main {
     public static Diciplin breastStroke = new Diciplin("Breaststroke");
 
 
-    public static void main(String[] args) {
-
-        Foreman.getMembers();
-
-        choices();
-    }
 
 
-    private static void choices(){
+
+    public static void foremanOptions(){
         boolean whileCondition = true;
         while (whileCondition){
             callOptions();
@@ -56,7 +51,7 @@ public class Main {
                 case 9:
                     break;
                 case 10:
-                    whileCondition = false;
+                    System.exit(0);
                     break;
             }
         }
@@ -94,6 +89,6 @@ public class Main {
         System.out.println("Press 7 for: ");
         System.out.println("Press 8 for: ");
         System.out.println("Press 9 for: ");
-        System.out.println("Press 10 for: Quit Program");
+        System.out.println("Press 10 for: Quit program.");
     }
 }

@@ -18,14 +18,14 @@ public class FilesForeman {
         try (FileWriter fw = new FileWriter("src/resources/Members.csv", true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
-            out.println(memberToString);
+             out.println(memberToString);
         } catch (IOException e) {
         }
     }
 
 
     public static void saveCompetitionInFile(Competition saveCompetition){
-String convertStringToFile = convertCompetitionToString(saveCompetition);
+        String convertStringToFile = convertCompetitionToString(saveCompetition);
         try(FileWriter fw = new FileWriter("src/resources/competition.csv", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
@@ -36,22 +36,21 @@ String convertStringToFile = convertCompetitionToString(saveCompetition);
     }
 
     private static String convertCompetitionToString(Competition competition){
-String string = competition.getDiciplin() + ";";
-string += competition.getPlace() + ";";
-string += competition.getTime();
-return string;
+        String string = competition.getDiciplin() + ";";
+        string += competition.getPlace() + ";";
+        string += competition.getTime();
+        return string;
 
     }
 
-    private static String getMemberString(Member member) {
+    public static String getMemberString(Member member) {
         String stringToReturn = member.getMemberID() + ";";
         stringToReturn += member.getName();
         stringToReturn += ";" + getRightDateFormat(member.getDateOfBirth());
         stringToReturn += member.isActive() ? ";" + "yes" : ";" + "no";
         stringToReturn += member.isCompetitive() ? ";" + "yes" : ";" + "no";
         stringToReturn += ";" + member.getDiciplin();
-        stringToReturn += ";" + "no";
-
+        stringToReturn += member.isArrears() ? ";yes" : ";no";
         return stringToReturn;
     }
 
