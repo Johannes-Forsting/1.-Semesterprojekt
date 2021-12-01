@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static dolphin.Team.teams;
+
 public class Foreman {
     public static ArrayList<Member> members = new ArrayList<Member>();
     public static ArrayList<Competition> competitions = new ArrayList<Competition>();
@@ -52,7 +54,8 @@ public class Foreman {
         System.out.println("select a team to add");
 
 
-        Competition newCompetition = factory.makeNewCompetition(diciplin,place,time,competingTeams);
+
+        Competition newCompetition = factory.makeNewCompetition(diciplin,place,time,teams);
         competitions.add(newCompetition);
         FilesForeman.saveCompetitionInFile(newCompetition);
 
