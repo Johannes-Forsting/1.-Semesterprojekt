@@ -7,6 +7,7 @@ import foreman.Foreman;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static dolphin.Team.teams;
 import static foreman.Main.*;
 
 public class Coach {
@@ -15,23 +16,16 @@ public class Coach {
 
     public static void main(String[] args) {
         Foreman.getMembers();
-        ArrayList<Member> seniortest = getTop5Members(breastStroke, true);
-        for (int i = 0; i < seniortest.size(); i++) {
-            System.out.println(seniortest.get(i));
-        }
+        System.out.println(getTop5Members(crawl, true));
+        //makeNewTeam();
+       //System.out.println(teams);
     }
 
-    static Member getMemberwithId(int id) {
-        ArrayList<Member> members = Foreman.members;
-        for (int j = 0; j < members.size(); j++) {
-            if (id == members.get(j).getMemberID()) {
-                return members.get(j);
-            }
-        }
-        return null;
-    }
 
-    static ArrayList<Member> getTop5Members(Diciplin diciplin, Boolean isSenior) {
+
+    public static ArrayList<Member> getTop5Members(Diciplin diciplin, Boolean isSenior) {
+        ResultObject.resultObejctCreater(diciplin);
+        System.out.println("virker dette?");
         ArrayList<Member> membersForTop5Team = new ArrayList<>();
         ArrayList<ResultObject> currentresults = Diciplin.getSortedDiciplinResults(diciplin);
         for (int i = 0; i < currentresults.size(); i++) {
@@ -60,25 +54,40 @@ public class Coach {
         return membersForTop5Team;
     }
 
-    public void showResults() {
-        for (int i = 0; i < bestResults.size(); i++) {
-            System.out.println(bestResults.get(i));
+
+
+    public static Diciplin chooseDiciplin() {
+        System.out.println("What diciplin would you like to choose? \n - type \n'1': crawl\n'2': backcrawl\n'3': butterfly\n'4'breaststroke");
+        switch (scanner.nextInt()) {
+            case 1:
+                return crawl;
+            case 2:
+                return backCrawl;
+            case 3:
+                return butterFly;
+            case 4:
+                return breastStroke;
+            default:
+                System.out.println("Invalid diciplin chosen");
+                return null;
         }
     }
 
-    public void getResults() {
-        bestResults = FilesCoach.getButterflyResults();
-    }
-
-
-    public void makeNewTeam() {
+    static void makeNewTeam() {
         Factory factoryPattern = new Factory();
         System.out.println("Enter the name of the team");
-        String teamName = scanner.nextLine();
-
-        //Team newTeam = factoryPattern.makeNewTeam(teamName);
-        // bestResults.add(newTeam);
-        FilesCoach.getBreastStrokeResults();
-
+        String teamName = "zandooo"; //scanner.nextLine();
+        System.out.println("Is team Senior\n - type 'y' for yes or 'n' for no:");
+        String isSeniorString = "y"; //scanner.nextLine();
+        boolean isSenior;
+        if (isSeniorString == "y") {
+            isSenior = true;
+        } else {
+            isSenior = false;
+        }
+        //Diciplin chosendiciplin = chooseDiciplin();
+        ArrayList<Member> membersForTeam = getTop5Members(crawl, isSenior);
+        Team newTeam = factoryPattern.makeNewTeam(teamName, crawl, isSenior, membersForTeam);
+        teams.add(newTeam);
     }
 }

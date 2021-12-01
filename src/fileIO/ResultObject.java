@@ -14,7 +14,11 @@ public class ResultObject {
     private String result;
     private String date;
     private int memberId;
-    public static ArrayList<ResultObject> results = new ArrayList<>();
+    public static ArrayList<ResultObject> crawlResults = new ArrayList<>();
+    public static ArrayList<ResultObject> backCrawlResults = new ArrayList<>();
+    public static ArrayList<ResultObject> breastStrokeResults = new ArrayList<>();
+    public static ArrayList<ResultObject> butterflyResults = new ArrayList<>();
+
 
     public ResultObject(String name, String result, String date, int memberId) {
         this.name = name;
@@ -37,47 +41,44 @@ public class ResultObject {
                 '}';
     }
 
-    public static ArrayList<ResultObject> crawlResultObjectCreater() {
-        String bufferline = crawlScanner.nextLine();
-        while (crawlScanner.hasNextLine()) {
-                String line = crawlScanner.nextLine();
-                String[] info = collectInfoFromScanner(line);
-                results.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
-            }
-        return results;
-    }
-
-    public static ArrayList<ResultObject> backCrawlResultObjectCreater() {
-        ArrayList<ResultObject> results = new ArrayList<>();
-        String bufferline = backCrawlScanner.nextLine();
-        while (backCrawlScanner.hasNext()) {
-            String line = backCrawlScanner.nextLine();
-            String[] info = collectInfoFromScanner(line);
-            results.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
+    public static ArrayList<ResultObject> resultObejctCreater(Diciplin diciplin){
+        switch (diciplin.getDiciplinName().toLowerCase()){
+            case "crawl":
+                crawlResults.clear();
+                String crawlscannerbufferline = crawlScanner.nextLine();
+                while (crawlScanner.hasNextLine()) {
+                    String line = crawlScanner.nextLine();
+                    String[] info = collectInfoFromScanner(line);
+                    crawlResults.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
+                }
+                return crawlResults;
+            case "backcrawl":
+                String backcrawlscannerbufferline = backCrawlScanner.nextLine();
+                while (backCrawlScanner.hasNext()) {
+                    String line = backCrawlScanner.nextLine();
+                    String[] info = collectInfoFromScanner(line);
+                    backCrawlResults.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
+                }
+                return backCrawlResults;
+            case "breaststroke":
+                String breststrokebufferline = breastStrokeScanner.nextLine();
+                while (breastStrokeScanner.hasNext()) {
+                    String line = breastStrokeScanner.nextLine();
+                    String[] info = collectInfoFromScanner(line);
+                    breastStrokeResults.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
+                }
+                return breastStrokeResults;
+            case "butterfly":
+                String bufferline = butterflyScanner.nextLine();
+                while (butterflyScanner.hasNext()) {
+                    String line = butterflyScanner.nextLine();
+                    String[] info = collectInfoFromScanner(line);
+                    butterflyResults.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
+                }
+                return butterflyResults;
+            default:
+                return null;
         }
-        return results;
-    }
-
-    public static ArrayList<ResultObject> breastStrokeResultObjectCreater() {
-        ArrayList<ResultObject> results = new ArrayList<>();
-        String bufferline = breastStrokeScanner.nextLine();
-        while (breastStrokeScanner.hasNext()) {
-            String line = breastStrokeScanner.nextLine();
-            String[] info = collectInfoFromScanner(line);
-            results.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
-        }
-        return results;
-    }
-
-    public static ArrayList<ResultObject> butterflyResultObjectCreater() {
-        ArrayList<ResultObject> results = new ArrayList<>();
-        String bufferline = butterflyScanner.nextLine();
-        while (butterflyScanner.hasNext()) {
-            String line = butterflyScanner.nextLine();
-            String[] info = collectInfoFromScanner(line);
-            results.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
-        }
-        return results;
     }
 
     public static ArrayList<ResultObject> sortResults(ArrayList<ResultObject> results) {

@@ -17,14 +17,18 @@ public class Factory{
         }
 
 
-    public Team makeNewTeam(String teamName, Diciplin diciplin, boolean isSenior){
-        return new Team(teamName, diciplin, isSenior);
+    public Team makeNewTeam(String teamName, Diciplin diciplin, boolean isSenior, ArrayList<Member> contestants){
+        return new Team(teamName, diciplin, isSenior, contestants);
     }
 
-//    public Team makeTop5Team(Diciplin diciplin, ){      }
 
+/*
     public Competition makeNewCompetition(String diciplin, String place, String time){
         return new Competition(diciplin,place,time);
     }
+
+ /*
+
+ */
 
 }

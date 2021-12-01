@@ -7,11 +7,9 @@ public class Competition {
     private String diciplin;
     private String place;
     private String time;
-    private ArrayList<Member> contestants;
+    private ArrayList<Team> competingTeams;
 
-    private ArrayList<String> competitionResults;
-
-    public Competition(String diciplin, String place, String time) {
+    public Competition(String diciplin, String place, String time, ArrayList<Team> competingTeams) {
         this.diciplin = diciplin;
         this.place = place;
         this.time = time;
@@ -29,6 +27,11 @@ public class Competition {
         return time;
     }
 
+    public ArrayList<Team> getCompetingTeams() {
+        return competingTeams;
+    }
+
+    /*
     public void addCompetitionResults(){
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < contestants.size(); i++) {
@@ -46,7 +49,9 @@ public class Competition {
         }
     }
 
+/*
 
+     */
 
 
 

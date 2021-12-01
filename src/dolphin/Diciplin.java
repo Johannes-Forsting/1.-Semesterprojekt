@@ -4,6 +4,9 @@ import fileIO.ResultObject;
 
 import java.util.ArrayList;
 
+import static fileIO.ResultObject.*;
+import static foreman.Main.*;
+
 public class Diciplin {
     private String diciplinName;
 
@@ -24,16 +27,16 @@ public class Diciplin {
         ArrayList<ResultObject> resultsToPrint = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
-                resultsToPrint = new ArrayList<>(ResultObject.crawlResultObjectCreater());
+                resultsToPrint = new ArrayList<>(ResultObject.resultObejctCreater(crawl));
                 break;
             case "backcrawl":
-                resultsToPrint = new ArrayList<>(ResultObject.backCrawlResultObjectCreater());
+                resultsToPrint = new ArrayList<>(ResultObject.resultObejctCreater(backCrawl));
                 break;
             case "breaststroke":
-                resultsToPrint = new ArrayList<>(ResultObject.breastStrokeResultObjectCreater());
+                resultsToPrint = new ArrayList<>(ResultObject.resultObejctCreater(breastStroke));
                 break;
             case "butterfly":
-                resultsToPrint = new ArrayList<>(ResultObject.butterflyResultObjectCreater());
+                resultsToPrint = new ArrayList<>(ResultObject.resultObejctCreater(butterFly));
                 break;
             default:
                 System.out.println("No results found");
@@ -46,16 +49,16 @@ public class Diciplin {
         ArrayList<ResultObject> sortedDiciplinResults = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
-                sortedDiciplinResults = ResultObject.sortResults(ResultObject.crawlResultObjectCreater());
+                sortedDiciplinResults = ResultObject.sortResults(crawlResults);
                 break;
             case "backcrawl":
-                sortedDiciplinResults = ResultObject.sortResults(ResultObject.backCrawlResultObjectCreater());
+                sortedDiciplinResults = ResultObject.sortResults(backCrawlResults);
                 break;
             case "breaststroke":
-                sortedDiciplinResults = ResultObject.sortResults(ResultObject.breastStrokeResultObjectCreater());
+                sortedDiciplinResults = ResultObject.sortResults(breastStrokeResults);
                 break;
             case "butterfly":
-                sortedDiciplinResults = ResultObject.sortResults(ResultObject.butterflyResultObjectCreater());
+                sortedDiciplinResults = ResultObject.sortResults(butterflyResults);
                 break;
             default:
                 System.out.println("No results found");

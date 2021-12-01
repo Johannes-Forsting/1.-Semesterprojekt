@@ -1,9 +1,6 @@
 package foreman;
 
-import dolphin.Competition;
-import dolphin.Diciplin;
-import dolphin.Factory;
-import dolphin.Member;
+import dolphin.*;
 import fileIO.FilesCoach;
 import fileIO.FilesForeman;
 
@@ -11,6 +8,10 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static dolphin.Coach.chooseDiciplin;
+import static dolphin.Coach.getTop5Members;
+import static dolphin.Team.teams;
 
 public class Foreman {
     public static ArrayList<Member> members = new ArrayList<Member>();
@@ -49,10 +50,12 @@ public class Foreman {
         String place = scanner.nextLine();
         System.out.println("Enter a start point for the competition");
         String time = scanner.nextLine();
+        System.out.println("select a team to add");
 
-Competition newCompetition = factory.makeNewCompetition(diciplin,place,time);
-competitions.add(newCompetition);
-FilesForeman.saveCompetitionInFile(newCompetition);
+
+//Competition newCompetition = factory.makeNewCompetition(diciplin,place,time);
+//competitions.add(newCompetition);
+//FilesForeman.saveCompetitionInFile(newCompetition);
 
     }
 

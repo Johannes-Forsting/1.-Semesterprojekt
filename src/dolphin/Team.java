@@ -9,16 +9,15 @@ public class Team {
         private Diciplin diciplin;
         private ArrayList<Member> contestants;
         private boolean isSenior;
-
-
-
-        private ArrayList<Double> bestTimes;
+        public static ArrayList<Team> teams = new ArrayList<>();
 
         //TODO hvis en person har 2 tider på top5
 
-    public Team(String teamName, Diciplin diciplin, boolean isSenior) {
+    public Team(String teamName, Diciplin diciplin, boolean isSenior, ArrayList<Member> contestants) {
         this.diciplin = diciplin;
         this.teamName = teamName;
+        this.contestants = contestants;
+        this.isSenior = isSenior;
 
         switch (diciplin.getDiciplinName().toLowerCase()){
             case "crawl":
@@ -47,9 +46,21 @@ public class Team {
         return "Team{" +
                 "teamName='" + teamName + '\'' +
                 ", diciplin=" + diciplin +
+                ", contestants=" + contestants +
+                ", isSenior=" + isSenior +
+                '}';
+    }
+    /*
+    @Override
+    public String toString() {
+        return "Team{" +
+                "teamName='" + teamName + '\'' +
+                ", diciplin=" + diciplin +
                 ", contestants=\n" + contestants.get(0) + "\n" + contestants.get(1) + "\n" + contestants.get(2) + "\n" + contestants.get(3) + "\n" + contestants.get(4)
                 + '}';
-    }
+    }*/
+
+
 /*
 
     public ArrayList<Member> getMembersForTop5Team(Diciplin diciplin){
@@ -112,9 +123,5 @@ public class Team {
     //Team topFive = new Team("Top 5", );
 
     //public ArrayList<Member> getBestTimes();
-
-    public ArrayList<Double> updateBestTimes() {
-        return bestTimes;
-    }
 
 }

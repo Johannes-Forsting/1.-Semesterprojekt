@@ -75,8 +75,8 @@ return string;
                String place = stringAsArray[1];
              String time = stringAsArray[2];
 
-               Competition competition = new Competition(diciplin,place,time);
-               competitions.add(competition);
+            //   Competition competition = new Competition(diciplin,place,time);
+             //  competitions.add(competition);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
