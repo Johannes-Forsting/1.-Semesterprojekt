@@ -121,7 +121,7 @@ public class Member{
 
                 String spaceForComp = isCompetitive ? "\t\t" : "\t";
 
-                String spaceForDici = diciplin.getDiciplinName().length() < 8 ? "\t\t\t" : diciplin.getDiciplinName().length() < 12 ? "\t\t" : "\t";
+                String spaceForDici = getDiciplin().length() < 8 ? "\t\t\t" : getDiciplin().length() < 12 ? "\t\t" : "\t";
 
 
 
@@ -130,7 +130,7 @@ public class Member{
                         "Birthdate: " + dateOfBirth + "\t" +
                         "isActive: " + isActive + "\t" +
                         "isCompetitive: " + isCompetitive + spaceForComp +
-                        "Diciplin: " + diciplin.getDiciplinName() + spaceForDici +
+                        "Diciplin: " + getDiciplin() + spaceForDici +
                         "Subscribtion rate: " + this.subscribtionRate + "\t\t" +
                         "Has arrears: " + this.isArrears();
 
