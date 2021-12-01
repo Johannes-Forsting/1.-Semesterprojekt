@@ -22,13 +22,13 @@ public class Factory{
     }
 
 
-/*
-    public Competition makeNewCompetition(String diciplin, String place, String time){
-        return new Competition(diciplin,place,time);
+
+    public Competition makeNewCompetition(String diciplin, String place, String time, ArrayList<Team> competingTeams){
+        return new Competition(diciplin,place,time, competingTeams);
     }
 
- /*
 
- */
+
+
 
 }

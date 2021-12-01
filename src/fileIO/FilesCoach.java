@@ -51,6 +51,7 @@ public class FilesCoach {
         while (crawlScanner.hasNext()) {
             String line = crawlScanner.nextLine();
             collectInfoFromScanner(line);
+
         }
         return crawlResults;
     }

@@ -17,6 +17,7 @@ public class Foreman {
     public static ArrayList<Member> members = new ArrayList<Member>();
     public static ArrayList<Competition> competitions = new ArrayList<Competition>();
     private static Scanner scanner = new Scanner(System.in);
+    private static ArrayList<Team>
 
 
 
@@ -53,9 +54,9 @@ public class Foreman {
         System.out.println("select a team to add");
 
 
-//Competition newCompetition = factory.makeNewCompetition(diciplin,place,time);
-//competitions.add(newCompetition);
-//FilesForeman.saveCompetitionInFile(newCompetition);
+Competition newCompetition = factory.makeNewCompetition(diciplin,place,time,competingTeams);
+competitions.add(newCompetition);
+FilesForeman.saveCompetitionInFile(newCompetition);
 
     }
 

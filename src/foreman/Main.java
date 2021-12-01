@@ -3,6 +3,7 @@ package foreman;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import dolphin.Coach;
 import dolphin.Diciplin;
 import fileIO.ResultObject;
 import fileIO.FilesForeman;
@@ -21,6 +22,7 @@ public class Main {
     public static void main(String[] args) {
 
         Foreman.getMembers();
+
         choices();
     }
 

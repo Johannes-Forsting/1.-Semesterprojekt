@@ -11,25 +11,48 @@ import static dolphin.Team.teams;
 import static foreman.Main.*;
 
 public class Coach {
-    public static ArrayList<ResultObject> bestResults = new ArrayList<fileIO.ResultObject>();
+
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         Foreman.getMembers();
-        System.out.println(getTop5Members(crawl, true));
-        //makeNewTeam();
-       //System.out.println(teams);
+        ResultObject.createAllResultObjects();
+
+        makeNewTeam();
+        makeNewTeam();
+
+        for (int i = 0; i < teams.size(); i++) {
+            System.out.println(teams.get(i));
+        }
+
     }
 
 
 
     public static ArrayList<Member> getTop5Members(Diciplin diciplin, Boolean isSenior) {
-        ResultObject.resultObejctCreater(diciplin);
-        System.out.println("virker dette?");
+        String diciplinName = diciplin.getDiciplinName();
+        int currentResultListSize = 0;
+        switch (diciplinName.toLowerCase()){
+            case "crawl":
+                currentResultListSize = ResultObject.crawlResults.size();
+                break;
+            case "backcrawl":
+                currentResultListSize = ResultObject.backCrawlResults.size();
+                break;
+            case "breaststroke":
+                currentResultListSize = ResultObject.breastStrokeResults.size();
+                break;
+            case "butterfly":
+                currentResultListSize = ResultObject.butterflyResults.size();
+                break;
+            default:
+                System.out.println("Results not loaded");
+                break;
+        }
+
         ArrayList<Member> membersForTop5Team = new ArrayList<>();
-        ArrayList<ResultObject> currentresults = Diciplin.getSortedDiciplinResults(diciplin);
-        for (int i = 0; i < currentresults.size(); i++) {
-            int resultId = currentresults.get(i).getMemberId();
+        for (int i = 0; i < currentResultListSize-1; i++) {
+            int resultId = diciplin.getDiciplinResults(diciplin).get(i).getMemberId();
             for (int j = 0; j < Foreman.members.size(); j++) {
                 if (Foreman.members.get(j).getMemberID() == resultId) {
                     if (isSenior) {
@@ -73,21 +96,23 @@ public class Coach {
         }
     }
 
-    static void makeNewTeam() {
+    public static void makeNewTeam() {
         Factory factoryPattern = new Factory();
         System.out.println("Enter the name of the team");
-        String teamName = "zandooo"; //scanner.nextLine();
+        String teamName = scanner.nextLine();
         System.out.println("Is team Senior\n - type 'y' for yes or 'n' for no:");
-        String isSeniorString = "y"; //scanner.nextLine();
+        String isSeniorString = scanner.nextLine();
         boolean isSenior;
         if (isSeniorString == "y") {
             isSenior = true;
         } else {
             isSenior = false;
         }
-        //Diciplin chosendiciplin = chooseDiciplin();
-        ArrayList<Member> membersForTeam = getTop5Members(crawl, isSenior);
-        Team newTeam = factoryPattern.makeNewTeam(teamName, crawl, isSenior, membersForTeam);
+        Diciplin chosendiciplin = chooseDiciplin();
+        ArrayList<Member> membersForTeam = getTop5Members(chosendiciplin, isSenior);
+        Team newTeam = factoryPattern.makeNewTeam(teamName, chosendiciplin, isSenior, membersForTeam);
         teams.add(newTeam);
+        System.out.println("The team is created ");
+        String bufferline = scanner.nextLine();
     }
 }

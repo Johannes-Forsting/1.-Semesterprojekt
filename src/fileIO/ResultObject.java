@@ -41,16 +41,23 @@ public class ResultObject {
                 '}';
     }
 
-    public static ArrayList<ResultObject> resultObejctCreater(Diciplin diciplin){
+    public static void createAllResultObjects(){
+        resultObejctCreater(crawl);
+        resultObejctCreater(backCrawl);
+        resultObejctCreater(breastStroke);
+        resultObejctCreater(butterFly);
+    }
+
+    private static ArrayList<ResultObject> resultObejctCreater(Diciplin diciplin){
         switch (diciplin.getDiciplinName().toLowerCase()){
             case "crawl":
-                crawlResults.clear();
                 String crawlscannerbufferline = crawlScanner.nextLine();
                 while (crawlScanner.hasNextLine()) {
                     String line = crawlScanner.nextLine();
                     String[] info = collectInfoFromScanner(line);
                     crawlResults.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
                 }
+                crawlResults.sort(new resultSorter().reversed());
                 return crawlResults;
             case "backcrawl":
                 String backcrawlscannerbufferline = backCrawlScanner.nextLine();
@@ -59,6 +66,7 @@ public class ResultObject {
                     String[] info = collectInfoFromScanner(line);
                     backCrawlResults.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
                 }
+                backCrawlResults.sort(new resultSorter().reversed());
                 return backCrawlResults;
             case "breaststroke":
                 String breststrokebufferline = breastStrokeScanner.nextLine();
@@ -67,6 +75,7 @@ public class ResultObject {
                     String[] info = collectInfoFromScanner(line);
                     breastStrokeResults.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
                 }
+                breastStrokeResults.sort(new resultSorter().reversed());
                 return breastStrokeResults;
             case "butterfly":
                 String bufferline = butterflyScanner.nextLine();
@@ -75,6 +84,7 @@ public class ResultObject {
                     String[] info = collectInfoFromScanner(line);
                     butterflyResults.add(new ResultObject(info[0], info[1], info[2], Integer.parseInt(info[3])));
                 }
+                butterflyResults.sort(new resultSorter().reversed());
                 return butterflyResults;
             default:
                 return null;
@@ -86,27 +96,6 @@ public class ResultObject {
         return results;
     }
 
-    public static ArrayList<ResultObject> getDiciplinTop5Results(Diciplin diciplin){
-        ArrayList<ResultObject> Top5Results = new ArrayList<>();
-        switch (diciplin.getDiciplinName().toLowerCase()){
-            case "crawl":
-                Top5Results = Diciplin.getSortedDiciplinResults(crawl);
-                break;
-            case "backcrawl":
-                Top5Results = Diciplin.getSortedDiciplinResults(backCrawl);
-                break;
-            case "breaststroke":
-                Top5Results = Diciplin.getSortedDiciplinResults(breastStroke);
-                break;
-            case "butterfly":
-                Top5Results = Diciplin.getSortedDiciplinResults(butterFly);
-                break;
-            default:
-                System.out.println("Diciplin not found");
-                break;
-        }
-        return Top5Results;
-    }
 
     public String getName() {
         return name;

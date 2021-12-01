@@ -27,16 +27,16 @@ public class Diciplin {
         ArrayList<ResultObject> resultsToPrint = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
-                resultsToPrint = new ArrayList<>(ResultObject.resultObejctCreater(crawl));
+                resultsToPrint = new ArrayList<>(crawlResults);
                 break;
             case "backcrawl":
-                resultsToPrint = new ArrayList<>(ResultObject.resultObejctCreater(backCrawl));
+                resultsToPrint = new ArrayList<>(backCrawlResults);
                 break;
             case "breaststroke":
-                resultsToPrint = new ArrayList<>(ResultObject.resultObejctCreater(breastStroke));
+                resultsToPrint = new ArrayList<>(breastStrokeResults);
                 break;
             case "butterfly":
-                resultsToPrint = new ArrayList<>(ResultObject.resultObejctCreater(butterFly));
+                resultsToPrint = new ArrayList<>(butterflyResults);
                 break;
             default:
                 System.out.println("No results found");
@@ -45,7 +45,7 @@ public class Diciplin {
         return resultsToPrint;
     }
 
-    public static ArrayList<ResultObject> getSortedDiciplinResults(Diciplin diciplin) {
+    /*public static ArrayList<ResultObject> getSortedDiciplinResults(Diciplin diciplin) {
         ArrayList<ResultObject> sortedDiciplinResults = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
@@ -66,4 +66,6 @@ public class Diciplin {
         }
         return sortedDiciplinResults;
     }
+
+     */
 }
