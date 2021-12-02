@@ -1,19 +1,11 @@
 package fileIO;
 
-import dolphin.*;
-import foreman.Main;
+import dolphin.Coach;
+import foreman.Foreman;
 
-import javax.swing.plaf.metal.MetalMenuBarUI;
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
-import java.lang.reflect.Array;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
-
-import static fileIO.FilesForeman.getMemberString;
-import static foreman.Main.breastStroke;
 
 public class FilesCoach {
     static Scanner scanner = new Scanner(System.in);
@@ -82,8 +74,7 @@ public class FilesCoach {
         }
         return butterflyResults;
     }
-
-    //needs fixing maybe too early to implement this method
+        //needs fixing maybe too early to implement this method
     public static ArrayList<String> getCompetitionResults() {
         ArrayList<String> competitionResults = new ArrayList<>();
         while (competitionScanner.hasNext()) {
@@ -98,21 +89,47 @@ public class FilesCoach {
         return competitionResults;
     }
 
-    public static void getDiciplinFromUser() {
-        StringBuilder sb = new StringBuilder();
+    public static void generateNewTeam() {
+        System.out.println("Give your team file a name");
+        System.out.println("Enter done when your file is finished");
 
-        System.out.println("Enter a diciplin");
-        System.out.println("1 for back crawl\n 2 for crawl \n 3 for butterfly \n 4 for breaststroke");
-        int choice = scanner.nextInt();
+        while (true) {
+            String name = "src/resources/teams/";
+            name += scanner.nextLine();
+            name += ".csv";
+            if (name.equals("src/resources/teams/done.csv")) {
+                break;
+            }
 
-        if (choice == 1) {
-            sb.append("Back crawl");
-        } else if (choice == 2) {
-            sb.append("Crawl");
-        } else if (choice == 3) {
-            sb.append("Butter fly");
-        } else if (choice == 4) {
-            sb.append("Breast stroke");
+            try {
+                PrintWriter newFile = new PrintWriter(name);
+                StringBuilder sb = new StringBuilder();
+                sb.append("Team name");
+                sb.append(";");
+                sb.append("Diciplin");
+                sb.append(";");
+                sb.append("Senior");
+                sb.append("\n");
+
+
+                System.out.println("Enter a team name");
+                sb.append(scanner.nextLine());
+                sb.append(";");
+                sb.append(Coach.chooseDiciplin().getDiciplinName());
+                sb.append(";");
+                System.out.println("Senior? yes or no?");
+                sb.append(Foreman.validateBooleanInput());
+
+
+
+                newFile.write(sb.toString());
+                newFile.close();
+                System.out.println("your team is created!");
+
+            } catch (FileNotFoundException e) {
+                System.out.println("file not found");
+                e.printStackTrace();
+            }
         }
     }
 

@@ -37,7 +37,7 @@ public class Coach {
                 case 3:
                     break;
                 case 4:
-                    Foreman.showCompetition();
+                    FilesCoach.generateNewTeam();
                     break;
                 case 5:
                     Foreman.makeNewCompetition();
