@@ -1,9 +1,9 @@
 ID;Name;dateOfBirth;isActive;isCompetetive;Diciplin;Restance
 1;Simon;19-03-1999;yes;yes;Crawl;yes
 2;Asger;01-11-1996;no;no;None;no
-3;Johannes;21-03-2000;yes;Yes;Backcrawl;no
+3;Johannes;21-03-2000;yes;yes;Backcrawl;no
 4;Mikkel;21-01-2008;yes;no;None;no
-5;Nicklas;21-03-1997;yes;yes;Crawl;yes
+5;Nicklas;21-03-1997;yes;yes;Crawl;no
 6;Benjamin;21-05-2002;no;no;None;no
 7;Jens;24-08-1999;yes;yes;Breaststroke;no
 8;Timmie;01-01-1980;yes;no;None;no
@@ -114,4 +114,6 @@ ID;Name;dateOfBirth;isActive;isCompetetive;Diciplin;Restance
 113;Simon;03-03-2003;yes;no;None;no
 114;Rasmus;04-09-1998;yes;yes;Backcrawl;no
 115;Victor;19-09-1999;yes;no;None;no
+116;Simon;04-12-2000;yes;no;None;no
+117;Amelia;01-08-2000;yes;no;None;no
 116;Simon;04-12-2000;yes;no;None;no

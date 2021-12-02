@@ -20,7 +20,7 @@ import java.util.NoSuchElementException;
 
         JLabel pic;
         JTextField usernameField;
-        JTextField passwordField;
+        JPasswordField passwordField;
 
         final static String[] usernames = {"Coach", "Cashier", "Foreman"};
         final static String[] passwords = {"Coach123", "Cashier123", "Foreman123"};
@@ -42,7 +42,7 @@ import java.util.NoSuchElementException;
             password = new JLabel("Password");
             this.password.setPreferredSize(new Dimension(100, 40));
 
-            passwordField = new JTextField();
+            passwordField = new JPasswordField();
             this.passwordField.setPreferredSize(new Dimension(250, 40));
 
             button = new JButton("Login");
