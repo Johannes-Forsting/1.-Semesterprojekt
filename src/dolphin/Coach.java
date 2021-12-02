@@ -4,18 +4,16 @@ import fileIO.FilesCoach;
 import fileIO.ResultObject;
 import foreman.Foreman;
 
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static dolphin.Team.teams;
 import static foreman.Main.*;
 
 public class Coach {
 
 
     private static Scanner scanner = new Scanner(System.in);
-
+    static Factory factory = new Factory();
 
     public static void coachOptions(){
         boolean whileCondition = true;
@@ -28,16 +26,28 @@ public class Coach {
                     diciplin = chooseDiciplin();
                     System.out.println("Is the team senior?");
                     boolean isSenior = Foreman.validateBooleanInput();
-                    getTop5Members(diciplin, isSenior);
+                    ArrayList<Member> tmpTeamMembers = getTop5Members(diciplin, isSenior);
+                    System.out.println("Do you want to add members to a team?");
+                    boolean agreed = Foreman.validateBooleanInput();
+                    String bufferline = scanner.nextLine();
+                    if (agreed){
+                        System.out.println("What would you like to name the team?");
+                        String tmpTeamName = scanner.nextLine();
+                        Team tmpTeam = factory.makeNewTeam(tmpTeamName, diciplin, isSenior, tmpTeamMembers);
+                        FilesCoach.generateNewTeam(tmpTeam);
+                        FilesCoach.uploadMembersToTeamFile(tmpTeam);
+                    }
                     break;
                 case 2:
                     diciplin = chooseDiciplin();
                     System.out.println(diciplin.getDiciplinResults(diciplin).toString());
                     break;
                 case 3:
+                    //add member to team
+
+
                     break;
                 case 4:
-                    FilesCoach.generateNewTeam();
                     break;
                 case 5:
                     Foreman.makeNewCompetition();
@@ -134,24 +144,5 @@ public class Coach {
                 System.out.println("Invalid diciplin chosen");
                 return null;
         }
-    }
-
-    public static void makeNewTeam() {
-        Factory factoryPattern = new Factory();
-        System.out.println("Enter the name of the team");
-        String teamName = scanner.nextLine();
-        System.out.println("Is team Senior\n - type 'y' for yes or 'n' for no:");
-        String isSeniorString = scanner.nextLine();
-        boolean isSenior = false;
-        if (isSeniorString.equals("y")) {
-            isSenior = true;
-        }
-        Diciplin chosendiciplin = chooseDiciplin();
-        ArrayList<Member> membersForTeam = getTop5Members(chosendiciplin, isSenior);
-        Team newTeam = factoryPattern.makeNewTeam(teamName, chosendiciplin, isSenior, membersForTeam);
-        teams.add(newTeam);
-        System.out.println(teams.toString());
-        System.out.println("The team is created ");
-        String bufferline = scanner.nextLine();
     }
 }

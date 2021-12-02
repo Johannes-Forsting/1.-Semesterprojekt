@@ -89,11 +89,11 @@ public class Foreman {
         boolean isTrue;
         while(true){
             String choice = scanner.nextLine();
-            if(choice.toLowerCase().equals("yes")){
+            if(choice.toLowerCase().equals("yes") || choice.toLowerCase().equals("y")){
                 isTrue = true;
                 break;
             }
-            else if (choice.toLowerCase().equals("no")){
+            else if (choice.toLowerCase().equals("no") || choice.toLowerCase().equals("n")){
                 isTrue = false;
                 break;
             }
