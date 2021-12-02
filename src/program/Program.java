@@ -1,6 +1,8 @@
 package program;
 
 import cashier.Cashier;
+import dolphin.Coach;
+import fileIO.ResultObject;
 import foreman.Foreman;
 import foreman.Main;
 
@@ -9,6 +11,7 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
         Foreman.getMembers();
+        ResultObject.createAllResultObjects();
 
         //Kalder GUI til login
         GUIStartUp guiStartUp = new GUIStartUp();
@@ -26,6 +29,7 @@ public class Program {
         switch (GUIStartUp.logIn){
             case 1:
                 System.out.println("in coach");
+                Coach.coachOptions();
                 break;
             case 2:
                 System.out.println("in cashier");

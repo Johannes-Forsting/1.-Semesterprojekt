@@ -2,12 +2,8 @@ package cashier;
 
 import dolphin.Member;
 import fileIO.FilesCashier;
-import fileIO.FilesCoach;
-import fileIO.FilesForeman;
 import foreman.Foreman;
 import foreman.Main;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cashier {

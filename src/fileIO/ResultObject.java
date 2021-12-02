@@ -33,12 +33,12 @@ public class ResultObject {
 
     @Override
     public String toString() {
-        return "{" +
+
+        return "\n" +
                 "name='" + name + '\'' +
                 ", result='" + result + '\'' +
                 ", date='" + date + '\'' +
-                ", memberId=" + memberId +
-                '}';
+                ", memberId=" + memberId;
     }
 
     public static void createAllResultObjects(){

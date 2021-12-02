@@ -1,9 +1,6 @@
 package foreman;
 
-import dolphin.Competition;
-import dolphin.Diciplin;
-import dolphin.Factory;
-import dolphin.Member;
+import dolphin.*;
 import fileIO.FilesCoach;
 import fileIO.FilesForeman;
 
@@ -45,17 +42,16 @@ public class Foreman {
 
     public static void makeNewCompetition(){
         Factory factory = new Factory();
-        System.out.println("Enter a diciplin for the competition");
-        String diciplin = scanner.nextLine();
+        Diciplin diciplin = getDiciplin();
+        System.out.println("Is competition for senior \n yes or no?");
+        boolean isSenior = validateBooleanInput();
         System.out.println("enter a place");
         String place = scanner.nextLine();
         System.out.println("Enter a start point for the competition");
         String time = scanner.nextLine();
-        System.out.println("select a team to add");
+        ArrayList<Team> competingTeams = Competition.getTeamFromDiciplin(diciplin, isSenior);
 
-
-
-        Competition newCompetition = factory.makeNewCompetition(diciplin,place,time,teams);
+        Competition newCompetition = factory.makeNewCompetition(diciplin, isSenior, place, time, competingTeams);
         competitions.add(newCompetition);
         FilesForeman.saveCompetitionInFile(newCompetition);
 
@@ -71,7 +67,7 @@ public class Foreman {
 
     private static Diciplin getDiciplin(){
         int diciplin;
-        System.out.println("What diciplin is this person gonna be?");
+        System.out.println("What diciplin is the team gonna be?");
         System.out.println("Press 1 for: Crawl \nPress 2 for: Backcrawl\nPress 3 for: Butterfly\nPress 4 for: Breaststroke");
         diciplin = Main.validateUserIntInput(1, 4);
         switch (diciplin){
@@ -88,23 +84,24 @@ public class Foreman {
     }
 
 
-    private static boolean validateBooleanInput(){
-        boolean isCompetetive;
+
+    public static boolean validateBooleanInput(){
+        boolean isTrue;
         while(true){
             String choice = scanner.nextLine();
             if(choice.toLowerCase().equals("yes")){
-                isCompetetive = true;
+                isTrue = true;
                 break;
             }
             else if (choice.toLowerCase().equals("no")){
-                isCompetetive = false;
+                isTrue = false;
                 break;
             }
             else {
-                System.out.println("I dont understand. Is this person gonna be competetive? \"yes/no\"");
+                System.out.println("Invalid option, please type - \"yes/no\"");
             }
         }
-        return isCompetetive;
+        return isTrue;
     }
 
     private static String getDateOfBirth(){

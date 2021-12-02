@@ -26,7 +26,7 @@ public class FilesForeman {
 
     public static void saveCompetitionInFile(Competition saveCompetition){
         String convertStringToFile = convertCompetitionToString(saveCompetition);
-        try(FileWriter fw = new FileWriter("src/resources/competition.csv", true);
+        try(FileWriter fw = new FileWriter("src/resources/competitions/competition.csv", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {
@@ -63,8 +63,8 @@ public class FilesForeman {
     public static ArrayList<Competition> readCompetitionFile() {
         ArrayList<Competition> competitions = new ArrayList<>();
         try {
-            File f = new File("src/resources/competition.csv");
-            Scanner scanner = new Scanner(new File("src/resources/competition.csv"));
+            File f = new File("src/resources/competitions/competition.csv");
+            Scanner scanner = new Scanner(new File("src/resources/competitions/competition.csv"));
             scanner.nextLine();
             while (scanner.hasNextLine()) {
 

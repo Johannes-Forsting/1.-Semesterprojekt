@@ -48,4 +48,21 @@ public class Team {
         });
         return " ";
     }
+
+    public Diciplin getDiciplin() {
+        return diciplin;
+    }
+
+    public String getTeamName(){
+        return teamName;
+    }
+
+
+    public ArrayList<Member> getContestants() {
+        return contestants;
+    }
+
+    public boolean isSenior() {
+        return isSenior;
+    }
 }

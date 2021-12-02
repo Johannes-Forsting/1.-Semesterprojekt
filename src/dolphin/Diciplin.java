@@ -45,27 +45,4 @@ public class Diciplin {
         return resultsToPrint;
     }
 
-    /*public static ArrayList<ResultObject> getSortedDiciplinResults(Diciplin diciplin) {
-        ArrayList<ResultObject> sortedDiciplinResults = new ArrayList<>();
-        switch (diciplin.getDiciplinName().toLowerCase()) {
-            case "crawl":
-                sortedDiciplinResults = ResultObject.sortResults(crawlResults);
-                break;
-            case "backcrawl":
-                sortedDiciplinResults = ResultObject.sortResults(backCrawlResults);
-                break;
-            case "breaststroke":
-                sortedDiciplinResults = ResultObject.sortResults(breastStrokeResults);
-                break;
-            case "butterfly":
-                sortedDiciplinResults = ResultObject.sortResults(butterflyResults);
-                break;
-            default:
-                System.out.println("No results found");
-                break;
-        }
-        return sortedDiciplinResults;
-    }
-
-     */
 }

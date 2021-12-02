@@ -3,6 +3,7 @@ package dolphin;
 import java.sql.Time;
 import java.util.ArrayList;
 
+import static dolphin.Team.teams;
 import static foreman.Main.crawl;
 
 
@@ -18,17 +19,14 @@ public class Factory{
 
 
     public Team makeNewTeam(String teamName, Diciplin diciplin, boolean isSenior, ArrayList<Member> contestants){
-        return new Team(teamName, diciplin, isSenior, contestants);
+        Team tmpTeam = new Team(teamName, diciplin, isSenior, contestants);
+        teams.add(tmpTeam);
+        return tmpTeam;
     }
 
 
 
-    public Competition makeNewCompetition(String diciplin, String place, String time, ArrayList<Team> competingTeams){
-        return new Competition(diciplin,place,time, competingTeams);
+    public Competition makeNewCompetition(Diciplin diciplin, boolean isSenior, String place, String time, ArrayList<Team> competingTeams){
+        return new Competition(diciplin, isSenior, place, time, competingTeams);
     }
-
-
-
-
-
 }
