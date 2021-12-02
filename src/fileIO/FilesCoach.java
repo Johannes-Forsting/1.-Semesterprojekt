@@ -1,9 +1,6 @@
 package fileIO;
 
-import dolphin.Competition;
-import dolphin.Diciplin;
-import dolphin.Factory;
-import dolphin.Member;
+import dolphin.*;
 import foreman.Main;
 
 import javax.swing.plaf.metal.MetalMenuBarUI;
@@ -15,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+import static fileIO.FilesForeman.getMemberString;
 import static foreman.Main.breastStroke;
 
 public class FilesCoach {
@@ -115,6 +113,21 @@ public class FilesCoach {
             sb.append("Butter fly");
         } else if (choice == 4) {
             sb.append("Breast stroke");
+        }
+    }
+
+    public static void addMemberToteam(Team team, String chosenTeamName) {
+        String tmpMember;
+        for (int i = 0; i < team.getContestants().size(); i++) {
+            tmpMember = getMemberString(team.getContestants().get(i));
+            team.getContestants();
+            String filepath = "src/resources/teams/" + chosenTeamName + ".csv";
+            try (FileWriter fw = new FileWriter(filepath, true);
+                 BufferedWriter bw = new BufferedWriter(fw);
+                 PrintWriter out = new PrintWriter(bw)) {
+                out.println(tmpMember);
+            } catch (IOException e) {
+            }
         }
     }
 
