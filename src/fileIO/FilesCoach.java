@@ -1,11 +1,16 @@
 package fileIO;
 
 import dolphin.Coach;
+import dolphin.Diciplin;
+import dolphin.Member;
+import dolphin.Team;
 import foreman.Foreman;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static fileIO.FilesForeman.getMemberString;
 
 public class FilesCoach {
     static Scanner scanner = new Scanner(System.in);
@@ -32,9 +37,60 @@ public class FilesCoach {
         }
     }
 
-    public static String[] collectInfoFromScanner(String line){
+    public static String[] collectInfoFromScanner(String line) {
         String[] info = line.split(";");
         return info;
+    }
+
+    public static void addNewResult(Diciplin diciplin, String resultToAdd) {
+        switch (diciplin.getDiciplinName().toLowerCase()) {
+            case "crawl":
+                try (FileWriter fw = new FileWriter("src/resources/results/crawlResults.csv", true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter out = new PrintWriter(bw)) {
+                    out.println("\n" + resultToAdd);
+                } catch (IOException e) {
+                }
+                break;
+            case "backcrawl":
+                try (FileWriter fw = new FileWriter("src/resources/results/backCrawlResults.csv", true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter out = new PrintWriter(bw)) {
+                    out.println(resultToAdd);
+                } catch (IOException e) {
+                }
+                break;
+            case "breaststroke":
+                try (FileWriter fw = new FileWriter("src/resources/results/breastStrokeResults.csv", true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter out = new PrintWriter(bw)) {
+                    out.println(resultToAdd);
+                } catch (IOException e) {
+                }
+                break;
+            case "butterfly":
+                try (FileWriter fw = new FileWriter("src/resources/results/butterflyResults.csv", true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter out = new PrintWriter(bw)) {
+                    out.println(resultToAdd);
+                } catch (IOException e) {
+                }
+                break;
+            default:
+                System.out.println("Invalid diciplin");
+                break;
+        }
+    }
+    public static String getMemberNameFromMemberId(int id){
+        for (int i = 0; i < Foreman.members.size(); i++) {
+            Member currentMember = Foreman.members.get(i);
+            if(id == currentMember.getMemberID()){
+                return currentMember.getName();
+            } else {
+                return "MemberName Not found";
+            }
+    }
+        return null;
     }
 
 
@@ -74,7 +130,8 @@ public class FilesCoach {
         }
         return butterflyResults;
     }
-        //needs fixing maybe too early to implement this method
+
+    //needs fixing maybe too early to implement this method
     public static ArrayList<String> getCompetitionResults() {
         ArrayList<String> competitionResults = new ArrayList<>();
         while (competitionScanner.hasNext()) {
@@ -89,49 +146,51 @@ public class FilesCoach {
         return competitionResults;
     }
 
-    public static void generateNewTeam() {
-        System.out.println("Give your team file a name");
-        System.out.println("Enter done when your file is finished");
+    public static void uploadMembersToTeamFile(Team team) {
+        for (int i = 0; i < team.getContestants().size(); i++) {
+            Member tmpMember = team.getContestants().get(i);
+            String memberToString = getMemberString(tmpMember);
+            String filepath = "src/resources/teams/" + team.getTeamName() + ".csv";
+            try (FileWriter fw = new FileWriter(filepath, true);
+                 BufferedWriter bw = new BufferedWriter(fw);
+                 PrintWriter out = new PrintWriter(bw)) {
+                out.println(memberToString);
+            } catch (IOException e) {
 
-        while (true) {
-            String name = "src/resources/teams/";
-            name += scanner.nextLine();
-            name += ".csv";
-            if (name.equals("src/resources/teams/done.csv")) {
-                break;
-            }
-
-            try {
-                PrintWriter newFile = new PrintWriter(name);
-                StringBuilder sb = new StringBuilder();
-                sb.append("Team name");
-                sb.append(";");
-                sb.append("Diciplin");
-                sb.append(";");
-                sb.append("Senior");
-                sb.append("\n");
-
-
-                System.out.println("Enter a team name");
-                sb.append(scanner.nextLine());
-                sb.append(";");
-                sb.append(Coach.chooseDiciplin().getDiciplinName());
-                sb.append(";");
-                System.out.println("Senior? yes or no?");
-                sb.append(Foreman.validateBooleanInput());
-
-
-
-                newFile.write(sb.toString());
-                newFile.close();
-                System.out.println("your team is created!");
-
-            } catch (FileNotFoundException e) {
-                System.out.println("file not found");
-                e.printStackTrace();
             }
         }
     }
+
+
+    public static void generateNewTeam(Team newTeam) {
+        String name = "src/resources/teams/" + newTeam.getTeamName() + ".csv";
+        try {
+            PrintWriter newFile = new PrintWriter(name);
+            StringBuilder sb = new StringBuilder();
+            sb.append("Team name;Diciplin;Senior\n");
+            sb.append(newTeam.getTeamName());
+            sb.append(";");
+            sb.append(newTeam.getDiciplin());
+            sb.append(";");
+            sb.append(newTeam.isSenior());
+            sb.append("\n");
+            newFile.write(sb.toString());
+            newFile.close();
+            System.out.println("your team is created!");
+
+        } catch (FileNotFoundException e) {
+            System.out.println("file not found");
+            e.printStackTrace();
+        }
+    }
+
+
+    //public static void competition() {
+//
+    //  File file = new File("src/resources/tournament.csv");
+    //Scanner scanner = new Scanner(file);
+    //scanner.nextLine();
+    //}
 }
 
 

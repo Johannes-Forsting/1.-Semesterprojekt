@@ -35,22 +35,12 @@ public class Main {
                     Foreman.callAllMembers();
                     break;
                 case 3:
-                    break;
-                case 4:
                  Foreman.showCompetition();
                     break;
-                case 5:
+                case 4:
                     Foreman.makeNewCompetition();
                     break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
                 case 9:
-                    break;
-                case 10:
                     System.exit(0);
                     break;
             }
@@ -82,13 +72,8 @@ public class Main {
         System.out.println("============CHOOSE AN OPTION============");
         System.out.println("Press 1 for: Make new member.");
         System.out.println("Press 2 for: See all members");
-        System.out.println("Press 3 for: ");
-        System.out.println("Press 4 for: See all competitions");
-        System.out.println("Press 5 for: Make new competition");
-        System.out.println("Press 6 for: ");
-        System.out.println("Press 7 for: ");
-        System.out.println("Press 8 for: ");
-        System.out.println("Press 9 for: ");
-        System.out.println("Press 10 for: Quit program.");
+        System.out.println("Press 3 for: See all competitions");
+        System.out.println("Press 4 for: Make new competition");
+        System.out.println("Press 9 for: Quit program.");
     }
 }
