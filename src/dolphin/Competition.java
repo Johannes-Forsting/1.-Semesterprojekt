@@ -1,10 +1,5 @@
 package dolphin;
-
-import fileIO.ResultObject;
-
 import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Competition {
     private Diciplin diciplin;
     private boolean isSenior;
@@ -32,10 +27,6 @@ public class Competition {
         return time;
     }
 
-    public ArrayList<Team> getCompetingTeams() {
-        return competingTeams;
-    }
-
     public static ArrayList<Team> getTeamFromDiciplin(Diciplin diciplin, boolean isSenior){
         ArrayList<Team> teamsWithSameDiciplin = new ArrayList<>();
         for (int i = 0; i < Team.teams.size(); i++) {
@@ -48,30 +39,6 @@ public class Competition {
 
         return teamsWithSameDiciplin;
     }
-
-    /*
-    public void addCompetitionResults(){
-        Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < contestants.size(); i++) {
-            String currentContestantName = contestants.get(i).getName();
-            System.out.println("Type in time for contestant: \"" + currentContestantName + "\":");
-            competitionResults.add(sc.nextLine());
-        }
-        System.out.println("Competition results: \n" + competitionResults);
-    }
-
-
-    public void addContestantsToCompetition(ArrayList<Member> teamMembers){
-        for (int i = 0; i < teamMembers.size(); i++) {
-            this.contestants.add(teamMembers.get(i));
-        }
-    }
-
-/*
-
-     */
-
-
 
     @Override
     public String toString() {

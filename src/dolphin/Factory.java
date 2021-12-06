@@ -1,11 +1,7 @@
 package dolphin;
 
-import java.sql.Time;
 import java.util.ArrayList;
-
 import static dolphin.Team.teams;
-import static foreman.Main.crawl;
-
 
 public class Factory{
 

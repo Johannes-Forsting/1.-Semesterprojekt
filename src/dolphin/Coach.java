@@ -44,9 +44,6 @@ public class Coach {
                 case 3:
                     addNewResult();
                     break;
-                case 4:
-                    Foreman.makeNewCompetition();
-                    break;
                 case 9:
                     System.exit(0);
                     break;
@@ -56,9 +53,9 @@ public class Coach {
 
     public static void addNewResult(){
         String resultToAdd;
-        System.out.println("What is the time of the result:\n 00:00");
+        System.out.println("What is the time of the result:\n HH:MM");
         String timeToAdd = scanner.nextLine();
-        System.out.println("What date was the result set: \n 00-00-0000");
+        System.out.println("What date was the result set: \n DD-MM-YYYY");
         String dateOfResult = scanner.nextLine();
         System.out.println("What is the member ID of the result");
         int memberId = scanner.nextInt();
@@ -85,10 +82,9 @@ public class Coach {
 
     public static void callOptionsCoach(){
         System.out.println("============CHOOSE AN OPTION============");
-        System.out.println("Press 1 for: Show top 5 members.");
+        System.out.println("Press 1 for: Show top 5 members... And add to team");
         System.out.println("Press 2 for: See all results");
         System.out.println("Press 3 for: Add new result");
-        System.out.println("Press 4 for: Create team");
         System.out.println("Press 9 for: Exit / Shut down");
     }
 

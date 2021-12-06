@@ -2,8 +2,6 @@ package dolphin;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class Member{
         private int memberID;
@@ -15,9 +13,6 @@ public class Member{
         private boolean arrears; //restance
         private int subscribtionRate;
 
-
-
-
         public Member(int memberID, boolean isCompetitive, boolean isActive, String dateOfBirth, String name, Diciplin diciplin, boolean arrears) {
                 this.memberID = memberID;
                 this.name = name;
@@ -25,8 +20,6 @@ public class Member{
                 this.isCompetitive = isCompetitive;
                 this.diciplin = diciplin;
                 this.arrears = arrears;
-
-
 
                 //DateOfBirth kommer ind i String DD-MM-YYYY og bliver lavet om til en LocalDate variable.
                 String[] thisDate = dateOfBirth.split("-");

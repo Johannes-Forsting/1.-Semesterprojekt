@@ -1,11 +1,8 @@
 package dolphin;
 
 import fileIO.ResultObject;
-
 import java.util.ArrayList;
-
 import static fileIO.ResultObject.*;
-import static foreman.Main.*;
 
 public class Diciplin {
     private String diciplinName;
