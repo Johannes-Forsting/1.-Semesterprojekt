@@ -3,7 +3,6 @@ package dolphin;
 import fileIO.FilesCoach;
 import fileIO.ResultObject;
 import foreman.Foreman;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -43,13 +42,9 @@ public class Coach {
                     System.out.println(diciplin.getDiciplinResults(diciplin).toString());
                     break;
                 case 3:
-                    //add member to team
-
-
+                    addNewResult();
                     break;
                 case 4:
-                    break;
-                case 5:
                     Foreman.makeNewCompetition();
                     break;
                 case 9:
@@ -57,6 +52,35 @@ public class Coach {
                     break;
             }
         }
+    }
+
+    public static void addNewResult(){
+        String resultToAdd;
+        System.out.println("What is the time of the result:\n 00:00");
+        String timeToAdd = scanner.nextLine();
+        System.out.println("What date was the result set: \n 00-00-0000");
+        String dateOfResult = scanner.nextLine();
+        System.out.println("What is the member ID of the result");
+        int memberId = scanner.nextInt();
+        String memberName = FilesCoach.getMemberNameFromMemberId(memberId);
+        resultToAdd = memberName + ";" + timeToAdd + ";" + dateOfResult + ";" + memberId;
+        String bufferline = scanner.nextLine();
+        System.out.println("What diciplin is the result set in\n 1 - crawl \n 2 - backcrawl \n 3 - breastStroke \n 4 - butterfly");
+        int chosenDiciplinInt = scanner.nextInt();
+        if(chosenDiciplinInt == 1){
+            FilesCoach.addNewResult(crawl,resultToAdd);
+        } else if(chosenDiciplinInt == 2){
+            FilesCoach.addNewResult(backCrawl,resultToAdd);
+        }else if(chosenDiciplinInt == 3){
+            FilesCoach.addNewResult(breastStroke,resultToAdd);
+        }else if(chosenDiciplinInt == 4){
+            FilesCoach.addNewResult(butterFly,resultToAdd);
+        } else {
+            System.out.println("Invalid diciplin");
+        }
+        System.out.println("Result added");
+
+
     }
 
     public static void callOptionsCoach(){

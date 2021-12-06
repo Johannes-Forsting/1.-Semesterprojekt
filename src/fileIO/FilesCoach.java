@@ -1,6 +1,7 @@
 package fileIO;
 
 import dolphin.Coach;
+import dolphin.Diciplin;
 import dolphin.Member;
 import dolphin.Team;
 import foreman.Foreman;
@@ -39,6 +40,57 @@ public class FilesCoach {
     public static String[] collectInfoFromScanner(String line) {
         String[] info = line.split(";");
         return info;
+    }
+
+    public static void addNewResult(Diciplin diciplin, String resultToAdd) {
+        switch (diciplin.getDiciplinName().toLowerCase()) {
+            case "crawl":
+                try (FileWriter fw = new FileWriter("src/resources/results/crawlResults.csv", true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter out = new PrintWriter(bw)) {
+                    out.println("\n" + resultToAdd);
+                } catch (IOException e) {
+                }
+                break;
+            case "backcrawl":
+                try (FileWriter fw = new FileWriter("src/resources/results/backCrawlResults.csv", true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter out = new PrintWriter(bw)) {
+                    out.println(resultToAdd);
+                } catch (IOException e) {
+                }
+                break;
+            case "breaststroke":
+                try (FileWriter fw = new FileWriter("src/resources/results/breastStrokeResults.csv", true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter out = new PrintWriter(bw)) {
+                    out.println(resultToAdd);
+                } catch (IOException e) {
+                }
+                break;
+            case "butterfly":
+                try (FileWriter fw = new FileWriter("src/resources/results/butterflyResults.csv", true);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     PrintWriter out = new PrintWriter(bw)) {
+                    out.println(resultToAdd);
+                } catch (IOException e) {
+                }
+                break;
+            default:
+                System.out.println("Invalid diciplin");
+                break;
+        }
+    }
+    public static String getMemberNameFromMemberId(int id){
+        for (int i = 0; i < Foreman.members.size(); i++) {
+            Member currentMember = Foreman.members.get(i);
+            if(id == currentMember.getMemberID()){
+                return currentMember.getName();
+            } else {
+                return "MemberName Not found";
+            }
+    }
+        return null;
     }
 
 
