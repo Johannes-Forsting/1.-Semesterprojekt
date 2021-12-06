@@ -5,8 +5,7 @@ import dolphin.Diciplin;
 import java.util.ArrayList;
 
 import static fileIO.FilesCoach.*;
-import static foreman.Main.*;
-import static foreman.Main.butterFly;
+import static foreman.Foreman.*;
 
 public class ResultObject {
 

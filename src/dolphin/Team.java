@@ -3,7 +3,7 @@ package dolphin;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import static foreman.Main.*;
+import static foreman.Foreman.*;
 
 public class Team {
     private String teamName;

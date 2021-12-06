@@ -104,6 +104,10 @@ public class Member{
                 this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600;
         }
 
+        public void setDiciplin(Diciplin diciplin){
+                this.diciplin = diciplin;
+        }
+
         //=============SETTERS==================
 
         @Override

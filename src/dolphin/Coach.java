@@ -3,10 +3,13 @@ package dolphin;
 import fileIO.FilesCoach;
 import fileIO.ResultObject;
 import foreman.Foreman;
+import program.Validators;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static foreman.Main.*;
+import static foreman.Foreman.*;
+
 
 public class Coach {
 
@@ -19,15 +22,15 @@ public class Coach {
         while (whileCondition){
             callOptionsCoach();
             Diciplin diciplin;
-            int choice = validateUserIntInput(1, 10);
+            int choice = Validators.validateUserIntInput(1, 10);
             switch (choice){
                 case 1:
-                    diciplin = chooseDiciplin();
+                    diciplin = Validators.getDiciplin();
                     System.out.println("Is the team senior?");
-                    boolean isSenior = Foreman.validateBooleanInput();
+                    boolean isSenior = Validators.validateBooleanInput();
                     ArrayList<Member> tmpTeamMembers = getTop5Members(diciplin, isSenior);
                     System.out.println("Do you want to add members to a team?");
-                    boolean agreed = Foreman.validateBooleanInput();
+                    boolean agreed = Validators.validateBooleanInput();
                     String bufferline = scanner.nextLine();
                     if (agreed){
                         System.out.println("What would you like to name the team?");
@@ -38,7 +41,7 @@ public class Coach {
                     }
                     break;
                 case 2:
-                    diciplin = chooseDiciplin();
+                    diciplin = Validators.getDiciplin();
                     System.out.println(diciplin.getDiciplinResults(diciplin).toString());
                     break;
                 case 3:
@@ -145,24 +148,5 @@ public class Coach {
             }
         }
         return membersForTop5Team;
-    }
-
-
-
-    public static Diciplin chooseDiciplin() {
-        System.out.println("What diciplin would you like to choose? \n - type \n'1': crawl\n'2': backcrawl\n'3': butterfly\n'4'breaststroke");
-        switch (scanner.nextInt()) {
-            case 1:
-                return crawl;
-            case 2:
-                return backCrawl;
-            case 3:
-                return butterFly;
-            case 4:
-                return breastStroke;
-            default:
-                System.out.println("Invalid diciplin chosen");
-                return null;
-        }
     }
 }
