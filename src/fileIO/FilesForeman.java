@@ -30,7 +30,7 @@ public class FilesForeman {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {
-            out.println(convertStringToFile);
+            out.println("\n" + convertStringToFile);
         } catch (IOException e) {
         }
     }

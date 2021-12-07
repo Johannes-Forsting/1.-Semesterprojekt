@@ -3,10 +3,13 @@ package dolphin;
 import fileIO.FilesCoach;
 import fileIO.ResultObject;
 import foreman.Foreman;
+import program.Validators;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static foreman.Main.*;
+import static dolphin.Diciplin.*;
+
 
 public class Coach {
 
@@ -19,15 +22,15 @@ public class Coach {
         while (whileCondition){
             callOptionsCoach();
             Diciplin diciplin;
-            int choice = validateUserIntInput(1, 10);
+            int choice = Validators.validateUserIntInput(1, 10);
             switch (choice){
                 case 1:
-                    diciplin = chooseDiciplin();
+                    diciplin = Validators.getDiciplin();
                     System.out.println("Is the team senior?");
-                    boolean isSenior = Foreman.validateBooleanInput();
+                    boolean isSenior = Validators.validateBooleanInput();
                     ArrayList<Member> tmpTeamMembers = getTop5Members(diciplin, isSenior);
                     System.out.println("Do you want to add members to a team?");
-                    boolean agreed = Foreman.validateBooleanInput();
+                    boolean agreed = Validators.validateBooleanInput();
                     String bufferline = scanner.nextLine();
                     if (agreed){
                         System.out.println("What would you like to name the team?");
@@ -38,14 +41,11 @@ public class Coach {
                     }
                     break;
                 case 2:
-                    diciplin = chooseDiciplin();
+                    diciplin = Validators.getDiciplin();
                     System.out.println(diciplin.getDiciplinResults(diciplin).toString());
                     break;
                 case 3:
                     addNewResult();
-                    break;
-                case 4:
-                    Foreman.makeNewCompetition();
                     break;
                 case 9:
                     System.exit(0);
@@ -56,9 +56,9 @@ public class Coach {
 
     public static void addNewResult(){
         String resultToAdd;
-        System.out.println("What is the time of the result:\n 00:00");
+        System.out.println("What is the time of the result:\n HH:MM");
         String timeToAdd = scanner.nextLine();
-        System.out.println("What date was the result set: \n 00-00-0000");
+        System.out.println("What date was the result set: \n DD-MM-YYYY");
         String dateOfResult = scanner.nextLine();
         System.out.println("What is the member ID of the result");
         int memberId = scanner.nextInt();
@@ -85,10 +85,9 @@ public class Coach {
 
     public static void callOptionsCoach(){
         System.out.println("============CHOOSE AN OPTION============");
-        System.out.println("Press 1 for: Show top 5 members.");
+        System.out.println("Press 1 for: Show top 5 members... And add to team");
         System.out.println("Press 2 for: See all results");
         System.out.println("Press 3 for: Add new result");
-        System.out.println("Press 4 for: Create team");
         System.out.println("Press 9 for: Exit / Shut down");
     }
 
@@ -149,24 +148,5 @@ public class Coach {
             }
         }
         return membersForTop5Team;
-    }
-
-
-
-    public static Diciplin chooseDiciplin() {
-        System.out.println("What diciplin would you like to choose? \n - type \n'1': crawl\n'2': backcrawl\n'3': butterfly\n'4'breaststroke");
-        switch (scanner.nextInt()) {
-            case 1:
-                return crawl;
-            case 2:
-                return backCrawl;
-            case 3:
-                return butterFly;
-            case 4:
-                return breastStroke;
-            default:
-                System.out.println("Invalid diciplin chosen");
-                return null;
-        }
     }
 }

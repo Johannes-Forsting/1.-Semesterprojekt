@@ -3,7 +3,8 @@ package cashier;
 import dolphin.Member;
 import fileIO.FilesCashier;
 import foreman.Foreman;
-import foreman.Main;
+import program.Validators;
+
 import java.util.Scanner;
 
 public class Cashier {
@@ -15,10 +16,8 @@ public class Cashier {
         System.out.println("Welcome Cashier");
         boolean whileCondition = true;
         while (whileCondition == true) {
-            System.out.println("Pick an action: \n0 : Exit. \n1 : Show prices. \n2 : Print estimated income.\n3 : See all members.");
-            System.out.println("4 : Print members in arrears. \n5: Set member out of arrears. \n6: Set all members in arrears.");
-            System.out.println("7: Set member active/inactive.");
-            int action = Main.validateUserIntInput(0, 7);
+            callOptions();
+            int action = Validators.validateUserIntInput(0, 7);
             switch (action) {
                 case 0:
                     System.out.println("BAIIEEEE");
@@ -47,6 +46,17 @@ public class Cashier {
                     break;
             }
         }
+    }
+
+    private static void callOptions(){
+        System.out.println("Pick an action: \n0: Exit." +
+                "\n1: Show prices." +
+                "\n2: Print estimated income." +
+                "\n3: See all members." +
+                "\n4: Print members in arrears." +
+                "\n5: Set member out of arrears." +
+                "\n6: Set all members in arrears." +
+                "\n7: Set member active/inactive.");
     }
 
 
@@ -86,7 +96,7 @@ public class Cashier {
                 }
                 else{
                     currentMember.setArrears(false);
-                    FilesCashier.UploadAllMembers();
+                    FilesCashier.uploadAllMembers();
                     break;
                 }
             }
@@ -97,7 +107,7 @@ public class Cashier {
         for (int i = 0; i < Foreman.members.size(); i++) {
             Foreman.members.get(i).setArrears(true);
         }
-        FilesCashier.UploadAllMembers();
+        FilesCashier.uploadAllMembers();
     }
 
     public static void setMemberActiveInactive(){
@@ -115,12 +125,12 @@ public class Cashier {
         toPrint += " Would you like to revert that? (1: for \"yes\" 2: for \"no\")";
         System.out.println(toPrint);
 
-        choice = Main.validateUserIntInput(1, 2);
+        choice = Validators.validateUserIntInput(1, 2);
         if (choice == 1){
             boolean boolToSet = currentMember.isActive() ? false : true;
             System.out.println("It has now been reverted.");
             currentMember.setActive(boolToSet);
-            FilesCashier.UploadAllMembers();
+            FilesCashier.uploadAllMembers();
         }
         else if (choice == 2){
             System.out.println("Allright i have changed nothing.");

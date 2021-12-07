@@ -1,14 +1,16 @@
 package dolphin;
 
 import fileIO.ResultObject;
-
 import java.util.ArrayList;
-
 import static fileIO.ResultObject.*;
-import static foreman.Main.*;
 
 public class Diciplin {
     private String diciplinName;
+    public static Diciplin backCrawl = new Diciplin("Backcrawl");
+    public static Diciplin crawl = new Diciplin("Crawl");
+    public static Diciplin butterFly = new Diciplin("Butterfly");
+    public static Diciplin breastStroke = new Diciplin("Breaststroke");
+
 
     public Diciplin(String diciplinName) {
         this.diciplinName = diciplinName;

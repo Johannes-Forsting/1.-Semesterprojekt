@@ -1,20 +1,54 @@
 package foreman;
 
 import dolphin.*;
-import fileIO.FilesCoach;
+import fileIO.FilesCashier;
 import fileIO.FilesForeman;
-
-import java.io.FileNotFoundException;
-import java.time.LocalDate;
+import program.Validators;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static dolphin.Team.teams;
+import static dolphin.Competition.competitions;
+import static dolphin.Member.members;
 
 public class Foreman {
-    public static ArrayList<Member> members = new ArrayList<Member>();
-    public static ArrayList<Competition> competitions = new ArrayList<Competition>();
+
+
+    
+
+
     private static Scanner scanner = new Scanner(System.in);
+
+    public static void foremanOptions(){
+        boolean whileCondition = true;
+        while (whileCondition){
+            callOptions();
+            int choice = Validators.validateUserIntInput(1, 10);
+            switch (choice){
+                case 1:
+                    makeNewMember();
+                    break;
+                case 2:
+                    callAllMembers();
+                    break;
+                case 3:
+                    showCompetition();
+                    break;
+                case 4:
+                    makeNewCompetition();
+                    break;
+                case 5:
+                    changeCompetetiveStatus();
+                    break;
+                case 9:
+                    System.exit(0);
+                    break;
+            }
+        }
+    }
+
+    public static void getMembers(){
+        members = FilesForeman.getMembersFromFile();
+    }
 
 
 
@@ -34,17 +68,12 @@ public class Foreman {
    }
 
 
-    public static void getMembers(){
-        members = FilesForeman.getMembersFromFile();
-    }
-
-
 
     public static void makeNewCompetition(){
         Factory factory = new Factory();
-        Diciplin diciplin = getDiciplin();
+        Diciplin diciplin = Validators.getDiciplin();
         System.out.println("Is competition for senior \n yes or no?");
-        boolean isSenior = validateBooleanInput();
+        boolean isSenior = Validators.validateBooleanInput();
         System.out.println("enter a place");
         String place = scanner.nextLine();
         System.out.println("Enter a start point for the competition");
@@ -61,71 +90,54 @@ public class Foreman {
         GUI gui = new GUI();
     }
 
-
-
-
-
-    private static Diciplin getDiciplin(){
-        int diciplin;
-        System.out.println("What diciplin is the team gonna be?");
-        System.out.println("Press 1 for: Crawl \nPress 2 for: Backcrawl\nPress 3 for: Butterfly\nPress 4 for: Breaststroke");
-        diciplin = Main.validateUserIntInput(1, 4);
-        switch (diciplin){
-            case 1:
-                return Main.crawl;
-            case 2:
-                return Main.backCrawl;
-            case 3:
-                return Main.butterFly;
-            case 4:
-                return Main.breastStroke;
-        }
-        return null;
+    private static void callOptions(){
+        System.out.println("============CHOOSE AN OPTION============");
+        System.out.println("Press 1 for: Make new member.");
+        System.out.println("Press 2 for: See all members");
+        System.out.println("Press 3 for: See all competitions");
+        System.out.println("Press 4 for: Make new competition");
+        System.out.println("Press 5 for: Change competetive status of a member.");
+        System.out.println("Press 9 for: Quit program.");
     }
 
 
-
-    public static boolean validateBooleanInput(){
-        boolean isTrue;
-        while(true){
-            String choice = scanner.nextLine();
-            if(choice.toLowerCase().equals("yes") || choice.toLowerCase().equals("y")){
-                isTrue = true;
+    private static void changeCompetetiveStatus(){
+        boolean booleanChoice;
+        Member currentMember = members.get(0);
+        System.out.println("What is the ID of the member you want to edit status on?");
+        int choice = scanner.nextInt();
+        for (int i = 0; i < members.size(); i++) {
+            currentMember = members.get(i);
+            if(choice == currentMember.getMemberID()){
                 break;
             }
-            else if (choice.toLowerCase().equals("no") || choice.toLowerCase().equals("n")){
-                isTrue = false;
-                break;
+        }
+        System.out.println(currentMember);
+        System.out.println(currentMember.isActive());
+        if (currentMember.isCompetitive() == true){
+            System.out.println("This member is currently competetive. Would you like to revert that?");
+            booleanChoice = Validators.validateBooleanInput();
+            if (booleanChoice == true){
+                currentMember.setCompetitive(false);
+                currentMember.setDiciplin(null);
+                FilesCashier.uploadAllMembers();
             }
             else {
-                System.out.println("Invalid option, please type - \"yes/no\"");
+                System.out.println("Alright. I have changed nothing.");
             }
         }
-        return isTrue;
-    }
-
-    private static String getDateOfBirth(){
-        String date;
-        while (true){
-            date = scanner.nextLine();
-            try {
-                String[] thisDate = date.split("-");
-                int year = Integer.parseInt(thisDate[2]);
-                int month = Integer.parseInt(thisDate[1]);
-                int day = Integer.parseInt(thisDate[0]);
-                LocalDate tester = LocalDate.of(year, month, day);
-                break;
+        else{
+            System.out.println("This member is currently not competetive. Would you like to revert that?");
+            booleanChoice = Validators.validateBooleanInput();
+            if (booleanChoice == true){
+                currentMember.setCompetitive(true);
+                currentMember.setDiciplin(Validators.getDiciplin());
+                FilesCashier.uploadAllMembers();
             }
-            catch (Exception e){
-                System.out.println("Not a valid input. Write in format \"DD-MM-YYYY\"");
+            else {
+                System.out.println("Alright. I have changed nothing.");
             }
         }
-        return date;
     }
-
-
-
-
-
 
 }

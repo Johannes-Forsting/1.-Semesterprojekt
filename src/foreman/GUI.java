@@ -40,8 +40,8 @@ public class GUI extends JFrame implements ActionListener {
 
         this.nameLabel = new JLabel("Name");
         this.dateLabel = new JLabel("Date (DD-MM-YYYY)");
-        this.isCompLabel = new JLabel("Competetive? (\"yes\" / \"no\")");
-        this.diciplinLabel = new JLabel("Diciplin? (If not competetive, leave blank.)");
+        this.isCompLabel = new JLabel("Competetive? (\"No\" / \"yes\")");
+        this.diciplinLabel = new JLabel("Diciplin? (If not competetive, select none.)");
 
         this.name = new JTextField();
         this.name.setPreferredSize(new Dimension(250, 40));
@@ -49,7 +49,7 @@ public class GUI extends JFrame implements ActionListener {
         this.dateOfBirth = new JTextField();
         this.dateOfBirth.setPreferredSize(new Dimension(250, 40));
 
-        this.isCompetetive = new JComboBox(new String[]{"Yes", "No"});
+        this.isCompetetive = new JComboBox(new String[]{"No", "Yes"});
         this.isCompetetive.setPreferredSize(new Dimension(250, 40));
 
 
@@ -98,16 +98,16 @@ public class GUI extends JFrame implements ActionListener {
                 String thisDiciplin = this.diciplin.getSelectedItem().toString();
                 switch(thisDiciplin) {
                     case "crawl":
-                        currentDiciplin = Main.crawl;
+                        currentDiciplin = Foreman.crawl;
                         break;
                     case "Backcrawl":
-                        currentDiciplin = Main.backCrawl;
+                        currentDiciplin = Foreman.backCrawl;
                         break;
                     case "Butterfly":
-                        currentDiciplin = Main.butterFly;
+                        currentDiciplin = Foreman.butterFly;
                         break;
                     case "Breaststroke":
-                        currentDiciplin = Main.breastStroke;
+                        currentDiciplin = Foreman.breastStroke;
                 }
             } else {
                 currentDiciplin = null;

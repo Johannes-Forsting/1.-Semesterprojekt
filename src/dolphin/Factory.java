@@ -1,20 +1,16 @@
 package dolphin;
 
-import java.sql.Time;
 import java.util.ArrayList;
-
 import static dolphin.Team.teams;
-import static foreman.Main.crawl;
-
 
 public class Factory{
 
     public Factory() {
     }
 
-    public Member makeNewMember(int id, boolean isCompetetive,boolean isActive, String dateOfBirth, String name, Diciplin diciplin, boolean hasArrears) {
+    public Member makeNewMember(int id, boolean isCompetitive,boolean isActive, String dateOfBirth, String name, Diciplin diciplin, boolean hasArrears) {
 
-            return new Member(id, isCompetetive,isActive,dateOfBirth,name, diciplin, hasArrears);
+            return new Member(id, isCompetitive,isActive,dateOfBirth,name, diciplin, hasArrears);
         }
 
 

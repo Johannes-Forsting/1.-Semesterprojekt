@@ -3,7 +3,6 @@ package dolphin;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Member{
         private int memberID;
@@ -14,9 +13,7 @@ public class Member{
         private Diciplin diciplin;
         private boolean arrears; //restance
         private int subscribtionRate;
-
-
-
+        public static ArrayList<Member> members = new ArrayList<Member>();
 
         public Member(int memberID, boolean isCompetitive, boolean isActive, String dateOfBirth, String name, Diciplin diciplin, boolean arrears) {
                 this.memberID = memberID;
@@ -25,8 +22,6 @@ public class Member{
                 this.isCompetitive = isCompetitive;
                 this.diciplin = diciplin;
                 this.arrears = arrears;
-
-
 
                 //DateOfBirth kommer ind i String DD-MM-YYYY og bliver lavet om til en LocalDate variable.
                 String[] thisDate = dateOfBirth.split("-");
@@ -109,6 +104,10 @@ public class Member{
         public void setSubscribtionRate(){
                 int age = getAge(LocalDate.now());
                 this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600;
+        }
+
+        public void setDiciplin(Diciplin diciplin){
+                this.diciplin = diciplin;
         }
 
         //=============SETTERS==================
