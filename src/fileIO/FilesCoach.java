@@ -1,13 +1,10 @@
 package fileIO;
 
-import dolphin.Coach;
+
 import dolphin.Diciplin;
 import dolphin.Member;
 import dolphin.Team;
-import foreman.Foreman;
-
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import static fileIO.FilesForeman.getMemberString;
@@ -82,8 +79,8 @@ public class FilesCoach {
         }
     }
     public static String getMemberNameFromMemberId(int id){
-        for (int i = 0; i < Foreman.members.size(); i++) {
-            Member currentMember = Foreman.members.get(i);
+        for (int i = 0; i < Member.members.size(); i++) {
+            Member currentMember = Member.members.get(i);
             if(id == currentMember.getMemberID()){
                 return currentMember.getName();
             } else {
@@ -91,59 +88,6 @@ public class FilesCoach {
             }
     }
         return null;
-    }
-
-
-    public static ArrayList<String> getCrawlResults() {
-        ArrayList<String> crawlResults = new ArrayList<>();
-        while (crawlScanner.hasNext()) {
-            String line = crawlScanner.nextLine();
-            collectInfoFromScanner(line);
-
-        }
-        return crawlResults;
-    }
-
-    public static ArrayList<ResultObject> getBackCrawlResults() {
-        ArrayList<ResultObject> backCrawlResults = new ArrayList<>();
-        while (backCrawlScanner.hasNext()) {
-            String line = backCrawlScanner.nextLine();
-            collectInfoFromScanner(line);
-        }
-        return backCrawlResults;
-    }
-
-    public static ArrayList<ResultObject> getBreastStrokeResults() {
-        ArrayList<ResultObject> breastStrokeResults = new ArrayList<>();
-        while (breastStrokeScanner.hasNext()) {
-            String line = breastStrokeScanner.nextLine();
-            collectInfoFromScanner(line);
-        }
-        return breastStrokeResults;
-    }
-
-    public static ArrayList<ResultObject> getButterflyResults() {
-        ArrayList<ResultObject> butterflyResults = new ArrayList<>();
-        while (butterflyScanner.hasNext()) {
-            String line = butterflyScanner.nextLine();
-            collectInfoFromScanner(line);
-        }
-        return butterflyResults;
-    }
-
-    //needs fixing maybe too early to implement this method
-    public static ArrayList<String> getCompetitionResults() {
-        ArrayList<String> competitionResults = new ArrayList<>();
-        while (competitionScanner.hasNext()) {
-            String line = competitionScanner.nextLine();
-            String[] info = line.split(";");
-            String name = info[0];
-            competitionResults.add(name);
-            for (int i = 1; i < info.length; i++) {
-                competitionResults.add(info[i]);
-            }
-        }
-        return competitionResults;
     }
 
     public static void uploadMembersToTeamFile(Team team) {

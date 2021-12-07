@@ -1,9 +1,7 @@
 package dolphin;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
-
-import static foreman.Foreman.*;
+import static dolphin.Diciplin.*;
 
 public class Team {
     private String teamName;

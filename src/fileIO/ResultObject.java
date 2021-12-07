@@ -4,8 +4,8 @@ import dolphin.Diciplin;
 
 import java.util.ArrayList;
 
+import static dolphin.Diciplin.*;
 import static fileIO.FilesCoach.*;
-import static foreman.Foreman.*;
 
 public class ResultObject {
 
