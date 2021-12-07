@@ -2,6 +2,7 @@ package dolphin;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 
 public class Member{
         private int memberID;
@@ -12,6 +13,7 @@ public class Member{
         private Diciplin diciplin;
         private boolean arrears; //restance
         private int subscribtionRate;
+        public static ArrayList<Member> members = new ArrayList<Member>();
 
         public Member(int memberID, boolean isCompetitive, boolean isActive, String dateOfBirth, String name, Diciplin diciplin, boolean arrears) {
                 this.memberID = memberID;

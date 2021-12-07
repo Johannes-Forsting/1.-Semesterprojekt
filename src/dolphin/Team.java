@@ -5,6 +5,7 @@ import coach.Coach;
 import java.util.ArrayList;
 
 import static foreman.Foreman.*;
+import static dolphin.Diciplin.*;
 
 public class Team {
     private String teamName;

@@ -4,8 +4,8 @@ import dolphin.Diciplin;
 
 import java.util.ArrayList;
 
+import static dolphin.Diciplin.*;
 import static fileIO.FilesCoach.*;
-import static foreman.Foreman.*;
 
 public class ResultObject {
 
@@ -90,11 +90,6 @@ public class ResultObject {
         }
     }
 
-    public static ArrayList<ResultObject> sortResults(ArrayList<ResultObject> results) {
-        results.sort(new resultSorter().reversed());
-        return results;
-    }
-
 
     public String getName() {
         return name;
@@ -102,10 +97,6 @@ public class ResultObject {
 
     public int getMemberId() {
         return memberId;
-    }
-
-    public String getDate() {
-        return date;
     }
 
     public String getResult() {

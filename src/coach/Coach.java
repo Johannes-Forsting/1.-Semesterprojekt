@@ -1,4 +1,4 @@
-package coach;
+package dolphin;
 
 import dolphin.*;
 import fileIO.FilesCoach;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static foreman.Foreman.*;
+import static dolphin.Diciplin.*;
 
 
 public class Coach {
@@ -154,27 +154,27 @@ public class Coach {
         ArrayList<Member> membersForTop5Team = new ArrayList<>();
         for (int i = 0; i < currentResultListSize-1; i++) {
             int resultId = diciplin.getDiciplinResults(diciplin).get(i).getMemberId();
-            for (int j = 0; j < Foreman.members.size(); j++) {
-                if (Foreman.members.get(j).getMemberID() == resultId) {
+            for (int j = 0; j < Member.members.size(); j++) {
+                if (Member.members.get(j).getMemberID() == resultId) {
                     if (isSenior) {
-                        if (Foreman.members.get(j).getMemberAge() > 17) {
-                            if (membersForTop5Team.contains(Foreman.members.get(j))){
+                        if (Member.members.get(j).getMemberAge() > 17) {
+                            if (membersForTop5Team.contains(Member.members.get(j))){
                             break;
                             }
-                            membersForTop5Team.add(Foreman.members.get(j));
-                            System.out.println(Foreman.members.get(j));
+                            membersForTop5Team.add(Member.members.get(j));
+                            System.out.println(Member.members.get(j));
                             System.out.println(diciplin.getDiciplinResults(diciplin).get(i).getResult());
                         } else {
                             break;
                         }
                     } else {
-                        if (Foreman.members.get(j).getMemberAge() < 18) {
+                        if (Member.members.get(j).getMemberAge() < 18) {
                             //check if member already in top 5
-                            if (membersForTop5Team.contains(Foreman.members.get(j))){
+                            if (membersForTop5Team.contains(Member.members.get(j))){
                                 break;
                             }
-                            membersForTop5Team.add(Foreman.members.get(j));
-                            System.out.println(Foreman.members.get(j));
+                            membersForTop5Team.add(Member.members.get(j));
+                            System.out.println(Member.members.get(j));
                             System.out.println(diciplin.getDiciplinResults(diciplin).get(i).getResult());
                         } else {
                             break;
@@ -188,5 +188,4 @@ public class Coach {
         }
         return membersForTop5Team;
     }
-
 }

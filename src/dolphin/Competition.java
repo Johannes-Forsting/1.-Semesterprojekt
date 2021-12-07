@@ -6,6 +6,7 @@ public class Competition {
     private String place;
     private String time;
     private Team competingTeam;
+    public static ArrayList<Competition> competitions = new ArrayList<Competition>();
 
     public Competition(Diciplin diciplin, boolean isSenior, String place, String time) {
         this.diciplin = diciplin;
@@ -43,7 +44,6 @@ public class Competition {
     public void setCompetingTeam(Team team){
         this.competingTeam = team;
     }
-
 
     @Override
     public String toString() {

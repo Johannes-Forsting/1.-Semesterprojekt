@@ -102,16 +102,16 @@ public class GuiMakeNewMember extends JFrame implements ActionListener {
                 String thisDiciplin = this.diciplin.getSelectedItem().toString();
                 switch(thisDiciplin) {
                     case "crawl":
-                        currentDiciplin = Foreman.crawl;
+                        currentDiciplin = Diciplin.crawl;
                         break;
                     case "Backcrawl":
-                        currentDiciplin = Foreman.backCrawl;
+                        currentDiciplin = Diciplin.backCrawl;
                         break;
                     case "Butterfly":
-                        currentDiciplin = Foreman.butterFly;
+                        currentDiciplin = Diciplin.butterFly;
                         break;
                     case "Breaststroke":
-                        currentDiciplin = Foreman.breastStroke;
+                        currentDiciplin = Diciplin.breastStroke;
                 }
             } else {
                 currentDiciplin = null;
@@ -124,7 +124,7 @@ public class GuiMakeNewMember extends JFrame implements ActionListener {
                     throw new NoSuchElementException();
                 }
                 Member newMember = this.factory.makeNewMember(nextID, currentIsComptetetive, isActive, currentDate, currentName, currentDiciplin, false);
-                Foreman.members.add(newMember);
+                Member.members.add(newMember);
                 FilesForeman.addMemberToDatabase(newMember);
                 System.out.println("Member added.");
             } catch (DateTimeException exception1) {
