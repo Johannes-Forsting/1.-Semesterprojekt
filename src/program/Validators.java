@@ -45,6 +45,7 @@ public class Validators {
                 System.out.println("Please only write anything between " + min +" and " + max);
             }
         }
+        scanner.nextLine();
         return choice;
     }
 
@@ -52,7 +53,6 @@ public class Validators {
 
     public static boolean validateBooleanInput(){
         boolean isTrue;
-        scanner.nextLine();
         while(true){
             String choice = scanner.nextLine();
             if(choice.toLowerCase().equals("yes") || choice.toLowerCase().equals("y")){

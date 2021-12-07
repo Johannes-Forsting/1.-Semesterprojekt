@@ -1,10 +1,15 @@
-package dolphin;
+package coach;
 
+import dolphin.*;
 import fileIO.FilesCoach;
+import fileIO.FilesForeman;
 import fileIO.ResultObject;
 import foreman.Foreman;
 import program.Validators;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -31,13 +36,18 @@ public class Coach {
                     ArrayList<Member> tmpTeamMembers = getTop5Members(diciplin, isSenior);
                     System.out.println("Do you want to add members to a team?");
                     boolean agreed = Validators.validateBooleanInput();
-                    String bufferline = scanner.nextLine();
                     if (agreed){
                         System.out.println("What would you like to name the team?");
                         String tmpTeamName = scanner.nextLine();
                         Team tmpTeam = factory.makeNewTeam(tmpTeamName, diciplin, isSenior, tmpTeamMembers);
                         FilesCoach.generateNewTeam(tmpTeam);
                         FilesCoach.uploadMembersToTeamFile(tmpTeam);
+
+                        System.out.println("Would you like to add this team to a competition?");
+                        agreed = Validators.validateBooleanInput();
+                        if (agreed){
+                            addTeamToCompetition(tmpTeam);
+                        }
                     }
                     break;
                 case 2:
@@ -47,11 +57,39 @@ public class Coach {
                 case 3:
                     addNewResult();
                     break;
+                case 4:
+                    Foreman.showCompetitions();
+                    break;
                 case 9:
                     System.exit(0);
                     break;
             }
         }
+    }
+
+    public static void addTeamToCompetition(Team team){
+        ArrayList<Competition> tmpCompetitions = new ArrayList<>();
+        Diciplin tmpDiciplin = team.getDiciplin();
+        boolean tmpIsSenior = team.isSenior();
+        for (int i = 0; i < competitions.size(); i++) {
+            boolean condition1 = competitions.get(i).isSenior() == true && tmpIsSenior == true;
+            boolean condition2 = competitions.get(i).getDiciplin() == tmpDiciplin;
+            boolean condition3 = competitions.get(i).getCompetingTeam() == null ? true : false;
+            if (condition1 && condition2 && condition3){
+                tmpCompetitions.add(competitions.get(i));
+            }
+        }
+        for (int i = 0; i < tmpCompetitions.size(); i++) {
+            System.out.println((i + 1) + " " + tmpCompetitions.get(i));
+        }
+        System.out.println("Which of the following competitions above would you like to add the team to?");
+        int choice = Validators.validateUserIntInput(1, tmpCompetitions.size());
+        for (int i = 0; i < tmpCompetitions.size(); i++) {
+            if (choice == (i + 1)){
+                tmpCompetitions.get(i).setCompetingTeam(team);
+            }
+        }
+        FilesCoach.uploadAllCompetitions();
     }
 
     public static void addNewResult(){
@@ -88,7 +126,8 @@ public class Coach {
         System.out.println("Press 1 for: Show top 5 members... And add to team");
         System.out.println("Press 2 for: See all results");
         System.out.println("Press 3 for: Add new result");
-        System.out.println("Press 9 for: Exit / Shut down");
+        System.out.println("Press 4 for: See all competitions");
+        System.out.println("Press 9 for: Quit program");
     }
 
     public static ArrayList<Member> getTop5Members(Diciplin diciplin, Boolean isSenior) {
@@ -149,4 +188,5 @@ public class Coach {
         }
         return membersForTop5Team;
     }
+
 }

@@ -22,7 +22,11 @@ public class Factory{
 
 
 
-    public Competition makeNewCompetition(Diciplin diciplin, boolean isSenior, String place, String time, ArrayList<Team> competingTeams){
-        return new Competition(diciplin, isSenior, place, time, competingTeams);
+    public Competition makeNewCompetition(Diciplin diciplin, boolean isSenior, String place, String time){
+        return new Competition(diciplin, isSenior, place, time);
+    }
+
+    public Competition makeNewCompetition(Diciplin diciplin, boolean isSenior, String place, String time, Team team){
+        return new Competition(diciplin, isSenior, place, time, team);
     }
 }

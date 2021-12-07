@@ -1,7 +1,8 @@
 package dolphin;
 
+import coach.Coach;
+
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 import static foreman.Foreman.*;
 
@@ -12,30 +13,12 @@ public class Team {
     private boolean isSenior;
     public static ArrayList<Team> teams = new ArrayList<>();
 
-    //TODO hvis en person har 2 tider på top5
 
     public Team(String teamName, Diciplin diciplin, boolean isSenior, ArrayList<Member> contestants) {
         this.diciplin = diciplin;
         this.teamName = teamName;
         this.contestants = contestants;
         this.isSenior = isSenior;
-
-        switch (diciplin.getDiciplinName().toLowerCase()) {
-            case "crawl":
-                this.contestants = Coach.getTop5Members(crawl, this.isSenior);
-                break;
-            case "backcrawl":
-                this.contestants = Coach.getTop5Members(backCrawl, this.isSenior);
-                break;
-            case "breaststroke":
-                this.contestants = Coach.getTop5Members(breastStroke, this.isSenior);
-                break;
-            case "butterfly":
-                this.contestants = Coach.getTop5Members(butterFly, this.isSenior);
-                break;
-            default:
-                break;
-        }
 
 
     }

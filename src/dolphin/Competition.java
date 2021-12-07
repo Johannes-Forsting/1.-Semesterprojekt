@@ -5,14 +5,20 @@ public class Competition {
     private boolean isSenior;
     private String place;
     private String time;
-    private ArrayList<Team> competingTeams;
+    private Team competingTeam;
 
-    public Competition(Diciplin diciplin, boolean isSenior, String place, String time, ArrayList<Team> competingTeams) {
+    public Competition(Diciplin diciplin, boolean isSenior, String place, String time) {
         this.diciplin = diciplin;
         this.isSenior = isSenior;
         this.place = place;
         this.time = time;
-        this.competingTeams = competingTeams;
+    }
+    public Competition(Diciplin diciplin, boolean isSenior, String place, String time, Team competingTeam) {
+        this.diciplin = diciplin;
+        this.isSenior = isSenior;
+        this.place = place;
+        this.time = time;
+        this.competingTeam = competingTeam;
     }
 
     public Diciplin getDiciplin() {
@@ -26,33 +32,41 @@ public class Competition {
     public String getTime() {
         return time;
     }
-
-    public static ArrayList<Team> getTeamFromDiciplin(Diciplin diciplin, boolean isSenior){
-        ArrayList<Team> teamsWithSameDiciplin = new ArrayList<>();
-        for (int i = 0; i < Team.teams.size(); i++) {
-            if (Team.teams.get(i).getDiciplin().equals(diciplin)){
-                if (Team.teams.get(i).isSenior() && isSenior){
-                    teamsWithSameDiciplin.add(Team.teams.get(i));
-                }
-            }
-        }
-
-        return teamsWithSameDiciplin;
+    public boolean isSenior(){
+        return isSenior;
     }
+
+    public Team getCompetingTeam(){
+        return competingTeam;
+    }
+
+    public void setCompetingTeam(Team team){
+        this.competingTeam = team;
+    }
+
 
     @Override
     public String toString() {
-        String teams = " ";
-        for (int i = 0; i < competingTeams.size(); i++) {
-
-            teams += " " + competingTeams.get(i).getTeamName();
-
+        String team;
+        String teamMembers = "\nThe members of the team is:";
+        if(competingTeam == null){
+            team = "none";
+            teamMembers = "";
+        }else {
+            team = competingTeam.getTeamName();
+            for (int i = 0; i < competingTeam.getContestants().size(); i++) {
+                teamMembers += "\n" + competingTeam.getContestants().get(i);
+            }
         }
-        return "" +
-                "Disciplin " + diciplin + "\n" +
-                "Place "  +  place +  "\n" +
-                "Time " + time + "\n" +
-                "Competing Teams " + teams;
 
+
+
+        return "Competition{" +
+                "diciplin=" + diciplin +
+                ", isSenior=" + isSenior +
+                ", place='" + place + '\'' +
+                ", time='" + time + '\'' +
+                ", competingTeam=" + team + '}' +
+                teamMembers;
     }
 }
