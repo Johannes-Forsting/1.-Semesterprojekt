@@ -127,14 +127,6 @@ public class FilesCoach {
             e.printStackTrace();
         }
     }
-
-
-    //public static void competition() {
-//
-    //  File file = new File("src/resources/tournament.csv");
-    //Scanner scanner = new Scanner(file);
-    //scanner.nextLine();
-    //}
 }
 
 
