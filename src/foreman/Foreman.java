@@ -29,7 +29,7 @@ public class Foreman {
                     callAllMembers();
                     break;
                 case 3:
-                    showCompetition();
+                    showCompetitions();
                     break;
                 case 4:
                     makeNewCompetition();
