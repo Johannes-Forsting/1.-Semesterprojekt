@@ -4,19 +4,18 @@ import dolphin.*;
 import fileIO.FilesCashier;
 import fileIO.FilesForeman;
 import program.Validators;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static dolphin.Competition.competitions;
+import static dolphin.Member.members;
+
 public class Foreman {
 
-    public static Diciplin backCrawl = new Diciplin("Backcrawl");
-    public static Diciplin crawl = new Diciplin("Crawl");
-    public static Diciplin butterFly = new Diciplin("Butterfly");
-    public static Diciplin breastStroke = new Diciplin("Breaststroke");
+
     
-    public static ArrayList<Member> members = new ArrayList<Member>();
-    public static ArrayList<Competition> competitions = new ArrayList<Competition>();
+
+
     private static Scanner scanner = new Scanner(System.in);
 
     public static void foremanOptions(){

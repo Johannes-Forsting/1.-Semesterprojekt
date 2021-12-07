@@ -8,7 +8,7 @@ import program.Validators;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static foreman.Foreman.*;
+import static dolphin.Diciplin.*;
 
 
 public class Coach {

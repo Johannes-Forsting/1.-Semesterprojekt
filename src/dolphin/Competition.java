@@ -6,6 +6,7 @@ public class Competition {
     private String place;
     private String time;
     private ArrayList<Team> competingTeams;
+    public static ArrayList<Competition> competitions = new ArrayList<Competition>();
 
     public Competition(Diciplin diciplin, boolean isSenior, String place, String time, ArrayList<Team> competingTeams) {
         this.diciplin = diciplin;
