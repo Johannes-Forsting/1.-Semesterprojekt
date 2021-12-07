@@ -12,10 +12,6 @@ import static dolphin.Member.members;
 
 public class Foreman {
 
-
-    
-
-
     private static Scanner scanner = new Scanner(System.in);
 
     public static void foremanOptions(){
