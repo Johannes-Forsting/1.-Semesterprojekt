@@ -1,8 +1,9 @@
 package fileIO;
 
-import dolphin.Competition;
-import dolphin.Diciplin;
-import dolphin.Member;
+import dolphin.*;
+import foreman.Foreman;
+import foreman.Foreman.*;
+import jdk.jfr.Frequency;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 public class FilesForeman {
 
-
+    static Factory factory = new Factory();
 
     public static void addMemberToDatabase(Member newMember) {
         String memberToString = getMemberString(newMember);
@@ -35,12 +36,13 @@ public class FilesForeman {
         }
     }
 
-    private static String convertCompetitionToString(Competition competition){
+    public static String convertCompetitionToString(Competition competition){
         String string = competition.getDiciplin() + ";";
+        string += competition.isSenior() ? "yes" + ";" : "no" + ";";
         string += competition.getPlace() + ";";
-        string += competition.getTime();
+        string += competition.getTime() + ";";
+        string += competition.getCompetingTeam() == null ? "none" : competition.getCompetingTeam().getTeamName();
         return string;
-
     }
 
     public static String getMemberString(Member member) {
@@ -60,36 +62,75 @@ public class FilesForeman {
         return stringToReturn;
     }
 
-    public static ArrayList<Competition> readCompetitionFile() {
+
+    public static ArrayList<Competition> getCompetetionsFromFile() {
         ArrayList<Competition> competitions = new ArrayList<>();
         try {
             File f = new File("src/resources/competitions/competition.csv");
-            Scanner scanner = new Scanner(new File("src/resources/competitions/competition.csv"));
+            Scanner scanner = new Scanner(f);
             scanner.nextLine();
             while (scanner.hasNextLine()) {
-
                 String line = scanner.nextLine();
-              String[] stringAsArray = line.split(";");
-                String diciplin = stringAsArray[0];
-               String place = stringAsArray[1];
-             String time = stringAsArray[2];
+                String[] info = line.split(";");
 
-            //   Competition competition = new Competition(diciplin,place,time);
-             //  competitions.add(competition);
+                Diciplin diciplin = getRightDiciplin(info[0]);
+
+                boolean isSenior = false;
+                if (info[1].toLowerCase().equals("yes")) {
+                    isSenior = true;
+                }
+                if(info[4].equals("none")) {
+                    competitions.add(factory.makeNewCompetition(diciplin, isSenior, info[2], info[3]));
+                }
+                else {
+                    Team tmpTeam = findTeam(info[4]);
+                    competitions.add(factory.makeNewCompetition(diciplin, isSenior, info[2], info[3], tmpTeam));
+                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("not found");
+            System.out.println("File not found");
         }
-
         return competitions;
     }
+
+    public static Team findTeam(String teamname){
+        ArrayList<Member> tmpMembers = new ArrayList<Member>();
+        try {
+            File f = new File("src/resources/teams/" + teamname + ".csv");
+            Scanner scanner = new Scanner(f);
+            scanner.nextLine();
+            String line = scanner.nextLine();
+            String[] info = line.split(";");
+            String teamName = info[0];
+            Diciplin teamDiciplin = getRightDiciplin(info[1]);
+            boolean isSenior = info[2].equals("true") ? true : false;
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
+                info = line.split(";");
+                int tmpID = Integer.parseInt(info[0]);
+                for (int i = 0; i < Member.members.size(); i++) {
+                    if (tmpID == Member.members.get(i).getMemberID()){
+                        tmpMembers.add(Member.members.get(i));
+                    }
+                }
+            }
+            Team tmpTeam = factory.makeNewTeam(teamName, teamDiciplin, isSenior, tmpMembers);
+            return tmpTeam;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("File not found");
+        }
+        return null;
+    }
+
+
 
     public static ArrayList<Member> getMembersFromFile() {
         ArrayList<Member> members = new ArrayList<>();
         try {
             File f = new File("src/resources/Members.csv");
-            Scanner scanner = new Scanner(new File("src/resources/Members.csv"));
+            Scanner scanner = new Scanner(f);
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -105,13 +146,13 @@ public class FilesForeman {
                 if (info[4].toLowerCase().equals("yes")) {
                     isCompetative = true;
                 }
-                Diciplin diciplin = new Diciplin(info[5]);
+                Diciplin diciplin = getRightDiciplin(info[5]);
                 boolean hasArrears = false;
                 if (info[6].toLowerCase().equals("yes")) {
                     hasArrears = true;
                 }
-                Member currentMember = new Member(id, isCompetative, isActive, date, name, diciplin, hasArrears);
-                members.add(currentMember);
+                Member newMember = factory.makeNewMember(id, isCompetative, isActive, date, name, diciplin, false);
+                members.add(newMember);
             }
 
         } catch (FileNotFoundException e) {
@@ -119,6 +160,20 @@ public class FilesForeman {
             System.out.println("File not found");
         }
         return members;
+    }
+
+    private static Diciplin getRightDiciplin(String diciplinString){
+        switch (diciplinString){
+            case "Crawl":
+                return Diciplin.crawl;
+            case "Backcrawl":
+                return Diciplin.backCrawl;
+            case "Butterfly":
+                return Diciplin.butterFly;
+            case "Breaststroke":
+                return Diciplin.breastStroke;
+        }
+        return null;
     }
 
     public static int getNextID(){

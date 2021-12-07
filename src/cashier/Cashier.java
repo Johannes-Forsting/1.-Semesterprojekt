@@ -14,15 +14,10 @@ public class Cashier {
 
     public static void cashierOptions(){
         System.out.println("Welcome Cashier");
-        boolean whileCondition = true;
-        while (whileCondition == true) {
+        while (true) {
             callOptions();
-            int action = Validators.validateUserIntInput(0, 7);
+            int action = Validators.validateUserIntInput(1, 10);
             switch (action) {
-                case 0:
-                    System.out.println("BAIIEEEE");
-                    System.exit(0);
-                    break;
                 case 1:
                     printPrices();
                     break;
@@ -44,19 +39,24 @@ public class Cashier {
                 case 7:
                     setMemberActiveInactive();
                     break;
+                case 9:
+                    System.out.println("Goodbye");
+                    System.exit(0);
+                    break;
             }
         }
     }
 
     private static void callOptions(){
-        System.out.println("Pick an action: \n0: Exit." +
+        System.out.println("Pick an action:" +
                 "\n1: Show prices." +
                 "\n2: Print estimated income." +
                 "\n3: See all members." +
                 "\n4: Print members in arrears." +
                 "\n5: Set member out of arrears." +
                 "\n6: Set all members in arrears." +
-                "\n7: Set member active/inactive.");
+                "\n7: Set member active/inactive." +
+                "\n9: Exit.");
     }
 
 

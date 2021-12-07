@@ -12,6 +12,8 @@ import static dolphin.Member.members;
 
 public class Foreman {
 
+
+
     private static Scanner scanner = new Scanner(System.in);
 
     public static void foremanOptions(){
@@ -46,6 +48,10 @@ public class Foreman {
         members = FilesForeman.getMembersFromFile();
     }
 
+    public static void getCompetetions(){
+        competitions = FilesForeman.getCompetetionsFromFile();
+    }
+
 
 
     public static void callAllMembers(){
@@ -56,8 +62,7 @@ public class Foreman {
 
 
 
-   public static void showCompetition(){
-       competitions = FilesForeman.readCompetitionFile();
+   public static void showCompetitions(){
        for (int i = 0; i < competitions.size(); i++) {
            System.out.println(competitions.get(i));
        }
@@ -74,16 +79,13 @@ public class Foreman {
         String place = scanner.nextLine();
         System.out.println("Enter a start point for the competition");
         String time = scanner.nextLine();
-        ArrayList<Team> competingTeams = Competition.getTeamFromDiciplin(diciplin, isSenior);
-
-        Competition newCompetition = factory.makeNewCompetition(diciplin, isSenior, place, time, competingTeams);
+        Competition newCompetition = factory.makeNewCompetition(diciplin, isSenior, place, time);
         competitions.add(newCompetition);
         FilesForeman.saveCompetitionInFile(newCompetition);
-
     }
 
     public static void makeNewMember(){
-        GUI gui = new GUI();
+        GuiMakeNewMember gui = new GuiMakeNewMember();
     }
 
     private static void callOptions(){
@@ -97,43 +99,37 @@ public class Foreman {
     }
 
 
-    private static void changeCompetetiveStatus(){
+    private static void changeCompetetiveStatus() {
         boolean booleanChoice;
         Member currentMember = members.get(0);
         System.out.println("What is the ID of the member you want to edit status on?");
+
+        //Finder det ønskede medlem.
         int choice = scanner.nextInt();
         for (int i = 0; i < members.size(); i++) {
             currentMember = members.get(i);
-            if(choice == currentMember.getMemberID()){
+            if (choice == currentMember.getMemberID()) {
                 break;
             }
         }
+
         System.out.println(currentMember);
-        System.out.println(currentMember.isActive());
-        if (currentMember.isCompetitive() == true){
-            System.out.println("This member is currently competetive. Would you like to revert that?");
-            booleanChoice = Validators.validateBooleanInput();
-            if (booleanChoice == true){
+        String isComp = currentMember.isCompetitive() == true ? "This member is currently competetive." : "This member is currently not competetive.";
+        isComp += " Would you like to revert that?";
+        System.out.println(isComp);
+        booleanChoice = Validators.validateBooleanInput();
+        if (booleanChoice == false) {
+            System.out.println("Alright. I have changed nothing.");
+        } else {
+            if (currentMember.isCompetitive() == true) {
                 currentMember.setCompetitive(false);
                 currentMember.setDiciplin(null);
                 FilesCashier.uploadAllMembers();
-            }
-            else {
-                System.out.println("Alright. I have changed nothing.");
-            }
-        }
-        else{
-            System.out.println("This member is currently not competetive. Would you like to revert that?");
-            booleanChoice = Validators.validateBooleanInput();
-            if (booleanChoice == true){
+            } else {
                 currentMember.setCompetitive(true);
                 currentMember.setDiciplin(Validators.getDiciplin());
                 FilesCashier.uploadAllMembers();
             }
-            else {
-                System.out.println("Alright. I have changed nothing.");
-            }
         }
     }
-
 }
