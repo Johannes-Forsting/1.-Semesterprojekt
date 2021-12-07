@@ -68,17 +68,17 @@ public class Cashier {
     }
 
     private static void checkWhichMembersArrears() {
-        for (int i = 0; i < Foreman.members.size(); i++) {
-            if (Foreman.members.get(i).isArrears()) {
-                System.out.println(Foreman.members.get(i).toString());
+        for (int i = 0; i < Member.members.size(); i++) {
+            if (Member.members.get(i).isArrears()) {
+                System.out.println(Member.members.get(i).toString());
             }
         }
     }
 
     public static double checkIncomeEstimate() {
         double incomeEstimate = 0;
-        for (int i = 0; i < Foreman.members.size(); i++) {
-            incomeEstimate += Foreman.members.get(i).getSubscribtionRate();
+        for (int i = 0; i < Member.members.size(); i++) {
+            incomeEstimate += Member.members.get(i).getSubscribtionRate();
         }
         return incomeEstimate;
     }
@@ -87,8 +87,8 @@ public class Cashier {
     public static void setMemberOutOfArrears(){
         System.out.println("What is the ID of the paid member?");
         int choice = scanner.nextInt();
-        for (int i = 0; i < Foreman.members.size(); i++) {
-            Member currentMember = Foreman.members.get(i);
+        for (int i = 0; i < Member.members.size(); i++) {
+            Member currentMember = Member.members.get(i);
             if(choice == currentMember.getMemberID()){
                 if (currentMember.isArrears() == false){
                     System.out.println("This member does not have arrears.");
@@ -104,8 +104,8 @@ public class Cashier {
     }
 
     public static void setAllMembersInArrears(){
-        for (int i = 0; i < Foreman.members.size(); i++) {
-            Foreman.members.get(i).setArrears(true);
+        for (int i = 0; i < Member.members.size(); i++) {
+            Member.members.get(i).setArrears(true);
         }
         FilesCashier.uploadAllMembers();
     }
@@ -113,9 +113,9 @@ public class Cashier {
     public static void setMemberActiveInactive(){
         System.out.println("What is the ID of the member?");
         int choice = scanner.nextInt();
-        Member currentMember = Foreman.members.get(0);
-        for (int i = 0; i < Foreman.members.size(); i++) {
-            currentMember = Foreman.members.get(i);
+        Member currentMember = Member.members.get(0);
+        for (int i = 0; i < Member.members.size(); i++) {
+            currentMember = Member.members.get(i);
             if (currentMember.getMemberID() == choice) {
                 break;
             }

@@ -4,7 +4,7 @@ import dolphin.Diciplin;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import static foreman.Foreman.*;
+import static dolphin.Diciplin.*;
 
 public class Validators {
 
