@@ -1,18 +1,8 @@
-Disciplin;Place;Time
-Crawl;Valby;18:00
-Butterfly;Frederiksberg;15:00
-Back Crawl;Valby;12:00
-back crawl;valby;11:00
-Crawl;Roskilde;12:00
-Crawl;valby;18:00
-Crawl;hillerod;14:00
-Crawl;danmark;10:00
-Crawl;valby;14:00
-Crawl;valby;15:00
-Crawl;smash;14:00
-Butterfly;gg;14:00
-Crawl;jullerupfærgeby;11:32
-Crawl;f;12
-Crawl;valby;15:00
-Crawl;sd;15
-Crawl;valby;15:00
+Diciplin;isSenior;Place;Time;team
+Breaststroke;yes;Valbyhallen;11:00;none
+Crawl;no;Valby;11:00;none
+Backcrawl;yes;Valbyhallen;12:00;Hallabel
+Backcrawl;no;Valbyhallen;13:00;none
+Backcrawl;no;Valbyhallen;:19:00;none
+Backcrawl;yes;Valbyhallen;20:00;none
+Butterfly;yes;Frederiksber svømmehal;20:00;none

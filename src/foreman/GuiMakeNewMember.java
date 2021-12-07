@@ -17,7 +17,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class GUI extends JFrame implements ActionListener {
+public class GuiMakeNewMember extends JFrame implements ActionListener {
+
+    //Inistialisere alle de objekter der bliver brugt i gui'en.
     JButton button;
     JLabel nameLabel;
     JLabel dateLabel;
@@ -26,18 +28,18 @@ public class GUI extends JFrame implements ActionListener {
     JLabel pic;
     JTextField name;
     JTextField dateOfBirth;
-    JTextField isActive;
     JComboBox diciplin;
     JComboBox isCompetetive;
     Factory factory = new Factory(); //facotry
 
     static String[] dicplinNames = {"None", "Crawl", "Backcrawl", "Butterfly", "Breaststroke"};
 
-    GUI() {
+    GuiMakeNewMember() {
         this.setTitle("Test");
         this.setDefaultCloseOperation(1);
         this.setLayout(new FlowLayout());
 
+        //Opretter de forskllige objekter til gui'en, samt tildeler værdier.
         this.nameLabel = new JLabel("Name");
         this.dateLabel = new JLabel("Date (DD-MM-YYYY)");
         this.isCompLabel = new JLabel("Competetive? (\"No\" / \"yes\")");
@@ -66,6 +68,7 @@ public class GUI extends JFrame implements ActionListener {
         this.setSize(300, 520);
         this.setVisible(true);
 
+        //Tilføjer de enkelte elementer til gui'en i den rækkefølge de skal indsættes i
         this.add(this.nameLabel);
         this.add(this.name);
         this.add(this.dateLabel);
@@ -81,6 +84,7 @@ public class GUI extends JFrame implements ActionListener {
         this.setIconImage(icon.getImage());
     }
 
+    //Metoden som får knappen til at gøre noget når man klikker på den.
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.button) {
             String currentName = this.name.getText();

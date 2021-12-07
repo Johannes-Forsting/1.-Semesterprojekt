@@ -1,6 +1,7 @@
 package fileIO;
 
 
+import dolphin.Competition;
 import dolphin.Diciplin;
 import dolphin.Member;
 import dolphin.Team;
@@ -124,6 +125,21 @@ public class FilesCoach {
 
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
+            e.printStackTrace();
+        }
+    }
+
+    public static void uploadAllCompetitions() {
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter("src/resources/competitions/competition.csv"));
+            writer.write("Diciplin;isSenior;Place;Time;team");
+            for (int i = 0; i < Competition.competitions.size(); i++) {
+                String convertStringToFile = FilesForeman.convertCompetitionToString(Competition.competitions.get(i));
+                writer.write("\n" + convertStringToFile);
+            }
+            writer.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
