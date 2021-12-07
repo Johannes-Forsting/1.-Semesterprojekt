@@ -3,9 +3,6 @@ package dolphin;
 
 import java.util.ArrayList;
 
-import static foreman.Foreman.*;
-import static dolphin.Diciplin.*;
-
 public class Team {
     private String teamName;
     private Diciplin diciplin;

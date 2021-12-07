@@ -2,8 +2,7 @@ package program;
 
 import cashier.Cashier;
 
-import dolphin.Coach;
-import dolphin.Diciplin;
+import coach.Coach;
 import fileIO.ResultObject;
 import foreman.Foreman;
 

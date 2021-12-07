@@ -4,9 +4,7 @@ import dolphin.*;
 import fileIO.FilesCashier;
 import fileIO.FilesForeman;
 import program.Validators;
-import java.util.ArrayList;
 import java.util.Scanner;
-
 import static dolphin.Competition.competitions;
 import static dolphin.Member.members;
 
