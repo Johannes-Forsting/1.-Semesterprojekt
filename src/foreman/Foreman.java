@@ -48,6 +48,10 @@ public class Foreman {
         members = FilesForeman.getMembersFromFile();
     }
 
+    public static void getCompetetions(){
+        competitions = FilesForeman.getCompetetionsFromFile();
+    }
+
 
 
     public static void callAllMembers(){

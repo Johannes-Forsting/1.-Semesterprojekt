@@ -1,6 +1,7 @@
 package fileIO;
 
 
+import dolphin.Competition;
 import dolphin.Diciplin;
 import dolphin.Member;
 import dolphin.Team;
@@ -8,7 +9,6 @@ import java.io.*;
 import java.util.Scanner;
 
 import static fileIO.FilesForeman.getMemberString;
-import static foreman.Foreman.competitions;
 
 public class FilesCoach {
     static Scanner scanner = new Scanner(System.in);
@@ -134,8 +134,8 @@ public class FilesCoach {
         try {
             writer = new BufferedWriter(new FileWriter("src/resources/competitions/competition.csv"));
             writer.write("Diciplin;isSenior;Place;Time;team");
-            for (int i = 0; i < competitions.size(); i++) {
-                String convertStringToFile = FilesForeman.convertCompetitionToString(competitions.get(i));
+            for (int i = 0; i < Competition.competitions.size(); i++) {
+                String convertStringToFile = FilesForeman.convertCompetitionToString(Competition.competitions.get(i));
                 writer.write("\n" + convertStringToFile);
             }
             writer.close();

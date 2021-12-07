@@ -71,12 +71,12 @@ public class Coach {
         ArrayList<Competition> tmpCompetitions = new ArrayList<>();
         Diciplin tmpDiciplin = team.getDiciplin();
         boolean tmpIsSenior = team.isSenior();
-        for (int i = 0; i < competitions.size(); i++) {
-            boolean condition1 = competitions.get(i).isSenior() == true && tmpIsSenior == true;
-            boolean condition2 = competitions.get(i).getDiciplin() == tmpDiciplin;
-            boolean condition3 = competitions.get(i).getCompetingTeam() == null ? true : false;
+        for (int i = 0; i < Competition.competitions.size(); i++) {
+            boolean condition1 = Competition.competitions.get(i).isSenior() == true && tmpIsSenior == true;
+            boolean condition2 = Competition.competitions.get(i).getDiciplin() == tmpDiciplin;
+            boolean condition3 = Competition.competitions.get(i).getCompetingTeam() == null ? true : false;
             if (condition1 && condition2 && condition3){
-                tmpCompetitions.add(competitions.get(i));
+                tmpCompetitions.add(Competition.competitions.get(i));
             }
         }
         for (int i = 0; i < tmpCompetitions.size(); i++) {

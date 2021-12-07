@@ -109,9 +109,9 @@ public class FilesForeman {
                 line = scanner.nextLine();
                 info = line.split(";");
                 int tmpID = Integer.parseInt(info[0]);
-                for (int i = 0; i < Foreman.members.size(); i++) {
-                    if (tmpID == Foreman.members.get(i).getMemberID()){
-                        tmpMembers.add(Foreman.members.get(i));
+                for (int i = 0; i < Member.members.size(); i++) {
+                    if (tmpID == Member.members.get(i).getMemberID()){
+                        tmpMembers.add(Member.members.get(i));
                     }
                 }
             }
@@ -165,13 +165,13 @@ public class FilesForeman {
     private static Diciplin getRightDiciplin(String diciplinString){
         switch (diciplinString){
             case "Crawl":
-                return Foreman.crawl;
+                return Diciplin.crawl;
             case "Backcrawl":
-                return Foreman.backCrawl;
+                return Diciplin.backCrawl;
             case "Butterfly":
-                return Foreman.butterFly;
+                return Diciplin.butterFly;
             case "Breaststroke":
-                return Foreman.breastStroke;
+                return Diciplin.breastStroke;
         }
         return null;
     }

@@ -1,7 +1,9 @@
 package program;
 
 import cashier.Cashier;
-import coach.Coach;
+
+import dolphin.Coach;
+import dolphin.Diciplin;
 import fileIO.ResultObject;
 import foreman.Foreman;
 
@@ -10,7 +12,7 @@ public class Program {
         //De aktuelle medlemmer og resultater bliver loadet ned fra csv-filerne til arraylister som det første når programmet starter.
         Foreman.getMembers();
         ResultObject.createAllResultObjects();
-        Foreman.getCompetitions();
+        Foreman.getCompetetions();
 
         //Kalder GUI til login
         GUIStartUp guiStartUp = new GUIStartUp();

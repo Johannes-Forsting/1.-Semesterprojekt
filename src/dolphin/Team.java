@@ -1,6 +1,5 @@
 package dolphin;
 
-import coach.Coach;
 
 import java.util.ArrayList;
 
