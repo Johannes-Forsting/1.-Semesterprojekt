@@ -1,15 +1,10 @@
-package dolphin;
+package coach;
 
 import dolphin.*;
 import fileIO.FilesCoach;
-import fileIO.FilesForeman;
 import fileIO.ResultObject;
 import foreman.Foreman;
 import program.Validators;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
