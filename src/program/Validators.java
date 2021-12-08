@@ -1,7 +1,6 @@
 package program;
 
 import dolphin.Diciplin;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import static dolphin.Diciplin.*;

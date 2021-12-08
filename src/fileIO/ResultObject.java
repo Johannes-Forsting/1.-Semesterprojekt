@@ -1,9 +1,7 @@
 package fileIO;
 
 import dolphin.Diciplin;
-
 import java.util.ArrayList;
-
 import static dolphin.Diciplin.*;
 import static fileIO.FilesCoach.*;
 
@@ -24,10 +22,6 @@ public class ResultObject {
         this.result = result;
         this.date = date;
         this.memberId = memberId;
-    }
-
-    //Overload på constructor, så vi kan lave objektinstanser til metodekald uden at skulle angive parametre.
-    public ResultObject() {
     }
 
     @Override
