@@ -35,10 +35,12 @@ public class Member{
 
         }
 
+        //en metode der finder medlemmets alder fra nu til deres fødseldagsdato
         private int getAge(LocalDate currentDate) {
                 return Period.between(this.dateOfBirth, currentDate).getYears();
         }
 
+        //Metode der finder medlemmets alder.
         public int getMemberAge(){
                 return Period.between(this.dateOfBirth, LocalDate.now()).getYears();
         }
@@ -100,7 +102,7 @@ public class Member{
                 this.isActive = isActive;
                 setSubscribtionRate();
         }
-
+//en metoder der sætter medlemmernes abonnemt på henholdvis 1000,1200 og 1600
         public void setSubscribtionRate(){
                 int age = getAge(LocalDate.now());
                 this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600;

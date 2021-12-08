@@ -25,6 +25,8 @@ public class Diciplin {
         return this.diciplinName;
     }
 
+
+    //Metoden der printer og opretter arraylister med disciplinerne
     public ArrayList<ResultObject> getDiciplinResults(Diciplin diciplin) {
         ArrayList<ResultObject> resultsToPrint = new ArrayList<>();
         switch (diciplin.getDiciplinName().toLowerCase()) {

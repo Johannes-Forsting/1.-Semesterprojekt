@@ -62,6 +62,7 @@ public class Coach {
         }
     }
 
+    //Træneren kan tilføje hold til konkurrencer. Metoden tager imod et team.
     public static void addTeamToCompetition(Team team){
         ArrayList<Competition> tmpCompetitions = new ArrayList<>();
         Diciplin tmpDiciplin = team.getDiciplin();
@@ -87,6 +88,7 @@ public class Coach {
         FilesCoach.uploadAllCompetitions();
     }
 
+    //Her kan træneren opdatere et nyt resultat. Metoden bruger en metoden fra fil klassen "addNewResult".
     public static void addNewResult(){
         String resultToAdd;
         System.out.println("What is the time of the result:\n HH:MM");
@@ -124,7 +126,7 @@ public class Coach {
         System.out.println("Press 4 for: See all competitions");
         System.out.println("Press 9 for: Quit program");
     }
-
+//Her bliver resultobject brugt til at sortere de bedste tider. Derudover bliver der brugt et switch statement til at vælge hvilken disciplin den skal sortere.
     public static ArrayList<Member> getTop5Members(Diciplin diciplin, Boolean isSenior) {
         String diciplinName = diciplin.getDiciplinName();
         int currentResultListSize = 0;
@@ -146,6 +148,7 @@ public class Coach {
                 break;
         }
 
+        //Herefter tjekker vi om medlemmet er senior eller ej, om medlemmet er aktiv og om medlemmet er konkurrencesvømmer
         ArrayList<Member> membersForTop5Team = new ArrayList<>();
         for (int i = 0; i < currentResultListSize-1; i++) {
             int resultId = diciplin.getDiciplinResults(diciplin).get(i).getMemberId();

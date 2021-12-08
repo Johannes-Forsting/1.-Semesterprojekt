@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class FilesCashier {
 
+    //metode der uploader alle medlemmerne.
     public static void uploadAllMembers() {
         BufferedWriter writer;
         try {

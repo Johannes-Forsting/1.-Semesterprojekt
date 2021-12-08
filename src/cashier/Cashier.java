@@ -67,6 +67,7 @@ public class Cashier {
         System.out.println("\n\n");
     }
 
+    //Tjekker hvilke medlemmer der er i restance ved at køre i gennem arraylisten med medlemmer.
     private static void checkWhichMembersArrears() {
         for (int i = 0; i < Member.members.size(); i++) {
             if (Member.members.get(i).isArrears()) {
@@ -75,6 +76,7 @@ public class Cashier {
         }
     }
 
+//Tjekker den forventede indkomst ved at køre igennem arraylisten med medlemmer.
     public static double checkIncomeEstimate() {
         double incomeEstimate = 0;
         for (int i = 0; i < Member.members.size(); i++) {
@@ -84,6 +86,7 @@ public class Cashier {
     }
 
 
+//Filen og arraylisten med medlemmer bliver brugt til at tjekke og sætte medlemmer ud af restance
     public static void setMemberOutOfArrears(){
         System.out.println("What is the ID of the paid member?");
         int choice = scanner.nextInt();
@@ -103,6 +106,7 @@ public class Cashier {
         }
     }
 
+    //Samme fremgangsmåde med metoden ovenover, men bare med at sætter folk i restance.
     public static void setAllMembersInArrears(){
         for (int i = 0; i < Member.members.size(); i++) {
             Member.members.get(i).setArrears(true);
@@ -110,6 +114,7 @@ public class Cashier {
         FilesCashier.uploadAllMembers();
     }
 
+    //En metoder der bliver brugt til at sætte medlemmer inaktive. Her bliver Arraylisten med members og filen indlæst og kasseren får muligheden for at ændre om de er aktive eller ej.
     public static void setMemberActiveInactive(){
         System.out.println("What is the ID of the member?");
         int choice = scanner.nextInt();
@@ -139,10 +144,4 @@ public class Cashier {
             System.out.println("I dont understand.");
         }
     }
-
-
-
-
-
-
 }
