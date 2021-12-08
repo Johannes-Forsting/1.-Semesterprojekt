@@ -14,6 +14,7 @@ public class Foreman {
 
     private static Scanner scanner = new Scanner(System.in);
 
+    //Metode til at vælge hvad formanden skal gøre.
     public static void foremanOptions(){
         boolean whileCondition = true;
         while (whileCondition){
@@ -42,32 +43,33 @@ public class Foreman {
         }
     }
 
+    //Metode som kører i starten af programmet som downloader alle members fra en csv fil og putter dem ind i en arrayliste så vi kan bruge medlemmerne som objekter
     public static void getMembers(){
         members = FilesForeman.getMembersFromFile();
     }
 
+    //Metode som kører i starten af programmet som downloader alle konkurrencer fra en csv fil og putter dem ind i en arrayliste så vi kan bruge konkurrencerne som objekter
     public static void getCompetetions(){
         competitions = FilesForeman.getCompetetionsFromFile();
     }
 
 
-
+    //Metode der printer alle medlemmer på en lang overskuelig liste
     public static void callAllMembers(){
         for (int i = 0; i < members.size(); i++) {
             System.out.println(members.get(i));
         }
     }
 
-
-
-   public static void showCompetitions(){
-       for (int i = 0; i < competitions.size(); i++) {
+    //Metode som printer alle konkurrencerne samt de deltagere der er på holdet der eventuelt er tilmeldt konkurrencen.
+    public static void showCompetitions(){
+        for (int i = 0; i < competitions.size(); i++) {
            System.out.println(competitions.get(i));
-       }
-   }
+        }
+    }
 
 
-
+    //Metode som opretter en ny konkurrence.
     public static void makeNewCompetition(){
         Factory factory = new Factory();
         Diciplin diciplin = Validators.getDiciplin();
@@ -82,10 +84,12 @@ public class Foreman {
         FilesForeman.saveCompetitionInFile(newCompetition);
     }
 
+    //Metode som kører en GUI til at oprette et nyt medlem.
     public static void makeNewMember(){
         GuiMakeNewMember gui = new GuiMakeNewMember();
     }
 
+    //Metode som printer alle mulighederne som formanden har at vælge imellem.
     private static void callOptions(){
         System.out.println("============CHOOSE AN OPTION============");
         System.out.println("Press 1 for: Make new member.");
@@ -96,7 +100,7 @@ public class Foreman {
         System.out.println("Press 9 for: Quit program.");
     }
 
-
+    //Metode som ændrer konkurrencestatussen for et medlem.
     private static void changeCompetetiveStatus() {
         boolean booleanChoice;
         Member currentMember = members.get(0);
@@ -111,6 +115,7 @@ public class Foreman {
             }
         }
 
+        //Alt afhængig af om medlemmet er konkurrencemedlem eller motionist printes der forskellige ting.
         System.out.println(currentMember);
         String isComp = currentMember.isCompetitive() == true ? "This member is currently competetive." : "This member is currently not competetive.";
         isComp += " Would you like to revert that?";

@@ -10,6 +10,7 @@ public class FilesForeman {
 
     static Factory factory = new Factory();
 
+    //Metode som uploader et enkelt medlem til members.csv filen
     public static void addMemberToDatabase(Member newMember) {
         String memberToString = getMemberString(newMember);
         try (FileWriter fw = new FileWriter("src/resources/Members.csv", true);
@@ -20,7 +21,7 @@ public class FilesForeman {
         }
     }
 
-
+    //Metode som uploader en ny konkurrence til konkurrencefilen.
     public static void saveCompetitionInFile(Competition saveCompetition){
         String convertStringToFile = convertCompetitionToString(saveCompetition);
         try(FileWriter fw = new FileWriter("src/resources/competitions/competition.csv", true);
@@ -32,6 +33,7 @@ public class FilesForeman {
         }
     }
 
+    //Metode som konvertere en konkurrence om til en string som vi kan gemme i csv-filen
     public static String convertCompetitionToString(Competition competition){
         String string = competition.getDiciplin() + ";";
         string += competition.isSenior() ? "yes" + ";" : "no" + ";";
@@ -41,6 +43,7 @@ public class FilesForeman {
         return string;
     }
 
+    //Metode som konverterer et medlem til en string som vi kan gemme i csv-filen
     public static String getMemberString(Member member) {
         String stringToReturn = member.getMemberID() + ";";
         stringToReturn += member.getName();
@@ -52,13 +55,14 @@ public class FilesForeman {
         return stringToReturn;
     }
 
+    //Metode som ændrer date formatet fra DD-MM-YYYY til YYYY-MM-DD
     private static String getRightDateFormat(LocalDate date){
         String[] array = date.toString().split("-");
         String stringToReturn = array[2] + "-" + array[1] + "-" + array[0];
         return stringToReturn;
     }
 
-
+    //Metode som downloader alle konkurrencer ned til en arraylist så vi kan bruge dem og kalde dem.
     public static ArrayList<Competition> getCompetetionsFromFile() {
         ArrayList<Competition> competitions = new ArrayList<>();
         try {
@@ -90,6 +94,8 @@ public class FilesForeman {
         return competitions;
     }
 
+    //Metode som finder et team i filerne baseret på et teamnavn som står i konkurrencefilerne
+    //Teamet bliver så oprettet og returneret
     public static Team findTeam(String teamname){
         ArrayList<Member> tmpMembers = new ArrayList<Member>();
         try {
@@ -121,7 +127,7 @@ public class FilesForeman {
     }
 
 
-
+    //Metode som henter alle medlemmerne fra csv-filen, i starten af programmet, og propper dem ind i en arrayliste så vi kan bruge dem som objekter.
     public static ArrayList<Member> getMembersFromFile() {
         ArrayList<Member> members = new ArrayList<>();
         try {
@@ -158,6 +164,7 @@ public class FilesForeman {
         return members;
     }
 
+    //Metode som returnere det korrekte object af diciplin baseret på en String.
     private static Diciplin getRightDiciplin(String diciplinString){
         switch (diciplinString){
             case "Crawl":
@@ -172,6 +179,7 @@ public class FilesForeman {
         return null;
     }
 
+    //Metode som tjekker det sidste medlem i listen og returnere en værdi der er én højere.
     public static int getNextID(){
         int idToReturn = 0;
         try {

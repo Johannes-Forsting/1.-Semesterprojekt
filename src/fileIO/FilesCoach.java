@@ -11,6 +11,8 @@ import java.util.Scanner;
 import static fileIO.FilesForeman.getMemberString;
 
 public class FilesCoach {
+
+    //Scannere og filereaders for hver enkelt diciplin blevet initialiseret som satiske metode på klassen
     static Scanner scanner = new Scanner(System.in);
     static File crawlFile = new File("src/resources/results/crawlResults.csv");
     static File backCrawlFile = new File("src/resources/results/backCrawlResults.csv");
@@ -35,11 +37,13 @@ public class FilesCoach {
         }
     }
 
+    //metode som indtager en string fra en csv-fil og deler den op et array så hver enkelt element kan bruges hver for sig
     public static String[] collectInfoFromScanner(String line) {
         String[] info = line.split(";");
         return info;
     }
 
+    //Metode som tilføjer et nyt result til csv-filerne afhængig af hvilken diciplin der er som parameter
     public static void addNewResult(Diciplin diciplin, String resultToAdd) {
         switch (diciplin.getDiciplinName().toLowerCase()) {
             case "crawl":
@@ -79,6 +83,8 @@ public class FilesCoach {
                 break;
         }
     }
+
+    //Finder et medlemsnavn udfra et medlems ID
     public static String getMemberNameFromMemberId(int id){
         for (int i = 0; i < Member.members.size(); i++) {
             Member currentMember = Member.members.get(i);
@@ -91,6 +97,7 @@ public class FilesCoach {
         return null;
     }
 
+    //Uploader medlemmer til en team-csv-fil
     public static void uploadMembersToTeamFile(Team team) {
         for (int i = 0; i < team.getContestants().size(); i++) {
             Member tmpMember = team.getContestants().get(i);
@@ -106,7 +113,7 @@ public class FilesCoach {
         }
     }
 
-
+    //Opretter en ny -team-csv-fil.
     public static void generateNewTeam(Team newTeam) {
         String name = "src/resources/teams/" + newTeam.getTeamName() + ".csv";
         try {
@@ -129,6 +136,7 @@ public class FilesCoach {
         }
     }
 
+    //Overskriver alle konkurrencer i csv-filen.
     public static void uploadAllCompetitions() {
         BufferedWriter writer;
         try {
