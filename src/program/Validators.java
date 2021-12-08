@@ -9,6 +9,7 @@ public class Validators {
 
     private static Scanner scanner = new Scanner(System.in);
 
+    //Metode til at få en specific diciplin.
     public static Diciplin getDiciplin(){
         int diciplin;
         System.out.println("What diciplin are you choosing?");
@@ -27,6 +28,7 @@ public class Validators {
         return null;
     }
 
+    //Metode til at få et integer input fra brugeren mellem en min og max værdi. Man kommer ikke videre før man har indputtet noget imellem disse to værdier.
     public static int validateUserIntInput(int min, int max){
         int choice;
         while(true){
@@ -49,7 +51,7 @@ public class Validators {
     }
 
 
-
+    //Metode til at få et input fra brugeren som enten er "yes" eller "no". Så længe man skriver noget andet end dette kommer man ikke videre.
     public static boolean validateBooleanInput(){
         boolean isTrue;
         while(true){

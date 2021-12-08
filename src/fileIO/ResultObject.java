@@ -7,16 +7,19 @@ import static fileIO.FilesCoach.*;
 
 public class ResultObject {
 
+    //Non static attributter til hvert object
     private String name;
     private String result;
     private String date;
     private int memberId;
+
+    //Static attributter på klassen
     public static ArrayList<ResultObject> crawlResults = new ArrayList<>();
     public static ArrayList<ResultObject> backCrawlResults = new ArrayList<>();
     public static ArrayList<ResultObject> breastStrokeResults = new ArrayList<>();
     public static ArrayList<ResultObject> butterflyResults = new ArrayList<>();
 
-
+    //Constructor af ResultObject
     public ResultObject(String name, String result, String date, int memberId) {
         this.name = name;
         this.result = result;
@@ -24,6 +27,7 @@ public class ResultObject {
         this.memberId = memberId;
     }
 
+    //ToString af objekter fra klassen
     @Override
     public String toString() {
 
@@ -34,6 +38,7 @@ public class ResultObject {
                 ", memberId=" + memberId;
     }
 
+    //Metoode som bliver kaldt i starten af programmet som downloader alle eksisterende resultater og putter dem i de statiske arraylister på klassen.
     public static void createAllResultObjects(){
         resultObejctCreater(crawl);
         resultObejctCreater(backCrawl);
@@ -41,6 +46,7 @@ public class ResultObject {
         resultObejctCreater(butterFly);
     }
 
+    //Metode som henter resultaterne fra csv-filerne i starten af programmet
     private static ArrayList<ResultObject> resultObejctCreater(Diciplin diciplin){
         switch (diciplin.getDiciplinName().toLowerCase()){
             case "crawl":
@@ -84,7 +90,7 @@ public class ResultObject {
         }
     }
 
-
+    //=======================Getters====================
     public String getName() {
         return name;
     }
@@ -96,4 +102,5 @@ public class ResultObject {
     public String getResult() {
         return result;
     }
+    //=======================Getters====================
 }
