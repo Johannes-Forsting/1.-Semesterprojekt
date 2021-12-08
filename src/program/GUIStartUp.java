@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GUIStartUp extends JFrame implements ActionListener, KeyListener {
+        //Alle elementerne i guien bliver instianiseret her
         JButton button;
         JLabel username;
         JLabel password;
@@ -16,10 +17,11 @@ public class GUIStartUp extends JFrame implements ActionListener, KeyListener {
         JTextField usernameField;
         JPasswordField passwordField;
 
-
+        //Brugernavne og passwords til de 3 aktører
         final static String[] usernames = {"Coach", "Cashier", "Foreman"};
         final static String[] passwords = {"Coach123", "Cashier123", "Foreman123"};
-
+        
+       
         public static int logIn;
 
 
@@ -28,7 +30,7 @@ public class GUIStartUp extends JFrame implements ActionListener, KeyListener {
             this.setDefaultCloseOperation(1);
             this.setLayout(new FlowLayout());
 
-
+            //Elementerne bliver oprettet og tilgivet værdier.
             username = new JLabel("Username");
             this.username.setPreferredSize(new Dimension(100, 40));
 
@@ -53,7 +55,8 @@ public class GUIStartUp extends JFrame implements ActionListener, KeyListener {
 
             this.setSize(400, 400);
             this.setVisible(true);
-
+            
+            //Elementerne bliver tilføjet guien i korrekt rækkefølge
             this.add(username);
             this.add(usernameField);
             this.add(password);
@@ -68,7 +71,8 @@ public class GUIStartUp extends JFrame implements ActionListener, KeyListener {
         @Override
         public void keyTyped(KeyEvent e) {
         }
-
+        
+        //Hvis man "tapper" ned til "login" knappen og trykker enter kører loginAttempt metoden.
         public void keyPressed(KeyEvent e){
             if (e.getKeyCode()==KeyEvent.VK_ENTER){
                 logInAttempt();
@@ -79,7 +83,8 @@ public class GUIStartUp extends JFrame implements ActionListener, KeyListener {
         public void keyReleased(KeyEvent e) {
 
         }
-
+        
+        //Hvis man klikker på "login" knappen kører loginAttempt metoden
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == button){
                 logInAttempt();
@@ -88,14 +93,16 @@ public class GUIStartUp extends JFrame implements ActionListener, KeyListener {
 
         }
 
-
+        
+        //Metode som kører hvis "login" knappen bliver trykket
         public void logInAttempt(){
             String usernameText = usernameField.getText();
             String passwordText = passwordField.getText();
+            
+            //Hvis brugernavn passer sammen med password fjernes guien og variablen "login" får en værdi som sender os videre i porgrammet.
             if (usernameText.equals(usernames[0]) && passwordText.equals(passwords[0])){
                 logIn = 1;
                 System.out.println("login succesfull.");
-                //Runtime.getRuntime().exit(0);
                 this.dispose();
             }
             else if (usernameText.equals(usernames[1]) && passwordText.equals(passwords[1])){
