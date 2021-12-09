@@ -1,5 +1,5 @@
+//Lavet af Johannes, Asger og Simon
 package fileIO;
-
 
 import dolphin.Competition;
 import dolphin.Diciplin;

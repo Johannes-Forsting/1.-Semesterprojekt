@@ -1,3 +1,4 @@
+//Lavet af Johannes
 package program;
 
 import cashier.Cashier;

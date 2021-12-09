@@ -1,3 +1,4 @@
+//Lavet af Johannes
 package program;
 
 import javax.swing.*;
@@ -62,6 +63,7 @@ public class GUIStartUp extends JFrame implements ActionListener, KeyListener {
         this.add(password);
         this.add(passwordField);
         this.add(button);
+        this.add(pic);
 
 
         ImageIcon icon = new ImageIcon("src/resources/dolphin.jpg");

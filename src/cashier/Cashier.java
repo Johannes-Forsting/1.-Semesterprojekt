@@ -1,3 +1,5 @@
+//Cashier klassen er skrevet af Simon og Johannes
+
 package cashier;
 
 import dolphin.Member;

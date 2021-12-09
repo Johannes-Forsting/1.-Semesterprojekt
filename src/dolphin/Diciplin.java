@@ -1,3 +1,5 @@
+//Lavet af Simon
+
 package dolphin;
 
 import fileIO.ResultObject;

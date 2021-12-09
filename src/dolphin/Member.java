@@ -1,3 +1,5 @@
+//Lavet af Johannes
+
 package dolphin;
 
 import java.time.LocalDate;

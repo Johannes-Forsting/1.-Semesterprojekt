@@ -1,3 +1,4 @@
+//Lavet af Asger og Simon
 package coach;
 
 import dolphin.*;

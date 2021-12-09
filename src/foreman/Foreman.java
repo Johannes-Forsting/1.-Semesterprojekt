@@ -1,3 +1,4 @@
+//Lavet af Johannes
 package foreman;
 
 import dolphin.*;

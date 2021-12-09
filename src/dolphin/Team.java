@@ -1,5 +1,5 @@
+//Lavet af Simon
 package dolphin;
-
 
 import java.util.ArrayList;
 
