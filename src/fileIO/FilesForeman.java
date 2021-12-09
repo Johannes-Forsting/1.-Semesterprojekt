@@ -29,7 +29,7 @@ public class FilesForeman {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw))
         {
-            out.println("\n" + convertStringToFile);
+            out.println(convertStringToFile);
         } catch (IOException e) {
         }
     }
