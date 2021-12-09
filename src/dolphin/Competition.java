@@ -16,6 +16,7 @@ public class Competition {
         this.place = place;
         this.time = time;
     }
+
     public Competition(Diciplin diciplin, boolean isSenior, String place, String time, Team competingTeam) {
         this.diciplin = diciplin;
         this.isSenior = isSenior;

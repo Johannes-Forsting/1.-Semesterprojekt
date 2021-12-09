@@ -105,9 +105,13 @@ public class FilesForeman {
             scanner.nextLine();
             String line = scanner.nextLine();
             String[] info = line.split(";");
+
+            //Finder diverse attributter i filen
             String teamName = info[0];
             Diciplin teamDiciplin = getRightDiciplin(info[1]);
             boolean isSenior = info[2].equals("true") ? true : false;
+
+            //Tilføjer medlemmerne til til en arrayliste
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
                 info = line.split(";");
